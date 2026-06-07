@@ -708,10 +708,27 @@ body {
 
 .term-welcome {
     color: var(--text-muted);
+    font-weight: 500;
 }
 
-.term-instruction {
+/* Custom terminal grid rows for responsiveness */
+.term-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+    padding-left: 12px;
+}
+
+.term-line-cmd {
+    min-width: 130px;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.term-line-desc {
     color: var(--text-muted);
+    word-break: break-word;
 }
 
 .terminal-input-line {
@@ -787,40 +804,70 @@ body {
     text-decoration: underline;
 }
 
-.contact-form-container {
+.contact-action-container {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+.contact-action-container h3 {
+    font-size: 1.5rem;
     margin-bottom: 8px;
-    font-weight: 600;
 }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
+.contact-action-container p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.email-copy-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
     padding: 12px 16px;
-    color: var(--text-main);
-    font-family: var(--font-outfit);
-    transition: var(--transition-fast);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    gap: 16px;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--accent-cyan);
-    outline: none;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);
+#emailAddress {
+    color: var(--accent-cyan);
+    word-break: break-all;
+}
+
+.copy-btn {
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    color: var(--accent-cyan);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: var(--font-outfit);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.copy-btn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: var(--glow-cyan);
+}
+
+.copy-btn.copied {
+    background: rgba(74, 222, 128, 0.15) !important;
+    border-color: rgba(74, 222, 128, 0.3) !important;
+    color: var(--accent-green) !important;
 }
 
 /* Footer */

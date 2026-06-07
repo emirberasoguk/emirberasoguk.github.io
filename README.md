@@ -1,10 +1,10 @@
 # Emir Bera Soğuk - Portfolyö Web Sitesi
 
-Bu depo, kişisel portfolyö web sitemin kaynak kodlarını içermektedir. Site tamamen statik HTML, CSS ve JavaScript kullanılarak, **OpenSUSE Tumbleweed** ve **Kitty Terminal** estetiğinden ilham alınarak tasarlanmıştır.
+Bu depo, kişisel portfolyö web sitemin kaynak kodlarını içermektedir. Site tamamen statik HTML, CSS ve JavaScript kullanılarak, **Linux** ve **Kitty Terminal** estetiğinden ilham alınarak tasarlanmıştır.
 
 ## Özellikler
 
-*   **Vivid Dark Tema**: OpenSUSE yeşili ve modern neon renk paletine sahip premium tasarım.
+*   **Vivid Dark Tema**: Modern neon renk paletine sahip premium tasarım.
 *   **Etkileşimli Kitty Konsolu**: Gerçek bir terminal simülatörü. Ziyaretçiler `neofetch`, `projects`, `skills`, `contact` ve `help` komutlarını çalıştırabilir.
 *   **Seçili Projeler**: Projelerin tag'lere göre anlık ve animasyonlu olarak filtrelenebildiği modern bir ızgara yapısı.
 *   **Yazım Animasyonu**: Ana sayfada dinamik olarak değişen unvan yazım efekti.
@@ -24,16 +24,19 @@ npx serve .
 
 Ardından tarayıcınızdan `http://localhost:8000` (veya serve çıktısındaki portu) ziyaret edebilirsiniz.
 
-## GitHub Pages Üzerinde Yayına Alma (Hosting)
+## GitHub Pages Üzerinde Yayında! 🚀
 
-Web sitenizi `https://emirberasoguk.github.io` adresinde yayınlamak için şu adımları izleyin:
+Web siteniz **[emirberasoguk.github.io](https://emirberasoguk.github.io/)** adresi üzerinden canlı olarak yayınlanmaktadır. 
 
-1.  GitHub hesabınızda **[emirberasoguk.github.io](https://github.com/new)** adında yeni bir **Public (Kamuya Açık)** depo (repository) oluşturun.
-2.  Yerel depomuzda remote adresi ve commit'ler hazır durumdadır. Depoyu GitHub'a göndermek için terminalden şu komutu çalıştırın:
-    ```bash
-    git push -u origin main
-    ```
-3.  Dosyalar yüklendikten birkaç dakika sonra web siteniz `https://emirberasoguk.github.io` adresinde otomatik olarak yayına girecektir.
+### Gelecekteki Değişiklikleri Güncelleme
+
+Sitede bir değişiklik yaptıktan sonra canlıya göndermek için terminalinizden şu komutları çalıştırmanız yeterlidir:
+
+```bash
+git add .
+git commit -m "Sitede güncellemeler yapıldı"
+git push
+```
 
 ---
-Built with 💚 on OpenSUSE Tumbleweed
+Built with 💚 on Linux

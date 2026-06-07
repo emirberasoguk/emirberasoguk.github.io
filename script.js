@@ -91,48 +91,46 @@ const terminalInput = document.getElementById('terminalInput');
 const terminalScreen = document.getElementById('terminalScreen');
 
 const termHelpText = `Kullanılabilir komutlar:
-  <span class="text-cyan">help</span>        : Komut listesini gösterir
-  <span class="text-purple">neofetch</span>    : Sistem ve kullanıcı bilgilerini görüntüler
-  <span class="text-green">projects</span>    : Projelerin terminal çıktısını listeler
-  <span class="text-pink">skills</span>      : Yetenek ve teknoloji listesini yazdırır
-  <span class="text-yellow">contact</span>     : İletişim ve sosyal medya bağlantılarını gösterir
-  <span class="text-red">clear</span>       : Terminal ekranını temizler`;
+  <div class="term-line"><span class="text-cyan term-line-cmd">help</span><span class="term-line-desc">: Komut listesini gösterir</span></div>
+  <div class="term-line"><span class="text-purple term-line-cmd">neofetch</span><span class="term-line-desc">: Sistem ve kullanıcı bilgilerini görüntüler</span></div>
+  <div class="term-line"><span class="text-green term-line-cmd">projects</span><span class="term-line-desc">: Projelerin terminal çıktısını listeler</span></div>
+  <div class="term-line"><span class="text-pink term-line-cmd">skills</span><span class="term-line-desc">: Yetenek ve teknoloji listesini yazdırır</span></div>
+  <div class="term-line"><span class="text-yellow term-line-cmd">contact</span><span class="term-line-desc">: İletişim ve sosyal medya bağlantılarını gösterir</span></div>
+  <div class="term-line"><span class="text-red term-line-cmd">clear</span><span class="term-line-desc">: Terminal ekranını temizler</span></div>`;
 
-const neofetchOutput = `      <span class="text-green">.----.</span>       <span class="text-green">emir</span>@<span class="text-cyan">opensuse-kitty</span>
-     <span class="text-green">/     \\</span>      -----------------
-    <span class="text-green">|  ()   |</span>     <span class="text-purple">İsim</span>: Emir Bera Soğuk
-     <span class="text-green">\\     /</span>      <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
-  <span class="text-green">.-'     '-.</span>     <span class="text-purple">OS</span>: OpenSUSE Tumbleweed
- <span class="text-green">/  Gecko    \\</span>    <span class="text-purple">Shell</span>: zsh / kitty
-<span class="text-green">|   SUSE      |</span>   <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
- <span class="text-green">\\           /</span>    <span class="text-purple">Hedef</span>: Karmaşık problemleri basit kodlarla çözmek.
-  <span class="text-green">'-._____.-'</span>`;
+const neofetchOutput = `      <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-kitty</span>
+      <span class="text-cyan"> |o_o  |</span>      -----------------
+      <span class="text-cyan"> |:_/  |</span>      <span class="text-purple">İsim</span>: Emir Bera Soğuk
+     <span class="text-cyan">//   \\ \\</span>     <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
+    <span class="text-cyan">(|     | )</span>    <span class="text-purple">OS</span>: GNU/Linux
+    <span class="text-cyan">/'\_   _/`\\</span>   <span class="text-purple">Shell</span>: zsh / kitty
+    <span class="text-cyan">\\___)=(___/</span>  <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
+                  <span class="text-purple">Hedef</span>: Karmaşık problemleri basit kodlarla çözmek.`;
 
 const projectsOutput = `Bulunan Projeler:
-  - <span class="text-cyan">Pi-Cracker</span>            : Pi sayısıyla şifre analizi ve kırma (C/Bash/Security)
-  - <span class="text-cyan">C-ryptFile</span>            : Huffman kodlamalı şifreleme & sıkıştırma aracı (C/Security)
-  - <span class="text-cyan">LidarRansac-C</span>         : Lidar nokta bulutu üzerinde RANSAC algoritması (C/Robotics)
-  - <span class="text-cyan">TheLastGarage</span>         : Post-apokaliptik kule savunma oyunu (Java/Game)
-  - <span class="text-cyan">Citation Graph Viz</span>    : Akademik atıf ağları grafik analizcisi (Java/Graph)
-  - <span class="text-cyan">me-tor (MiniNotepad)</span>  : Terminal tabanlı interaktif metin editörü (C#/System)
-  - <span class="text-cyan">Vampire Survivors</span>     : Godot engine rogue-like hayatta kalma oyunu (Godot/Game)
-  - <span class="text-cyan">ghelper-linux</span>         : Sistem durum & donanım izleme aracı (C/Linux)
-  - <span class="text-cyan">Cyberlogy</span>             : Ağ paketi koklayıcı ve Eve-NG entegratörü (Python/Security)
+  <div class="term-line"><span class="text-cyan term-line-cmd">Pi-Cracker</span><span class="term-line-desc">: Pi sayısıyla şifre analizi ve kırma (C/Bash/Security)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">C-ryptFile</span><span class="term-line-desc">: Huffman kodlamalı şifreleme & sıkıştırma (C/Security)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">LidarRansac-C</span><span class="term-line-desc">: Lidar bulutu üzerinde RANSAC algoritması (C/Robotics)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">TheLastGarage</span><span class="term-line-desc">: Post-apokaliptik kule savunma oyunu (Java/Game)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">Citation-Graph</span><span class="term-line-desc">: Akademik atıf ağları grafik analizcisi (Java/Graph)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">me-tor</span><span class="term-line-desc">: Terminal tabanlı metin editörü (C#/System)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">Vampire-Clone</span><span class="term-line-desc">: Godot rogue-like hayatta kalma oyunu (Godot/Game)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">ghelper-linux</span><span class="term-line-desc">: Sistem durum & donanım izleme aracı (C/Linux)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">Cyberlogy</span><span class="term-line-desc">: Ağ paketi koklayıcı ve Eve-NG entegratörü (Python/Security)</span></div>
 
 Daha fazla detay için yukarıdaki Projeler sekmesini ziyaret edebilirsiniz.`;
 
 const skillsOutput = `Beceriler & Teknolojiler:
-  <span class="text-red">Diller</span>         : C, C++, Python, Java, C#, Verilog, GDScript, Bash
-  <span class="text-green">Sistemler</span>      : Linux (OpenSUSE, Arch), Windows, Git/GitHub, Docker
-  <span class="text-purple">Güvenlik</span>       : Ağ Analizi, Sniffing, OSINT, Kriptografi Temelleri
-  <span class="text-yellow">Geliştirme</span>     : OOP Tasarım, Veri Yapıları & Algoritmalar, JavaFX, Godot Engine
-  <span class="text-cyan">Ortam/Editör</span>   : Neovim, Kitty Terminal, Bash Scripting`;
+  <div class="term-line"><span class="text-red term-line-cmd">Diller</span><span class="term-line-desc">: C, C++, Python, Java, C#, Verilog, GDScript, Bash</span></div>
+  <div class="term-line"><span class="text-green term-line-cmd">Sistemler</span><span class="term-line-desc">: Linux, Windows, Git/GitHub, Docker</span></div>
+  <div class="term-line"><span class="text-purple term-line-cmd">Güvenlik</span><span class="term-line-desc">: Ağ Analizi, Sniffing, OSINT, Kriptografi Temelleri</span></div>
+  <div class="term-line"><span class="text-yellow term-line-cmd">Geliştirme</span><span class="term-line-desc">: OOP Tasarım, Veri Yapıları & Algoritmalar, JavaFX, Godot Engine</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">Ortam</span><span class="term-line-desc">: Neovim, Kitty Terminal, Bash Scripting</span></div>`;
 
 const contactOutput = `İletişim Bilgileri:
-  - <span class="text-cyan">E-posta</span>        : iletisim@emirberasoguk.com
-  - <span class="text-purple">LinkedIn</span>       : linkedin.com/in/emirberasoguk/
-  - <span class="text-green">GitHub</span>         : github.com/emirberasoguk
-  - <span class="text-pink">Medium</span>         : medium.com/@emirberasoguk`;
+  <div class="term-line"><span class="text-cyan term-line-cmd">E-posta</span><span class="term-line-desc">: emirberasoguk@proton.me</span></div>
+  <div class="term-line"><span class="text-purple term-line-cmd">LinkedIn</span><span class="term-line-desc">: linkedin.com/in/emirberasoguk/</span></div>
+  <div class="term-line"><span class="text-green term-line-cmd">GitHub</span><span class="term-line-desc">: github.com/emirberasoguk</span></div>`;
 
 if (terminalInput) {
     terminalInput.addEventListener('keydown', (e) => {
@@ -155,7 +153,7 @@ function executeCommand(cmd) {
     outputDiv.className = 'terminal-output-block';
     
     // Command echo
-    let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@opensuse-kitty <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
+    let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
     let response = '';
     
     if (cmd !== '') {
@@ -197,6 +195,26 @@ function executeCommand(cmd) {
     
     // Auto scroll to bottom
     terminalScreen.scrollTop = terminalScreen.scrollHeight;
+}
+
+// Copy Email to Clipboard Logic
+const copyEmailBtn = document.getElementById('copyEmailBtn');
+const emailAddressText = document.getElementById('emailAddress');
+
+if (copyEmailBtn && emailAddressText) {
+    copyEmailBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(emailAddressText.textContent.trim()).then(() => {
+            const originalHTML = copyEmailBtn.innerHTML;
+            copyEmailBtn.innerHTML = '<i class="fa-solid fa-check"></i> Kopyalandı!';
+            copyEmailBtn.classList.add('copied');
+            setTimeout(() => {
+                copyEmailBtn.innerHTML = originalHTML;
+                copyEmailBtn.classList.remove('copied');
+            }, 2000);
+        }).catch(err => {
+            console.error('Kopyalama hatası:', err);
+        });
+    });
 }
 
 // Start Typing Animation on page load
