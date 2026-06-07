@@ -101,11 +101,12 @@ const termHelpText = `Kullanılabilir komutlar:
 const neofetchOutput = `      <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-kitty</span>
       <span class="text-cyan"> |o_o  |</span>      -----------------
       <span class="text-cyan"> |:_/  |</span>      <span class="text-purple">İsim</span>: Emir Bera Soğuk
-     <span class="text-cyan">//   \\ \\</span>     <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
+     <span class="text-cyan">//   \\\\ \\</span>     <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
     <span class="text-cyan">(|     | )</span>    <span class="text-purple">OS</span>: GNU/Linux
-    <span class="text-cyan">/'\_   _/`\\</span>   <span class="text-purple">Shell</span>: zsh / kitty
-    <span class="text-cyan">\\___)=(___/</span>  <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
+    <span class="text-cyan">/'\\\\_   _/\\\`\\\\</span>   <span class="text-purple">Shell</span>: zsh / kitty
+    <span class="text-cyan">\\\\___)=(___/</span>  <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
                   <span class="text-purple">Hedef</span>: Karmaşık problemleri basit kodlarla çözmek.`;
+
 
 const projectsOutput = `Bulunan Projeler:
   <div class="term-line"><span class="text-cyan term-line-cmd">Pi-Cracker</span><span class="term-line-desc">: Pi sayısıyla şifre analizi ve kırma (C/Bash/Security)</span></div>
