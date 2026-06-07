@@ -1,0 +1,205 @@
+// Typing Animation for Hero Subtitle
+const typingText = document.getElementById('typing-text');
+const roles = [
+    "Yazılım Mühendisi",
+    "C / Python / Java Geliştiricisi",
+    "Siber Güvenlik Meraklısı",
+    "Linux Kullanıcısı"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typeSpeed = 100;
+
+function type() {
+    const currentRole = roles[roleIndex];
+    
+    if (isDeleting) {
+        typingText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        typeSpeed = 50;
+    } else {
+        typingText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        typeSpeed = 100;
+    }
+    
+    if (!isDeleting && charIndex === currentRole.length) {
+        typeSpeed = 2000; // Pause at end of word
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        typeSpeed = 500; // Pause before starting next word
+    }
+    
+    setTimeout(type, typeSpeed);
+}
+
+// Project Filtering Logic
+const filterButtons = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        projectCards.forEach(card => {
+            const cardTags = card.getAttribute('data-tags').split(' ');
+            
+            if (filterValue === 'all' || cardTags.includes(filterValue)) {
+                card.style.display = 'flex';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 50);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+    });
+});
+
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Close mobile menu when nav link is clicked
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
+// Interactive Kitty Terminal Simulator
+const terminalInput = document.getElementById('terminalInput');
+const terminalScreen = document.getElementById('terminalScreen');
+
+const termHelpText = `Kullanılabilir komutlar:
+  <span class="text-cyan">help</span>        : Komut listesini gösterir
+  <span class="text-purple">neofetch</span>    : Sistem ve kullanıcı bilgilerini görüntüler
+  <span class="text-green">projects</span>    : Projelerin terminal çıktısını listeler
+  <span class="text-pink">skills</span>      : Yetenek ve teknoloji listesini yazdırır
+  <span class="text-yellow">contact</span>     : İletişim ve sosyal medya bağlantılarını gösterir
+  <span class="text-red">clear</span>       : Terminal ekranını temizler`;
+
+const neofetchOutput = `      <span class="text-green">.----.</span>       <span class="text-green">emir</span>@<span class="text-cyan">opensuse-kitty</span>
+     <span class="text-green">/     \\</span>      -----------------
+    <span class="text-green">|  ()   |</span>     <span class="text-purple">İsim</span>: Emir Bera Soğuk
+     <span class="text-green">\\     /</span>      <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
+  <span class="text-green">.-'     '-.</span>     <span class="text-purple">OS</span>: OpenSUSE Tumbleweed
+ <span class="text-green">/  Gecko    \\</span>    <span class="text-purple">Shell</span>: zsh / kitty
+<span class="text-green">|   SUSE      |</span>   <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
+ <span class="text-green">\\           /</span>    <span class="text-purple">Hedef</span>: Karmaşık problemleri basit kodlarla çözmek.
+  <span class="text-green">'-._____.-'</span>`;
+
+const projectsOutput = `Bulunan Projeler:
+  - <span class="text-cyan">Pi-Cracker</span>            : Pi sayısıyla şifre analizi ve kırma (C/Bash/Security)
+  - <span class="text-cyan">C-ryptFile</span>            : Huffman kodlamalı şifreleme & sıkıştırma aracı (C/Security)
+  - <span class="text-cyan">LidarRansac-C</span>         : Lidar nokta bulutu üzerinde RANSAC algoritması (C/Robotics)
+  - <span class="text-cyan">TheLastGarage</span>         : Post-apokaliptik kule savunma oyunu (Java/Game)
+  - <span class="text-cyan">Citation Graph Viz</span>    : Akademik atıf ağları grafik analizcisi (Java/Graph)
+  - <span class="text-cyan">me-tor (MiniNotepad)</span>  : Terminal tabanlı interaktif metin editörü (C#/System)
+  - <span class="text-cyan">Vampire Survivors</span>     : Godot engine rogue-like hayatta kalma oyunu (Godot/Game)
+  - <span class="text-cyan">ghelper-linux</span>         : Sistem durum & donanım izleme aracı (C/Linux)
+  - <span class="text-cyan">Cyberlogy</span>             : Ağ paketi koklayıcı ve Eve-NG entegratörü (Python/Security)
+
+Daha fazla detay için yukarıdaki Projeler sekmesini ziyaret edebilirsiniz.`;
+
+const skillsOutput = `Beceriler & Teknolojiler:
+  <span class="text-red">Diller</span>         : C, C++, Python, Java, C#, Verilog, GDScript, Bash
+  <span class="text-green">Sistemler</span>      : Linux (OpenSUSE, Arch), Windows, Git/GitHub, Docker
+  <span class="text-purple">Güvenlik</span>       : Ağ Analizi, Sniffing, OSINT, Kriptografi Temelleri
+  <span class="text-yellow">Geliştirme</span>     : OOP Tasarım, Veri Yapıları & Algoritmalar, JavaFX, Godot Engine
+  <span class="text-cyan">Ortam/Editör</span>   : Neovim, Kitty Terminal, Bash Scripting`;
+
+const contactOutput = `İletişim Bilgileri:
+  - <span class="text-cyan">E-posta</span>        : iletisim@emirberasoguk.com
+  - <span class="text-purple">LinkedIn</span>       : linkedin.com/in/emirberasoguk/
+  - <span class="text-green">GitHub</span>         : github.com/emirberasoguk
+  - <span class="text-pink">Medium</span>         : medium.com/@emirberasoguk`;
+
+if (terminalInput) {
+    terminalInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const command = terminalInput.value.trim().toLowerCase();
+            executeCommand(command);
+            terminalInput.value = '';
+        }
+    });
+
+    // Make clicking the terminal screen focus the input
+    terminalScreen.addEventListener('click', () => {
+        terminalInput.focus();
+    });
+}
+
+function executeCommand(cmd) {
+    // Create element for output
+    const outputDiv = document.createElement('div');
+    outputDiv.className = 'terminal-output-block';
+    
+    // Command echo
+    let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@opensuse-kitty <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
+    let response = '';
+    
+    if (cmd !== '') {
+        switch (cmd) {
+            case 'help':
+                response = `<div class="term-response">${termHelpText}</div>`;
+                break;
+            case 'neofetch':
+                response = `<div class="term-response neofetch-terminal-view">${neofetchOutput}</div>`;
+                break;
+            case 'projects':
+                response = `<div class="term-response">${projectsOutput}</div>`;
+                break;
+            case 'skills':
+                response = `<div class="term-response">${skillsOutput}</div>`;
+                break;
+            case 'contact':
+            case 'social':
+                response = `<div class="term-response">${contactOutput}</div>`;
+                break;
+            case 'clear':
+                // Clear all previous lines
+                const outputElements = terminalScreen.querySelectorAll('.terminal-output-block');
+                outputElements.forEach(el => el.remove());
+                const welcomeElement = terminalScreen.querySelector('.terminal-output');
+                if (welcomeElement) welcomeElement.remove();
+                return; // Nothing to print
+            default:
+                response = `<div class="term-response text-red">bash: command not found: ${cmd}. Yardım almak için 'help' yazın.</div>`;
+                break;
+        }
+    }
+    
+    outputDiv.innerHTML = echo + response;
+    
+    // Insert output before input line
+    const inputLine = terminalScreen.querySelector('.terminal-input-line');
+    terminalScreen.insertBefore(outputDiv, inputLine);
+    
+    // Auto scroll to bottom
+    terminalScreen.scrollTop = terminalScreen.scrollHeight;
+}
+
+// Start Typing Animation on page load
+window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(type, 1000);
+});
