@@ -921,6 +921,10 @@ body {
         display: block;
     }
     
+    .nav-controls {
+        margin-right: 12px;
+    }
+    
     .nav-menu {
         display: none;
         position: absolute;
@@ -961,4 +965,150 @@ body {
     .ascii-logo {
         display: none;
     }
+}
+
+/* Navigation Controls (Theme & Language Toggle) */
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    margin-right: 24px;
+}
+
+.control-btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    transition: var(--transition-fast);
+}
+
+.control-btn:hover {
+    background: var(--bg-secondary);
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+/* Light Theme Overrides */
+body.light-theme {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-shadow: rgba(15, 23, 42, 0.05);
+    
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-dark: #94a3b8;
+    
+    --glow-cyan: 0 0 20px rgba(56, 189, 248, 0.1);
+    --glow-purple: 0 0 20px rgba(192, 132, 252, 0.1);
+    --glow-green: 0 0 20px rgba(74, 222, 128, 0.1);
+}
+
+body.light-theme .header {
+    background: rgba(248, 250, 252, 0.75);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .bg-grid {
+    background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+body.light-theme .logo-prompt {
+    color: #475569;
+}
+
+body.light-theme .kitty-terminal-wrapper,
+body.light-theme .interactive-terminal {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .kitty-header,
+body.light-theme .terminal-bar {
+    background: #e2e8f0;
+    border-bottom: 1px solid #cbd5e1;
+}
+
+body.light-theme .kitty-title,
+body.light-theme .terminal-header-title {
+    color: #475569;
+}
+
+body.light-theme .kitty-tab {
+    background: #f1f5f9;
+    border-top: 1px solid #cbd5e1;
+    border-left: 1px solid #cbd5e1;
+    border-right: 1px solid #cbd5e1;
+    color: #0f172a;
+}
+
+body.light-theme .kitty-body,
+body.light-theme .terminal-screen {
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+body.light-theme .text-cyan { color: #0284c7; }
+body.light-theme .text-purple { color: #7c3aed; }
+body.light-theme .text-pink { color: #db2777; }
+body.light-theme .text-green { color: #16a34a; }
+body.light-theme .text-yellow { color: #ca8a04; }
+body.light-theme .text-red { color: #dc2626; }
+body.light-theme .text-blue { color: #2563eb; }
+
+body.light-theme .terminal-prompt {
+    color: #16a34a;
+}
+body.light-theme .logo-tilde {
+    color: #2563eb;
+}
+body.light-theme .logo-term {
+    color: #475569;
+}
+body.light-theme .text-main {
+    color: #0f172a;
+}
+body.light-theme .term-welcome {
+    color: #64748b;
+}
+body.light-theme #terminalInput {
+    color: #0f172a;
+}
+
+body.light-theme .btn-secondary {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+    color: #475569;
+}
+
+body.light-theme .btn-secondary:hover {
+    background: #cbd5e1;
+    color: #0f172a;
+}
+
+body.light-theme .project-tag-badge {
+    background: rgba(0, 0, 0, 0.05);
+    color: #475569;
+}
+
+body.light-theme .project-tags span {
+    background: rgba(0, 0, 0, 0.03);
+    color: #475569;
 }
