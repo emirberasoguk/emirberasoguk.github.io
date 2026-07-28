@@ -68,14 +68,6 @@
                         <span class="dot maximize"></span>
                     </div>
                     <div class="kitty-title">
-            <div class="kitty-terminal-wrapper">
-                <div class="kitty-header">
-                    <div class="kitty-actions">
-                        <span class="dot close"></span>
-                        <span class="dot minimize"></span>
-                        <span class="dot maximize"></span>
-                    </div>
-                    <div class="kitty-title">
                         <i class="fa-solid fa-terminal"></i> kitty: emir@linux-terminal
                     </div>
                     <div class="kitty-tab">
@@ -328,12 +320,32 @@
     </section>
 
     <!-- Interactive Terminal Section -->
-                                <div class="term-line"><span class="text-red term-line-cmd">clear</span><span class="term-line-desc">: Terminal ekranını temizler</span></div>
+    <section id="terminal" class="section terminal-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Terminal Konsolu</h2>
+            <p class="section-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.</p>
+            
+            <div class="interactive-terminal glass">
+                <div class="terminal-bar">
+                    <div class="terminal-buttons">
+                        <span class="term-dot close"></span>
+                        <span class="term-dot minimize"></span>
+                        <span class="term-dot maximize"></span>
+                    </div>
+                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio</div>
+                </div>
+                <div class="terminal-screen" id="terminalScreen">
+                    <div class="terminal-output">
+                        <span class="term-welcome">Terminal Emulator v1.0.0'a hoş geldiniz.</span>
+                        <div class="terminal-output-block">
+                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
+                            <div class="term-response" id="initialHelpOutput">
+                                <!-- Will be loaded dynamically for i18n support -->
                             </div>
                         </div>
                     </div>
                     <div class="terminal-input-line">
-                        <span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span>
+                        <span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span>
                         <input type="text" id="terminalInput" autofocus autocomplete="off" spellcheck="false">
                     </div>
                 </div>
