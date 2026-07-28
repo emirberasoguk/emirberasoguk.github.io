@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emir Bera Soğuk | Yazılım Mühendisi & Siber Güvenlik</title>
+    <title>Emir Bera Soğuk | Bilgisayar Mühendisi & Siber Güvenlik</title>
     <meta name="description" content="Emir Bera Soğuk kişisel portfolyö sitesi. Sistem programlama, siber güvenlik, algoritmalar ve nesne yönelimli projelerim.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,24 +24,16 @@
             <a href="#" class="logo">
                 <span class="logo-term">emir@linux:</span><span class="logo-tilde">~</span><span class="logo-prompt">$</span>
             </a>
-            <div class="nav-controls">
-                <button id="themeToggle" class="control-btn" aria-label="Temayı Değiştir" title="Temayı Değiştir">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
-                <button id="langToggle" class="control-btn" aria-label="Dili Değiştir" title="Dili Değiştir">
-                    EN
-                </button>
-            </div>
             <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
                 <i class="fa-solid fa-bars"></i>
             </button>
             <nav class="nav-menu" id="navMenu">
                 <ul>
-                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-user text-cyan"></i> <span data-i18n="nav-about">Hakkımda</span></a></li>
-                    <li><a href="#skills" class="nav-link"><i class="fa-solid fa-gears text-purple"></i> <span data-i18n="nav-skills">Yetenekler</span></a></li>
-                    <li><a href="#projects" class="nav-link"><i class="fa-solid fa-code text-pink"></i> <span data-i18n="nav-projects">Projeler</span></a></li>
-                    <li><a href="#terminal" class="nav-link"><i class="fa-solid fa-terminal text-green"></i> <span data-i18n="nav-console">Konsol</span></a></li>
-                    <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope text-yellow"></i> <span data-i18n="nav-contact">İletişim</span></a></li>
+                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-user text-cyan"></i> Hakkımda</a></li>
+                    <li><a href="#skills" class="nav-link"><i class="fa-solid fa-gears text-purple"></i> Yetenekler</a></li>
+                    <li><a href="#projects" class="nav-link"><i class="fa-solid fa-code text-pink"></i> Projeler</a></li>
+                    <li><a href="#terminal" class="nav-link"><i class="fa-solid fa-terminal text-green"></i> Konsol</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</a></li>
                 </ul>
             </nav>
         </div>
@@ -51,23 +43,31 @@
     <section class="hero-section">
         <div class="hero-container">
             <div class="hero-content">
-                <div class="os-badge" data-i18n="hero-badge">
+                <div class="os-badge">
                     <i class="fa-brands fa-linux"></i> Linux Geliştiricisi
                 </div>
-                <h1 class="hero-title" data-i18n="hero-title">Merhaba, ben <span class="gradient-text">Emir Bera</span></h1>
+                <h1 class="hero-title">Merhaba, ben <span class="gradient-text">Emir Bera</span></h1>
                 <h2 class="hero-subtitle">
                     <span id="typing-text"></span><span class="cursor">|</span>
                 </h2>
-                <p class="hero-description" data-i18n="hero-desc">
+                <p class="hero-description">
                     Sistem programlama, siber güvenlik ve algoritmalar üzerine odaklanmış bir yazılım mühendisiyim. Karmaşık problemleri basit, optimize ve güvenli kodlarla çözmeyi seviyorum.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary" data-i18n="hero-btn-projects"><i class="fa-solid fa-folder-open"></i> Projelerimi Gör</a>
-                    <a href="#terminal" class="btn btn-secondary" data-i18n="hero-btn-terminal"><i class="fa-solid fa-terminal"></i> Terminali Başlat</a>
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Projelerimi Gör</a>
+                    <a href="#terminal" class="btn btn-secondary"><i class="fa-solid fa-terminal"></i> Terminali Başlat</a>
                 </div>
             </div>
 
             <!-- Terminal Mockup (Kitty Theme) -->
+            <div class="kitty-terminal-wrapper">
+                <div class="kitty-header">
+                    <div class="kitty-actions">
+                        <span class="dot close"></span>
+                        <span class="dot minimize"></span>
+                        <span class="dot maximize"></span>
+                    </div>
+                    <div class="kitty-title">
             <div class="kitty-terminal-wrapper">
                 <div class="kitty-header">
                     <div class="kitty-actions">
@@ -150,6 +150,7 @@
                         <li><i class="fa-brands fa-python text-blue"></i> <span>Python</span></li>
                         <li><i class="fa-brands fa-java text-orange"></i> <span>Java</span></li>
                         <li><i class="fa-solid fa-hashtag text-purple"></i> <span>C#</span></li>
+                        <li><i class="fa-solid fa-hashtag text-pink"></i> <span>SQL</span></li>
                     </ul>
                 </div>
                 <div class="skills-category glass">
@@ -159,7 +160,6 @@
                         <li><i class="fa-brands fa-git-alt text-orange"></i> <span>Git / GitHub</span></li>
                         <li><i class="fa-solid fa-terminal text-cyan"></i> <span>Bash / Zsh Scripting</span></li>
                         <li><i class="fa-solid fa-keyboard text-purple"></i> <span>Neovim / Vim</span></li>
-                        <li><i class="fa-solid fa-gamepad text-pink"></i> <span>Godot Engine</span></li>
                     </ul>
                 </div>
                 <div class="skills-category glass">
@@ -253,23 +253,16 @@
                         <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
                     </div>
                 </div>
-
-                <!-- TheLastGarage -->
-                <div class="project-card glass" data-tags="java">
-                    <div class="project-header">
-                        <i class="fa-solid fa-gamepad project-icon text-purple"></i>
-                        <span class="project-tag-badge">Java</span>
-                    </div>
                     <h3>TheLastGarage</h3>
-                    <p data-i18n="proj-garage-desc">Post-apokaliptik bir dünyada geçen, LibGDX Framework ile nesne yönelimli tasarım (OOP) ilkeleriyle geliştirilmiş, stratejik bir kule savunma (Tower Defense) oyunu.</p>
+                    <p>Post-apokaliptik bir dünyada geçen, nesne yönelimli tasarım (OOP) ve veri yapılarıyla desteklenmiş stratejik bir Kule Savunma (Tower Defense) oyunu.</p>
                     <div class="project-tags">
                         <span>Java</span>
                         <span>OOP</span>
                         <span>Game Dev</span>
-                        <span>LibGDX</span>
+                        <span>Swing</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank"><i class="fa-brands fa-github"></i> İncele</a>
                     </div>
                 </div>
 
@@ -280,7 +273,7 @@
                         <span class="project-tag-badge">Java</span>
                     </div>
                     <h3>Citation Graph Visualizer</h3>
-                    <p data-i18n="proj-citation-desc">Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz eden ve JavaFX arayüzü ile görselleştiren masaüstü uygulaması.</p>
+                    <p>Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz eden ve JavaFX arayüzü ile görselleştiren masaüstü uygulaması.</p>
                     <div class="project-tags">
                         <span>JavaFX</span>
                         <span>Graph Theory</span>
@@ -288,7 +281,7 @@
                         <span>OOP</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank"><i class="fa-brands fa-github"></i> İncele</a>
                     </div>
                 </div>
 
@@ -299,7 +292,7 @@
                         <span class="project-tag-badge">C#</span>
                     </div>
                     <h3>me-tor (MiniNotepad)</h3>
-                    <p data-i18n="proj-metor-desc">C# dilinde Win32 API'leri kullanarak terminal üzerinde çalışan; arama, geri alma (undo) ve akıllı kaydırma özelliklerine sahip interaktif metin editörü.</p>
+                    <p>C# dilinde Win32 API'leri kullanarak terminal üzerinde çalışan; arama, geri alma (undo) ve akıllı kaydırma özelliklerine sahip interaktif metin editörü.</p>
                     <div class="project-tags">
                         <span>C#</span>
                         <span>CLI</span>
@@ -307,48 +300,10 @@
                         <span>Windows API</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/me-tor" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                        <a href="" target="_blank"><i class="fa-brands fa-github"></i> İncele</a>
                     </div>
                 </div>
                 
-                <!-- ghelper-linux -->
-                <div class="project-card glass" data-tags="c">
-                    <div class="project-header">
-                        <i class="fa-solid fa-toolbox project-icon text-cyan"></i>
-                        <span class="project-tag-badge">C / Linux</span>
-                    </div>
-                    <h3>ghelper-linux</h3>
-                    <p data-i18n="proj-ghelper-desc">Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>Linux System</span>
-                        <span>GTK</span>
-                        <span>Hardware</span>
-                    </div>
-                    <div class="project-links">
-                        <span class="disabled-link" data-i18n="proj-local"><i class="fa-solid fa-code-branch"></i> Yerel Proje</span>
-                    </div>
-                </div>
-
-                <!-- Cyberlogy -->
-                <div class="project-card glass" data-tags="security">
-                    <div class="project-header">
-                        <i class="fa-solid fa-shield-halved project-icon text-green"></i>
-                        <span class="project-tag-badge">Python / SQL</span>
-                    </div>
-                    <h3>Cyberlogy</h3>
-                    <p data-i18n="proj-cyber-desc">Ağ paketlerini yakalayıp analiz eden, verileri SQLite veritabanına kaydeden ve Eve-NG ağ laboratuvar entegrasyonu sunan siber güvenlik log analiz sistemi.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Security</span>
-                        <span>SQLite</span>
-                        <span>Eve-NG</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/Veritaban%C4%B1_siber" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
-
                 <!-- VTYS Final Simülatörü -->
                 <div class="project-card glass" data-tags="other">
                     <div class="project-header">
@@ -373,32 +328,12 @@
     </section>
 
     <!-- Interactive Terminal Section -->
-    <section id="terminal" class="section terminal-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="term-sec-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Terminal Konsolu</h2>
-            <p class="section-subtitle" data-i18n="term-sec-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.</p>
-            
-            <div class="interactive-terminal glass">
-                <div class="terminal-bar">
-                    <div class="terminal-buttons">
-                        <span class="term-dot close"></span>
-                        <span class="term-dot minimize"></span>
-                        <span class="term-dot maximize"></span>
-                    </div>
-                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio</div>
-                </div>
-                <div class="terminal-screen" id="terminalScreen">
-                    <div class="terminal-output">
-                        <span class="term-welcome" data-i18n="term-welcome">Terminal Emulator v1.0.0'a hoş geldiniz.</span>
-                        <div class="terminal-output-block">
-                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
-                            <div class="term-response" id="initialHelpOutput">
-                                <!-- Will be loaded dynamically for i18n support -->
+                                <div class="term-line"><span class="text-red term-line-cmd">clear</span><span class="term-line-desc">: Terminal ekranını temizler</span></div>
                             </div>
                         </div>
                     </div>
                     <div class="terminal-input-line">
-                        <span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span>
+                        <span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span>
                         <input type="text" id="terminalInput" autofocus autocomplete="off" spellcheck="false">
                     </div>
                 </div>
@@ -409,26 +344,19 @@
     <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title" data-i18n="contact-sec-title"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</h2>
+            <h2 class="section-title"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</h2>
             <div class="contact-wrapper">
                 <div class="contact-info glass">
-                    <h3 data-i18n="contact-info-title">Bağlantıda Kalalım</h3>
-                    <p data-i18n="contact-info-desc">Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.</p>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-location-dot text-red"></i>
-                            <span>Kocaeli, Türkiye</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-phone text-green"></i>
-                            <span>+90 542 377 43 30</span>
-                        </div>
+                    <h3>Bağlantıda Kalalım</h3>
+                    <p>Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.</p>
+                    <div class="contact-details">
                         <div class="contact-item">
                             <i class="fa-solid fa-envelope text-cyan"></i>
                             <span>emirberasoguk@proton.me</span>
                         </div>
                         <div class="contact-item">
                             <i class="fa-brands fa-linkedin text-purple"></i>
-                            <a href="https://www.linkedin.com/in/emirberaso%C4%9Fuk/" target="_blank">linkedin.com/in/emirberasoguk</a>
+                            <a href="https://www.linkedin.com/in/emirberasoğuk/" target="_blank">linkedin.com/in/emirberasoguk</a>
                         </div>
                         <div class="contact-item">
                             <i class="fa-brands fa-github text-green"></i>
@@ -438,15 +366,15 @@
                 </div>
 
                 <div class="contact-action-container glass">
-                    <h3 data-i18n="contact-action-title">Hızlı İletişim</h3>
-                    <p data-i18n="contact-action-desc">Form doldurmak yerine e-posta adresimi doğrudan kopyalayabilir veya e-posta istemcinizi açarak bana yazabilirsiniz.</p>
+                    <h3>Hızlı İletişim</h3>
+                    <p>Form doldurmak yerine e-posta adresimi doğrudan kopyalayabilir veya e-posta istemcinizi açarak bana yazabilirsiniz.</p>
                     <div class="email-copy-card">
                         <span id="emailAddress">emirberasoguk@proton.me</span>
-                        <button id="copyEmailBtn" class="copy-btn" title="E-postayı Kopyala" data-i18n="contact-copy-btn">
+                        <button id="copyEmailBtn" class="copy-btn" title="E-postayı Kopyala">
                             <i class="fa-regular fa-copy"></i> Kopyala
                         </button>
                     </div>
-                    <a href="mailto:emirberasoguk@proton.me" class="btn btn-primary btn-block" data-i18n="contact-send-btn"><i class="fa-solid fa-envelope-open-text"></i> E-Posta Gönder</a>
+                    <a href="mailto:emirberasoguk@proton.me" class="btn btn-primary btn-block"><i class="fa-solid fa-envelope-open-text"></i> E-Posta Gönder</a>
                 </div>
             </div>
         </div>
@@ -455,8 +383,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p data-i18n="footer-copyright">&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
-            <p class="footer-meta" data-i18n="footer-meta">Built with <i class="fa-solid fa-heart text-red"></i> on Linux</p>
+            <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
+            <p class="footer-meta">Built with <i class="fa-solid fa-heart text-red"></i> on Linux</p>
         </div>
     </footer>
 

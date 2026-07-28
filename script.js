@@ -6,13 +6,13 @@ const translations = {
     "nav-projects": "Projeler",
     "nav-console": "Konsol",
     "nav-contact": "İletişim",
-    
+
     "hero-badge": "<i class=\"fa-brands fa-linux\"></i> Linux Geliştiricisi",
     "hero-title": "Merhaba, ben <span class=\"gradient-text\">Emir Bera</span>",
     "hero-desc": "Sistem programlama, siber güvenlik ve algoritmalar üzerine odaklanmış bir yazılım mühendisiyim. Karmaşık problemleri basit, optimize ve güvenli kodlarla çözmeyi seviyorum.",
     "hero-btn-projects": "<i class=\"fa-solid fa-folder-open\"></i> Projelerimi Gör",
     "hero-btn-terminal": "<i class=\"fa-solid fa-terminal\"></i> Terminali Başlat",
-    
+
     "neofetch-name-key": "<i class=\"fa-solid fa-user text-cyan\"></i> İsim:",
     "neofetch-field-key": "<i class=\"fa-solid fa-laptop-code text-purple\"></i> Alan:",
     "neofetch-field-val": "Yazılım Mühendisliği & Siber Güvenlik",
@@ -28,7 +28,7 @@ const translations = {
     "about-phil-text": "Yazılım geliştirmeyi sadece kod yazmak olarak değil; karmaşık algoritmik problemleri düşük seviyede (C, C#) optimize ederek güvenli, yüksek performanslı ve yenilikçi sistemler inşa etmek olarak görüyorum. Geliştirdiğim her projede, analitik düşünceyi ve sistemin çalışma mantığını merkeze koyuyorum.",
     "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> Odak Noktalarım",
     "about-int-text": "Yapay zeka, siber güvenlik (Red Team & WPA/WPA2), büyük dil modelleri (LLM) optimizasyonu ve sistem programlama ana odak alanlarımdır. Ayrıca KOUBK Başkan Yardımcısı olarak liderlik, takım yönetimi ve kurumsal iletişim süreçlerinde aktif rol alıyorum.",
-    
+
     "skills-sec-title": "<i class=\"fa-solid fa-sliders text-purple\"></i> Yetenekler & Teknolojiler",
     "skills-cat1": "<span class=\"skill-dot bg-red\"></span> Diller & Sistem",
     "skills-cat2": "<span class=\"skill-dot bg-green\"></span> Araçlar & Ortam",
@@ -38,14 +38,14 @@ const translations = {
     "skills-item-algo": "Algoritmalar & Veri Yapıları",
     "skills-item-net": "Ağ Protokolleri & Sniffing",
     "skills-item-db": "Veritabanı Yönetimi",
-    
+
     "projects-sec-title": "<i class=\"fa-solid fa-box-open text-pink\"></i> Projelerim",
     "filter-all": "Tümü",
     "filter-c": "C / C++",
     "filter-java": "Java",
     "filter-security": "Siber Güvenlik",
     "filter-other": "Diğer",
-    
+
     "proj-inspect": "İncele",
     "proj-local": "<i class=\"fa-solid fa-code-branch\"></i> Yerel Proje",
 
@@ -58,11 +58,11 @@ const translations = {
     "proj-ghelper-desc": "Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.",
     "proj-cyber-desc": "Ağ paketlerini yakalayıp analiz eden, verileri SQLite veritabanına kaydeden ve Eve-NG ağ laboratuvar entegrasyonu sunan siber güvenlik log analiz sistemi.",
     "proj-vtys-desc": "Veritabanı Yönetim Sistemleri (VTYS) dersi final sınavı için geliştirilmiş; interaktif SQL sorgu denemeleri, BCNF ayrıştırması ve dış bellek sıralama maliyeti hesaplama gibi modülleri barındıran Python tabanlı CLI simülatörü.",
-    
+
     "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Etkileşimli Terminal Konsolu",
     "term-sec-subtitle": "Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.",
     "term-welcome": "Terminal Emulator v1.0.0'a hoş geldiniz.",
-    
+
     "contact-sec-title": "<i class=\"fa-solid fa-envelope text-yellow\"></i> İletişim",
     "contact-info-title": "Bağlantıda Kalalım",
     "contact-info-desc": "Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.",
@@ -79,13 +79,13 @@ const translations = {
     "nav-projects": "Projects",
     "nav-console": "Console",
     "nav-contact": "Contact",
-    
+
     "hero-badge": "<i class=\"fa-brands fa-linux\"></i> Linux Developer",
     "hero-title": "Hi, I am <span class=\"gradient-text\">Emir Bera</span>",
     "hero-desc": "I am a software engineer focused on system programming, cybersecurity, and algorithms. I love solving complex problems with simple, optimized, and secure code.",
     "hero-btn-projects": "<i class=\"fa-solid fa-folder-open\"></i> See My Projects",
     "hero-btn-terminal": "<i class=\"fa-solid fa-terminal\"></i> Launch Terminal",
-    
+
     "neofetch-name-key": "<i class=\"fa-solid fa-user text-cyan\"></i> Name:",
     "neofetch-field-key": "<i class=\"fa-solid fa-laptop-code text-purple\"></i> Field:",
     "neofetch-field-val": "Software Engineering & Cybersecurity",
@@ -101,7 +101,7 @@ const translations = {
     "about-phil-text": "I view software development not merely as writing code, but as building secure, high-performance, and innovative systems by optimizing complex algorithmic problems at a low level (C, C#). In every project I develop, I prioritize analytical thinking and the core logic of the system.",
     "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> Core Focus Areas",
     "about-int-text": "Artificial intelligence, cybersecurity (Red Team & WPA/WPA2), LLM optimization, and systems programming are my primary focus areas. Additionally, as the Vice President of KOUBK, I actively engage in leadership, team management, and corporate communications.",
-    
+
     "skills-sec-title": "<i class=\"fa-solid fa-sliders text-purple\"></i> Skills & Technologies",
     "skills-cat1": "<span class=\"skill-dot bg-red\"></span> Languages & Systems",
     "skills-cat2": "<span class=\"skill-dot bg-green\"></span> Tools & Environment",
@@ -111,14 +111,14 @@ const translations = {
     "skills-item-algo": "Algorithms & Data Structures",
     "skills-item-net": "Network Protocols & Sniffing",
     "skills-item-db": "SQL & Database Management",
-    
+
     "projects-sec-title": "<i class=\"fa-solid fa-box-open text-pink\"></i> My Projects",
     "filter-all": "All",
     "filter-c": "C / C++",
     "filter-java": "Java",
     "filter-security": "Cybersecurity",
     "filter-other": "Other",
-    
+
     "proj-inspect": "Inspect",
     "proj-local": "<i class=\"fa-solid fa-code-branch\"></i> Local Project",
 
@@ -131,11 +131,11 @@ const translations = {
     "proj-ghelper-desc": "A system utility for Linux written in C that reports system status and hardware information via both CLI and GUI (GTK/X11).",
     "proj-cyber-desc": "A cybersecurity log analysis system that sniffs and analyzes network packets, logs them to SQLite, and integrates with Eve-NG network labs.",
     "proj-vtys-desc": "A Python-based CLI final exam preparation simulator featuring interactive SQL query evaluation, BCNF decomposition, and disk sort cost calculation.",
-    
+
     "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Interactive Terminal Console",
     "term-sec-subtitle": "You can query my projects and skills using the terminal below. Designed with terminal aesthetics.",
     "term-welcome": "Welcome to Terminal Emulator v1.0.0.",
-    
+
     "contact-sec-title": "<i class=\"fa-solid fa-envelope text-yellow\"></i> Contact",
     "contact-info-title": "Let's Stay in Touch",
     "contact-info-desc": "If you want to talk about my projects, collaborate, or just chat about software development, feel free to contact me.",
@@ -232,14 +232,14 @@ const terminalOutputs = {
 
 // Typed text arrays
 const rolesTr = [
-  "Bilgisayar Mühendisliği Öğrencisi",
-  "KOUBK Başkan Yardımcısı",
-  "Sistem Programlama & Siber Güvenlik"
+  "Bilgisayar Mühendisliği",
+  "Sistem Programlama",
+  "Siber Güvenlik"
 ];
 const rolesEn = [
-  "Computer Engineering Student",
-  "KOUBK Vice President",
-  "System Programming & Cybersecurity"
+  "Computer Engineering",
+  "System Programming",
+  "Cybersecurity"
 ];
 
 // State variables
@@ -376,7 +376,7 @@ if (terminalInput) {
         historyIndex = cmdHistory.length;
         terminalInput.value = '';
       }
-    } 
+    }
     // Tab Completion
     else if (e.key === 'Tab') {
       e.preventDefault();
@@ -494,7 +494,7 @@ if (copyEmailBtn && emailAddressText) {
 function applyLanguage(lang) {
   currentLanguage = lang;
   localStorage.setItem('language', lang);
-  
+
   // Update translation elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
@@ -529,7 +529,7 @@ function applyTheme(theme) {
   currentTheme = theme;
   localStorage.setItem('theme', theme);
   const themeToggleBtn = document.getElementById('themeToggle');
-  
+
   if (theme === 'light') {
     document.body.classList.add('light-theme');
     if (themeToggleBtn) {
