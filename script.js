@@ -19,15 +19,15 @@ const translations = {
     "neofetch-os-key": "<i class=\"fa-brands fa-linux text-green\"></i> OS:",
     "neofetch-shell-key": "<i class=\"fa-solid fa-microchip text-pink\"></i> Shell:",
     "neofetch-focus-key": "<i class=\"fa-solid fa-bullseye text-yellow\"></i> Odak:",
-    "neofetch-focus-val": "Algoritmalar, Sistem Programlama, OOP",
+    "neofetch-focus-val": "Siber Güvenlik (Red Team), Sistem Programlama, LLM Optimizesi",
     "neofetch-target-key": "<i class=\"fa-solid fa-rocket text-cyan\"></i> Hedef:",
-    "neofetch-target-val": "Güvenli ve yüksek performanslı sistemler tasarlamak",
+    "neofetch-target-val": "Güvenli sistemler tasarlamak ve siber tehditleri önlemek",
 
     "about-sec-title": "<i class=\"fa-solid fa-circle-info text-cyan\"></i> Hakkımda",
     "about-phil-title": "<i class=\"fa-solid fa-brain text-cyan\"></i> Felsefem",
-    "about-phil-text": "Yazılım geliştirmeyi sadece kod yazmak olarak değil, sistemlerin çalışma mantığını kavrayarak en düşük seviyede optimize ve güvenli çözümler üretmek olarak görüyorum. C ve C++ ile sistem geliştirirken gösterdiğim özeni, yüksek seviyeli dillerde mimari tasarlarken de koruyorum.",
-    "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> İlgi Alanlarım",
-    "about-int-text": "İşletim sistemleri, ağ protokolleri, tersine mühendislik ve siber güvenlik ana ilgi alanlarımdır. Geliştirdiğim projelerde güvenlik ve performansı her zaman birinci öncelik olarak ele alıyorum.",
+    "about-phil-text": "Yazılım geliştirmeyi sadece kod yazmak olarak değil; karmaşık algoritmik problemleri düşük seviyede (C, C#) optimize ederek güvenli, yüksek performanslı ve yenilikçi sistemler inşa etmek olarak görüyorum. Geliştirdiğim her projede, analitik düşünceyi ve sistemin çalışma mantığını merkeze koyuyorum.",
+    "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> Odak Noktalarım",
+    "about-int-text": "Yapay zeka, siber güvenlik (Red Team & WPA/WPA2), büyük dil modelleri (LLM) optimizasyonu ve sistem programlama ana odak alanlarımdır. Ayrıca KOUBK Başkan Yardımcısı olarak liderlik, takım yönetimi ve kurumsal iletişim süreçlerinde aktif rol alıyorum.",
     
     "skills-sec-title": "<i class=\"fa-solid fa-sliders text-purple\"></i> Yetenekler & Teknolojiler",
     "skills-cat1": "<span class=\"skill-dot bg-red\"></span> Diller & Sistem",
@@ -49,19 +49,19 @@ const translations = {
     "proj-inspect": "İncele",
     "proj-local": "<i class=\"fa-solid fa-code-branch\"></i> Yerel Proje",
 
-    "proj-pi-desc": "Pi sayısının basamaklarını kullanarak şifre analizi ve kırma denemesi yapan, OSINT hibrit saldırılarını destekleyen gelişmiş bir sızma testi aracı.",
+    "proj-pi-desc": "Pi sayısının sonsuz basamaklarını yüksek hassasiyetli kütüphaneler (GMP/MPFR) ile dinamik hesaplayan, OSINT destekli yenilikçi WPA/WPA2 sızma testi motoru.",
     "proj-crypt-desc": "Huffman kodlaması algoritmasını kullanarak dosyaları güvenli bir şekilde şifrelemek ve aynı anda sıkıştırmak için tasarlanmış terminal uygulaması.",
     "proj-lidar-desc": "LIDAR nokta bulutu verilerinden 2D doğru tespiti gerçekleştirmek üzere C diliyle sıfırdan yazılmış kararlı ve performanslı RANSAC algoritması.",
-    "proj-garage-desc": "Post-apokaliptik bir dünyada geçen, nesne yönelimli tasarım (OOP) ve veri yapılarıyla desteklenmiş stratejik bir Kule Savunma (Tower Defense) oyunu.",
-    "proj-citation-desc": "Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz eden ve JavaFX arayüzü ile görselleştiren masaüstü uygulaması.",
-    "proj-metor-desc": "C# dilinde Win32 API'leri kullanarak terminal üzerinde çalışan; arama, geri alma (undo) ve akıllı kaydırma özelliklerine sahip interaktif metin editörü.",
+    "proj-garage-desc": "Nesne yönelimli programlama (OOP) ilkeleriyle ve LibGDX Framework kullanılarak sıfırdan geliştirilen, stratejik Kule Savunma (Tower Defense) oyunu.",
+    "proj-citation-desc": "Akademik makaleler arasındaki karmaşık atıf ağlarını, BFS/DFS, K-Core Decomposition ve H-Index gibi gelişmiş graf teorisi algoritmaları kullanarak çizen analiz aracı.",
+    "proj-metor-desc": ".NET 10 ile geliştirilen, çok seviyeli geri alma/yineleme operasyonları için özel LIFO yığıtı (stack) mimarisine sahip VIM benzeri interaktif terminal editörü.",
     "proj-ghelper-desc": "Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.",
     "proj-cyber-desc": "Ağ paketlerini yakalayıp analiz eden, verileri SQLite veritabanına kaydeden ve Eve-NG ağ laboratuvar entegrasyonu sunan siber güvenlik log analiz sistemi.",
     "proj-vtys-desc": "Veritabanı Yönetim Sistemleri (VTYS) dersi final sınavı için geliştirilmiş; interaktif SQL sorgu denemeleri, BCNF ayrıştırması ve dış bellek sıralama maliyeti hesaplama gibi modülleri barındıran Python tabanlı CLI simülatörü.",
     
-    "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Etkileşimli Kitty Konsolu",
-    "term-sec-subtitle": "Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Kitty tarzında dizayn edilmiştir.",
-    "term-welcome": "Kitty Terminal Emulator v1.0.0'a hoş geldiniz.",
+    "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Etkileşimli Terminal Konsolu",
+    "term-sec-subtitle": "Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.",
+    "term-welcome": "Terminal Emulator v1.0.0'a hoş geldiniz.",
     
     "contact-sec-title": "<i class=\"fa-solid fa-envelope text-yellow\"></i> İletişim",
     "contact-info-title": "Bağlantıda Kalalım",
@@ -92,15 +92,15 @@ const translations = {
     "neofetch-os-key": "<i class=\"fa-brands fa-linux text-green\"></i> OS:",
     "neofetch-shell-key": "<i class=\"fa-solid fa-microchip text-pink\"></i> Shell:",
     "neofetch-focus-key": "<i class=\"fa-solid fa-bullseye text-yellow\"></i> Focus:",
-    "neofetch-focus-val": "Algorithms, System Programming, OOP",
+    "neofetch-focus-val": "Cybersecurity (Red Team), System Programming, LLMs",
     "neofetch-target-key": "<i class=\"fa-solid fa-rocket text-cyan\"></i> Target:",
-    "neofetch-target-val": "Designing secure and high-performance systems",
+    "neofetch-target-val": "Designing secure systems and preventing cyber threats",
 
     "about-sec-title": "<i class=\"fa-solid fa-circle-info text-cyan\"></i> About Me",
     "about-phil-title": "<i class=\"fa-solid fa-brain text-cyan\"></i> My Philosophy",
-    "about-phil-text": "I see software development not just as writing code, but as understanding how systems work and producing optimized, secure solutions at the lowest level. I maintain the same diligence designing high-level architectures as I do developing system software in C/C++.",
-    "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> My Interests",
-    "about-int-text": "Operating systems, network protocols, reverse engineering, and cybersecurity are my main areas of interest. I prioritize security and performance as core requirements in every project I develop.",
+    "about-phil-text": "I view software development not merely as writing code, but as building secure, high-performance, and innovative systems by optimizing complex algorithmic problems at a low level (C, C#). In every project I develop, I prioritize analytical thinking and the core logic of the system.",
+    "about-int-title": "<i class=\"fa-solid fa-shield-halved text-purple\"></i> Core Focus Areas",
+    "about-int-text": "Artificial intelligence, cybersecurity (Red Team & WPA/WPA2), LLM optimization, and systems programming are my primary focus areas. Additionally, as the Vice President of KOUBK, I actively engage in leadership, team management, and corporate communications.",
     
     "skills-sec-title": "<i class=\"fa-solid fa-sliders text-purple\"></i> Skills & Technologies",
     "skills-cat1": "<span class=\"skill-dot bg-red\"></span> Languages & Systems",
@@ -122,19 +122,19 @@ const translations = {
     "proj-inspect": "Inspect",
     "proj-local": "<i class=\"fa-solid fa-code-branch\"></i> Local Project",
 
-    "proj-pi-desc": "An advanced penetration testing tool that utilizes the digits of Pi for password analysis and cracking, supporting OSINT hybrid attacks.",
+    "proj-pi-desc": "An innovative WPA/WPA2 penetration testing engine that dynamically generates infinite Pi digits using high-precision math libraries (GMP/MPFR) for password analysis.",
     "proj-crypt-desc": "A C-based terminal application designed to securely encrypt and simultaneously compress files using customized Huffman coding principles.",
     "proj-lidar-desc": "A robust and performant 2D line detection implementation written in pure C from scratch using the RANSAC algorithm on LIDAR point cloud data.",
-    "proj-garage-desc": "A strategic Tower Defense game set in a post-apocalyptic world, powered by object-oriented design (OOP) and customized data structures.",
-    "proj-citation-desc": "A desktop application that analyzes academic citation networks using graph theory approaches and visualizes them with a JavaFX interface.",
-    "proj-metor-desc": "An interactive terminal text editor written in C# utilizing Win32 APIs, featuring search, multi-level undo, and smart scrolling.",
+    "proj-garage-desc": "A strategic cross-platform Tower Defense game built from scratch using strict Object-Oriented Programming (OOP) principles and the LibGDX framework.",
+    "proj-citation-desc": "An analytical desktop tool that models and renders complex academic citation networks using advanced graph algorithms like K-Core Decomposition and H-Index.",
+    "proj-metor-desc": "A VIM-style interactive terminal text editor built with .NET 10, featuring a custom LIFO stack architecture for multi-level Undo/Redo operations.",
     "proj-ghelper-desc": "A system utility for Linux written in C that reports system status and hardware information via both CLI and GUI (GTK/X11).",
     "proj-cyber-desc": "A cybersecurity log analysis system that sniffs and analyzes network packets, logs them to SQLite, and integrates with Eve-NG network labs.",
     "proj-vtys-desc": "A Python-based CLI final exam preparation simulator featuring interactive SQL query evaluation, BCNF decomposition, and disk sort cost calculation.",
     
-    "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Interactive Kitty Console",
-    "term-sec-subtitle": "You can query my projects and skills using the terminal below. Designed in the style of Kitty.",
-    "term-welcome": "Welcome to Kitty Terminal Emulator v1.0.0.",
+    "term-sec-title": "<i class=\"fa-solid fa-terminal text-green\"></i> Interactive Terminal Console",
+    "term-sec-subtitle": "You can query my projects and skills using the terminal below. Designed with terminal aesthetics.",
+    "term-welcome": "Welcome to Terminal Emulator v1.0.0.",
     
     "contact-sec-title": "<i class=\"fa-solid fa-envelope text-yellow\"></i> Contact",
     "contact-info-title": "Let's Stay in Touch",
@@ -159,14 +159,14 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-yellow term-line-cmd">contact</span><span class="term-line-desc">: İletişim ve sosyal medya bağlantılarını gösterir</span></div>
   <div class="term-line"><span class="text-red term-line-cmd">clear</span><span class="term-line-desc">: Terminal ekranını temizler</span></div>`,
     neofetch: `
-    <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-kitty</span>
+    <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-terminal</span>
     <span class="text-cyan"> |o_o  |</span>      -----------------
     <span class="text-cyan"> |:_/  |</span>      <span class="text-purple">İsim</span>: Emir Bera Soğuk
     <span class="text-cyan">//   \\\\ \\</span>     <span class="text-purple">Alan</span>: Yazılım Mühendisliği & Siber Güvenlik
     <span class="text-cyan">(|     | )</span>    <span class="text-purple">OS</span>: GNU/Linux (OpenSUSE Tumbleweed)
-    <span class="text-cyan">/'\\\\_   _/\\\`\\\\</span>   <span class="text-purple">Shell</span>: zsh / kitty
-    <span class="text-cyan">\\\\___)=(___/</span>  <span class="text-purple">Odak</span>: Algoritmalar, Sistem Programlama, OOP
-    <span class="text-purple">Hedef</span>: Karmaşık problemleri basit kodlarla çözmek.
+    <span class="text-cyan">/'\\\\_   _/\\\`\\\\</span>   <span class="text-purple">Shell</span>: zsh / bash
+    <span class="text-cyan">\\\\___)=(___/</span>  <span class="text-purple">Odak</span>: Siber Güvenlik, Sistem Programlama, KOUBK Bşk.Yrd.
+    <span class="text-purple">Hedef</span>: Karmaşık problemleri güvenli sistemlerle çözmek.
   `,
     projects: `Bulunan Projeler:
   <div class="term-line"><span class="text-cyan term-line-cmd">Pi-Cracker</span><span class="term-line-desc">: Pi sayısıyla şifre analizi ve kırma (C/Bash/Security)</span></div>
@@ -179,7 +179,7 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-cyan term-line-cmd">Cyberlogy</span><span class="term-line-desc">: Ağ paketi analiz ve ML veri toplama (Python/Security)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">VTYS-Final</span><span class="term-line-desc">: Veritabanı sınav hazırlık simülatörü (Python/SQL)</span></div>`,
     skills: `Beceriler & Teknolojiler:
-  <div class="term-line"><span class="text-red term-line-cmd">Diller</span><span class="term-line-desc">: C, C++, Python, Java, C#, Verilog, GDScript, Bash</span></div>
+  <div class="term-line"><span class="text-red term-line-cmd">Diller</span><span class="term-line-desc">: C, C++, Python, Java, C#, Bash, SQL</span></div>
   <div class="term-line"><span class="text-green term-line-cmd">Sistemler</span><span class="term-line-desc">: Linux, Windows, Git/GitHub, Docker</span></div>
   <div class="term-line"><span class="text-purple term-line-cmd">Güvenlik</span><span class="term-line-desc">: Ağ Analizi, Sniffing, OSINT, Kriptografi Temelleri</span></div>
   <div class="term-line"><span class="text-yellow term-line-cmd">Geliştirme</span><span class="term-line-desc">: OOP Tasarım, Veri Yapıları & Algoritmalar, JavaFX, Godot Engine</span></div>`,
@@ -198,13 +198,13 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-yellow term-line-cmd">contact</span><span class="term-line-desc">: Shows contact and social links</span></div>
   <div class="term-line"><span class="text-red term-line-cmd">clear</span><span class="term-line-desc">: Clears the terminal screen</span></div>`,
     neofetch: `
-    <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-kitty</span>
+    <span class="text-cyan">  .---.</span>       <span class="text-green">emir</span>@<span class="text-cyan">linux-terminal</span>
     <span class="text-cyan"> |o_o  |</span>      -----------------
     <span class="text-cyan"> |:_/  |</span>      <span class="text-purple">Name</span>: Emir Bera Soğuk
     <span class="text-cyan">//   \\\\ \\</span>     <span class="text-purple">Field</span>: Software Engineering & Cybersecurity
     <span class="text-cyan">(|     | )</span>    <span class="text-purple">OS</span>: GNU/Linux (OpenSUSE Tumbleweed)
-    <span class="text-cyan">/'\\\\_   _/\\\`\\\\</span>   <span class="text-purple">Shell</span>: zsh / kitty
-    <span class="text-cyan">\\\\___)=(___/</span>  <span class="text-purple">Focus</span>: Algorithms, System Programming, OOP
+    <span class="text-cyan">/'\\\\_   _/\\\`\\\\</span>   <span class="text-purple">Shell</span>: zsh / bash
+    <span class="text-cyan">\\\\___)=(___/</span>  <span class="text-purple">Focus</span>: Cybersecurity, System Programming, KOUBK VP
     <span class="text-purple">Target</span>: Designing secure and high-performance systems.
   `,
     projects: `Found Projects:
@@ -218,7 +218,7 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-cyan term-line-cmd">Cyberlogy</span><span class="term-line-desc">: Packet sniffer and ML dataset generator (Python/Security)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">VTYS-Final</span><span class="term-line-desc">: Database course preparation simulator (Python/SQL)</span></div>`,
     skills: `Skills & Technologies:
-  <div class="term-line"><span class="text-red term-line-cmd">Languages</span><span class="term-line-desc">: C, C++, Python, Java, C#, Verilog, GDScript, Bash</span></div>
+  <div class="term-line"><span class="text-red term-line-cmd">Languages</span><span class="term-line-desc">: C, C++, Python, Java, C#, Bash, SQL</span></div>
   <div class="term-line"><span class="text-green term-line-cmd">Systems</span><span class="term-line-desc">: Linux, Windows, Git/GitHub, Docker</span></div>
   <div class="term-line"><span class="text-purple term-line-cmd">Security</span><span class="term-line-desc">: Network Analysis, Sniffing, OSINT, Cryptography Basics</span></div>
   <div class="term-line"><span class="text-yellow term-line-cmd">Development</span><span class="term-line-desc">: OOP Design, Data Structures & Algorithms, JavaFX, Godot Engine</span></div>`,
@@ -232,14 +232,14 @@ const terminalOutputs = {
 
 // Typed text arrays
 const rolesTr = [
-  "Yazılım Mühendisi",
-  "C/C++ / Python / Java Geliştiricisi",
-  "Siber Güvenlik Meraklısı"
+  "Bilgisayar Mühendisliği Öğrencisi",
+  "KOUBK Başkan Yardımcısı",
+  "Sistem Programlama & Siber Güvenlik"
 ];
 const rolesEn = [
-  "Software Engineer",
-  "C/C++ / Python / Java Developer",
-  "Cybersecurity Enthusiast"
+  "Computer Engineering Student",
+  "KOUBK Vice President",
+  "System Programming & Cybersecurity"
 ];
 
 // State variables
@@ -428,7 +428,7 @@ function executeCommand(cmd) {
   const outputDiv = document.createElement('div');
   outputDiv.className = 'terminal-output-block';
 
-  let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
+  let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
   let response = '';
 
   if (cmd !== '') {

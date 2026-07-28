@@ -101,7 +101,7 @@
                             <p><span class="neofetch-key" data-i18n="neofetch-name-key"><i class="fa-solid fa-user text-cyan"></i> İsim:</span> <span class="neofetch-val">Emir Bera Soğuk</span></p>
                             <p><span class="neofetch-key" data-i18n="neofetch-field-key"><i class="fa-solid fa-laptop-code text-purple"></i> Alan:</span> <span class="neofetch-val" data-i18n="neofetch-field-val">Yazılım Mühendisliği & Siber Güvenlik</span></p>
                             <p><span class="neofetch-key" data-i18n="neofetch-os-key"><i class="fa-brands fa-linux text-green"></i> OS:</span> <span class="neofetch-val">GNU/Linux</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-shell-key"><i class="fa-solid fa-microchip text-pink"></i> Shell:</span> <span class="neofetch-val">bash / zsh (Kitty)</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-shell-key"><i class="fa-solid fa-microchip text-pink"></i> Shell:</span> <span class="neofetch-val">bash / zsh</span></p>
                             <p><span class="neofetch-key" data-i18n="neofetch-focus-key"><i class="fa-solid fa-bullseye text-yellow"></i> Odak:</span> <span class="neofetch-val" data-i18n="neofetch-focus-val">Algoritmalar, Sistem Programlama, OOP</span></p>
                             <p><span class="neofetch-key" data-i18n="neofetch-target-key"><i class="fa-solid fa-rocket text-cyan"></i> Hedef:</span> <span class="neofetch-val" data-i18n="neofetch-target-val">Güvenli ve yüksek performanslı sistemler tasarlamak</span></p>
                             <div class="color-blocks">
@@ -150,7 +150,6 @@
                         <li><i class="fa-brands fa-python text-blue"></i> <span>Python</span></li>
                         <li><i class="fa-brands fa-java text-orange"></i> <span>Java</span></li>
                         <li><i class="fa-solid fa-hashtag text-purple"></i> <span>C#</span></li>
-                        <li><i class="fa-solid fa-microchip text-yellow"></i> <span>Verilog (FPGA)</span></li>
                     </ul>
                 </div>
                 <div class="skills-category glass">
@@ -262,12 +261,12 @@
                         <span class="project-tag-badge">Java</span>
                     </div>
                     <h3>TheLastGarage</h3>
-                    <p data-i18n="proj-garage-desc">Post-apokaliptik bir dünyada geçen, nesne yönelimli tasarım (OOP) ve veri yapılarıyla desteklenmiş stratejik bir Kule Savunma (Tower Defense) oyunu.</p>
+                    <p data-i18n="proj-garage-desc">Post-apokaliptik bir dünyada geçen, LibGDX Framework ile nesne yönelimli tasarım (OOP) ilkeleriyle geliştirilmiş, stratejik bir kule savunma (Tower Defense) oyunu.</p>
                     <div class="project-tags">
                         <span>Java</span>
                         <span>OOP</span>
                         <span>Game Dev</span>
-                        <span>Swing</span>
+                        <span>LibGDX</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
@@ -376,8 +375,8 @@
     <!-- Interactive Terminal Section -->
     <section id="terminal" class="section terminal-section">
         <div class="container">
-            <h2 class="section-title" data-i18n="term-sec-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Kitty Konsolu</h2>
-            <p class="section-subtitle" data-i18n="term-sec-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Kitty tarzında dizayn edilmiştir.</p>
+            <h2 class="section-title" data-i18n="term-sec-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Terminal Konsolu</h2>
+            <p class="section-subtitle" data-i18n="term-sec-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.</p>
             
             <div class="interactive-terminal glass">
                 <div class="terminal-bar">
@@ -386,20 +385,20 @@
                         <span class="term-dot minimize"></span>
                         <span class="term-dot maximize"></span>
                     </div>
-                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio (kitty)</div>
+                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio</div>
                 </div>
                 <div class="terminal-screen" id="terminalScreen">
                     <div class="terminal-output">
-                        <span class="term-welcome" data-i18n="term-welcome">Kitty Terminal Emulator v1.0.0'a hoş geldiniz.</span>
+                        <span class="term-welcome" data-i18n="term-welcome">Terminal Emulator v1.0.0'a hoş geldiniz.</span>
                         <div class="terminal-output-block">
-                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
+                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
                             <div class="term-response" id="initialHelpOutput">
                                 <!-- Will be loaded dynamically for i18n support -->
                             </div>
                         </div>
                     </div>
                     <div class="terminal-input-line">
-                        <span class="terminal-prompt">emir@linux-kitty <span class="logo-tilde">~</span> ></span>
+                        <span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span>
                         <input type="text" id="terminalInput" autofocus autocomplete="off" spellcheck="false">
                     </div>
                 </div>
@@ -415,7 +414,14 @@
                 <div class="contact-info glass">
                     <h3 data-i18n="contact-info-title">Bağlantıda Kalalım</h3>
                     <p data-i18n="contact-info-desc">Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.</p>
-                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot text-red"></i>
+                            <span>Kocaeli, Türkiye</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone text-green"></i>
+                            <span>+90 542 377 43 30</span>
+                        </div>
                         <div class="contact-item">
                             <i class="fa-solid fa-envelope text-cyan"></i>
                             <span>emirberasoguk@proton.me</span>
