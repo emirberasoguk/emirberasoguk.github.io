@@ -56,6 +56,7 @@ const translations = {
     "proj-citation-desc": "Akademik makaleler arasındaki karmaşık atıf ağlarını, BFS/DFS, K-Core Decomposition ve H-Index gibi gelişmiş graf teorisi algoritmaları kullanarak çizen analiz aracı.",
     "proj-metor-desc": ".NET 10 ile geliştirilen, çok seviyeli geri alma/yineleme operasyonları için özel LIFO yığıtı (stack) mimarisine sahip VIM benzeri interaktif terminal editörü.",
     "proj-ghelper-desc": "Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.",
+    "proj-instavault-desc": "Meta arşivlerini (HTML) yerelde toplayan, işleyen ve içerik tüketim analitiği, takipçi hareketleri ve gizlilik içgörüleri sunan yerel veri kasası.",
     "proj-cyber-desc": "Ağ paketlerini yakalayıp analiz eden, verileri SQLite veritabanına kaydeden ve Eve-NG ağ laboratuvar entegrasyonu sunan siber güvenlik log analiz sistemi.",
     "proj-vtys-desc": "Veritabanı Yönetim Sistemleri (VTYS) dersi final sınavı için geliştirilmiş; interaktif SQL sorgu denemeleri, BCNF ayrıştırması ve dış bellek sıralama maliyeti hesaplama gibi modülleri barındıran Python tabanlı CLI simülatörü.",
 
@@ -129,6 +130,7 @@ const translations = {
     "proj-citation-desc": "An analytical desktop tool that models and renders complex academic citation networks using advanced graph algorithms like K-Core Decomposition and H-Index.",
     "proj-metor-desc": "A VIM-style interactive terminal text editor built with .NET 10, featuring a custom LIFO stack architecture for multi-level Undo/Redo operations.",
     "proj-ghelper-desc": "A system utility for Linux written in C that reports system status and hardware information via both CLI and GUI (GTK/X11).",
+    "proj-instavault-desc": "A local data vault and analytics tool that parses Meta Instagram HTML archives to deliver private insights on followers, reels, and digital habits.",
     "proj-cyber-desc": "A cybersecurity log analysis system that sniffs and analyzes network packets, logs them to SQLite, and integrates with Eve-NG network labs.",
     "proj-vtys-desc": "A Python-based CLI final exam preparation simulator featuring interactive SQL query evaluation, BCNF decomposition, and disk sort cost calculation.",
 
@@ -176,6 +178,7 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-cyan term-line-cmd">Citation-Graph</span><span class="term-line-desc">: Akademik atıf ağları analizcisi (Java/Graph)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">me-tor</span><span class="term-line-desc">: Terminal tabanlı metin editörü (C#/System)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">ghelper-linux</span><span class="term-line-desc">: Asus laptoplar için fan & donanım ayar aracı (C/Linux)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">InstaVault</span><span class="term-line-desc">: Yerel Instagram veri kasası ve analitik aracı (Python/Privacy)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">Cyberlogy</span><span class="term-line-desc">: Ağ paketi analiz ve ML veri toplama (Python/Security)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">VTYS-Final</span><span class="term-line-desc">: Veritabanı sınav hazırlık simülatörü (Python/SQL)</span></div>`,
     skills: `Beceriler & Teknolojiler:
@@ -215,6 +218,7 @@ const terminalOutputs = {
   <div class="term-line"><span class="text-cyan term-line-cmd">Citation-Graph</span><span class="term-line-desc">: Citation networks graph analyzer (Java/Graph)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">me-tor</span><span class="term-line-desc">: Terminal-based text editor (C#/System)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">ghelper-linux</span><span class="term-line-desc">: Fan & hardware configuration for Asus laptops (C/Linux)</span></div>
+  <div class="term-line"><span class="text-cyan term-line-cmd">InstaVault</span><span class="term-line-desc">: Local Instagram data vault & privacy analytics (Python/Security)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">Cyberlogy</span><span class="term-line-desc">: Packet sniffer and ML dataset generator (Python/Security)</span></div>
   <div class="term-line"><span class="text-cyan term-line-cmd">VTYS-Final</span><span class="term-line-desc">: Database course preparation simulator (Python/SQL)</span></div>`,
     skills: `Skills & Technologies:
