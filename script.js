@@ -428,11 +428,22 @@ function printRawLine(text) {
   terminalScreen.scrollTop = terminalScreen.scrollHeight;
 }
 
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, tag => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    "'": '&#39;',
+    '"': '&quot;'
+  }[tag] || tag));
+}
+
 function executeCommand(cmd) {
   const outputDiv = document.createElement('div');
   outputDiv.className = 'terminal-output-block';
 
-  let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">${cmd}</span></div>`;
+  const safeCmd = escapeHTML(cmd);
+  let echo = `<div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">${safeCmd}</span></div>`;
   let response = '';
 
   if (cmd !== '') {
@@ -461,7 +472,7 @@ function executeCommand(cmd) {
         if (welcomeElement) welcomeElement.remove();
         return;
       default:
-        response = `<div class="term-response text-red">${outputs.notFound.replace('{cmd}', cmd)}</div>`;
+        response = `<div class="term-response text-red">${outputs.notFound.replace('{cmd}', safeCmd)}</div>`;
         break;
     }
   }
