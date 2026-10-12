@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emir Bera Soğuk | Bilgisayar Mühendisi & Siber Güvenlik</title>
+    <meta name="description" content="Emir Bera Soğuk kişisel portfolyö sitesi. Sistem programlama, siber güvenlik, algoritmalar ve nesne yönelimli projelerim.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background grid effect -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-term">emir@linux:</span><span class="logo-tilde">~</span><span class="logo-prompt">$</span>
+            </a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav class="nav-menu" id="navMenu">
+                <ul>
+                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-user text-cyan"></i> Hakkımda</a></li>
+                    <li><a href="#skills" class="nav-link"><i class="fa-solid fa-gears text-purple"></i> Yetenekler</a></li>
+                    <li><a href="#projects" class="nav-link"><i class="fa-solid fa-code text-pink"></i> Projeler</a></li>
+                    <li><a href="#terminal" class="nav-link"><i class="fa-solid fa-terminal text-green"></i> Konsol</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="os-badge">
+                    <i class="fa-brands fa-linux"></i> Linux Geliştiricisi
+                </div>
+                <h1 class="hero-title">Merhaba, ben <span class="gradient-text">Emir Bera</span></h1>
+                <h2 class="hero-subtitle">
+                    <span id="typing-text"></span><span class="cursor">|</span>
+                </h2>
+                <p class="hero-description">
+                    Sistem programlama, siber güvenlik ve algoritmalar üzerine odaklanmış bir yazılım mühendisiyim. Karmaşık problemleri basit, optimize ve güvenli kodlarla çözmeyi seviyorum.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Projelerimi Gör</a>
+                    <a href="#terminal" class="btn btn-secondary"><i class="fa-solid fa-terminal"></i> Terminali Başlat</a>
+                </div>
+            </div>
+
+            <!-- Terminal Mockup (Kitty Theme) -->
+            <div class="kitty-terminal-wrapper">
+                <div class="kitty-header">
+                    <div class="kitty-actions">
+                        <span class="dot close"></span>
+                        <span class="dot minimize"></span>
+                        <span class="dot maximize"></span>
+                    </div>
+                    <div class="kitty-title">
+                        <i class="fa-solid fa-terminal"></i> kitty: emir@linux-terminal
+                    </div>
+                    <div class="kitty-tab">
+                        <span>neofetch</span>
+                    </div>
+                </div>
+                <div class="kitty-body">
+                    <div class="neofetch-container">
+                        <div class="neofetch-logo">
+      <pre class="ascii-logo">
+      <span class="text-cyan">  .---.</span>
+      <span class="text-cyan"> |o_o  |</span>
+      <span class="text-cyan"> |:_/  |</span>
+      <span class="text-cyan">//   \\ \\</span>
+      <span class="text-cyan">(|     | )</span>
+      <span class="text-cyan">/'\_   _/`\\</span>
+      <span class="text-cyan">\\___)=(___/</span>
+      </pre>
+                        </div>
+                        <div class="neofetch-info">
+                            <span class="neofetch-user">emir</span><span class="neofetch-host">@linux-desktop</span>
+                            <hr class="neofetch-divider">
+                            <p><span class="neofetch-key" data-i18n="neofetch-name-key"><i class="fa-solid fa-user text-cyan"></i> İsim:</span> <span class="neofetch-val">Emir Bera Soğuk</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-field-key"><i class="fa-solid fa-laptop-code text-purple"></i> Alan:</span> <span class="neofetch-val" data-i18n="neofetch-field-val">Yazılım Mühendisliği & Siber Güvenlik</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-os-key"><i class="fa-brands fa-linux text-green"></i> OS:</span> <span class="neofetch-val">GNU/Linux</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-shell-key"><i class="fa-solid fa-microchip text-pink"></i> Shell:</span> <span class="neofetch-val">bash / zsh</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-focus-key"><i class="fa-solid fa-bullseye text-yellow"></i> Odak:</span> <span class="neofetch-val" data-i18n="neofetch-focus-val">Algoritmalar, Sistem Programlama, OOP</span></p>
+                            <p><span class="neofetch-key" data-i18n="neofetch-target-key"><i class="fa-solid fa-rocket text-cyan"></i> Hedef:</span> <span class="neofetch-val" data-i18n="neofetch-target-val">Güvenli ve yüksek performanslı sistemler tasarlamak</span></p>
+                            <div class="color-blocks">
+                                <span class="block bg-black"></span>
+                                <span class="block bg-red"></span>
+                                <span class="block bg-green"></span>
+                                <span class="block bg-yellow"></span>
+                                <span class="block bg-blue"></span>
+                                <span class="block bg-magenta"></span>
+                                <span class="block bg-cyan"></span>
+                                <span class="block bg-white"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="about-sec-title"><i class="fa-solid fa-circle-info text-cyan"></i> Hakkımda</h2>
+            <div class="about-grid">
+                <div class="about-card glass">
+                    <h3 data-i18n="about-phil-title"><i class="fa-solid fa-brain text-cyan"></i> Felsefem</h3>
+                    <p data-i18n="about-phil-text">Yazılım geliştirmeyi sadece kod yazmak olarak değil, sistemlerin çalışma mantığını kavrayarak en düşük seviyede optimize ve güvenli çözümler üretmek olarak görüyorum. C ve C++ ile sistem geliştirirken gösterdiğim özeni, yüksek seviyeli dillerde mimari tasarlarken de koruyorum.</p>
+                </div>
+                <div class="about-card glass">
+                    <h3 data-i18n="about-int-title"><i class="fa-solid fa-shield-halved text-purple"></i> İlgi Alanlarım</h3>
+                    <p data-i18n="about-int-text">İşletim sistemleri, ağ protokolleri, tersine mühendislik ve siber güvenlik ana ilgi alanlarımdır. Geliştirdiğim projelerde güvenlik ve performansı her zaman birinci öncelik olarak ele alıyorum.</p>
+                </div> 
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="skills-sec-title"><i class="fa-solid fa-sliders text-purple"></i> Yetenekler & Teknolojiler</h2>
+            <div class="skills-grid">
+                <div class="skills-category glass">
+                    <h3 data-i18n="skills-cat1"><span class="skill-dot bg-red"></span> Diller & Sistem</h3>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-code text-red"></i> <span>C / C++</span></li>
+                        <li><i class="fa-brands fa-python text-blue"></i> <span>Python</span></li>
+                        <li><i class="fa-brands fa-java text-orange"></i> <span>Java</span></li>
+                        <li><i class="fa-solid fa-hashtag text-purple"></i> <span>C#</span></li>
+                        <li><i class="fa-solid fa-hashtag text-pink"></i> <span>SQL</span></li>
+                    </ul>
+                </div>
+                <div class="skills-category glass">
+                    <h3 data-i18n="skills-cat2"><span class="skill-dot bg-green"></span> Araçlar & Ortam</h3>
+                    <ul class="skill-list">
+                        <li><i class="fa-brands fa-linux text-green"></i> <span>Linux</span></li>
+                        <li><i class="fa-brands fa-git-alt text-orange"></i> <span>Git / GitHub</span></li>
+                        <li><i class="fa-solid fa-terminal text-cyan"></i> <span>Bash / Zsh Scripting</span></li>
+                        <li><i class="fa-solid fa-keyboard text-purple"></i> <span>Neovim / Vim</span></li>
+                    </ul>
+                </div>
+                <div class="skills-category glass">
+                    <h3 data-i18n="skills-cat3"><span class="skill-dot bg-cyan"></span> Mimari & Güvenlik</h3>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-shield-cat text-cyan"></i> <span data-i18n="skills-item-sec">Siber Güvenlik & OSINT</span></li>
+                        <li><i class="fa-solid fa-diagram-project text-purple"></i> <span data-i18n="skills-item-oop">OOP (Nesne Yönelimli)</span></li>
+                        <li><i class="fa-solid fa-chart-line text-pink"></i> <span data-i18n="skills-item-algo">Algoritmalar & Veri Yapıları</span></li>
+                        <li><i class="fa-solid fa-network-wired text-yellow"></i> <span data-i18n="skills-item-net">Ağ Protokolleri & Sniffing</span></li>
+                        <li><i class="fa-solid fa-database text-blue"></i> <span data-i18n="skills-item-db">Veritabanı Yönetimi</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="skills-badge-container">
+                <img src="https://skillicons.dev/icons?i=c,cpp,python,java,cs,linux,git,bash,neovim,mysql,godot&theme=dark" alt="Yetenek İkonları" class="skills-badges">
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="projects-sec-title"><i class="fa-solid fa-box-open text-pink"></i> Projelerim</h2>
+            
+            <!-- Filters -->
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all" data-i18n="filter-all">Tümü</button>
+                <button class="filter-btn" data-filter="c" data-i18n="filter-c">C / C++</button>
+                <button class="filter-btn" data-filter="java" data-i18n="filter-java">Java</button>
+                <button class="filter-btn" data-filter="security" data-i18n="filter-security">Siber Güvenlik</button>
+                <button class="filter-btn" data-filter="other" data-i18n="filter-other">Diğer</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="projects-grid" id="projectsGrid">
+                
+                <!-- Pi-Cracker -->
+                <div class="project-card glass" data-tags="c security">
+                    <div class="project-header">
+                        <i class="fa-solid fa-key project-icon text-red"></i>
+                        <span class="project-tag-badge">C / Bash</span>
+                    </div>
+                    <h3>Pi-Cracker</h3>
+                    <p data-i18n="proj-pi-desc">Pi sayısının basamaklarını kullanarak şifre analizi ve kırma denemesi yapan, OSINT hibrit saldırılarını destekleyen gelişmiş bir sızma testi aracı.</p>
+                    <div class="project-tags">
+                        <span>C</span>
+                        <span>Bash</span>
+                        <span>Security</span>
+                        <span>OSINT</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- C-ryptFile -->
+                <div class="project-card glass" data-tags="c security">
+                    <div class="project-header">
+                        <i class="fa-solid fa-file-shield project-icon text-cyan"></i>
+                        <span class="project-tag-badge">C</span>
+                    </div>
+                    <h3>C-ryptFile</h3>
+                    <p data-i18n="proj-crypt-desc">Huffman kodlaması algoritmasını kullanarak dosyaları güvenli bir şekilde şifrelemek ve aynı anda sıkıştırmak için tasarlanmış terminal uygulaması.</p>
+                    <div class="project-tags">
+                        <span>C</span>
+                        <span>Cryptography</span>
+                        <span>Huffman</span>
+                        <span>CLI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- LidarRansac-C -->
+                <div class="project-card glass" data-tags="c">
+                    <div class="project-header">
+                        <i class="fa-solid fa-satellite-dish project-icon text-green"></i>
+                        <span class="project-tag-badge">C</span>
+                    </div>
+                    <h3>LidarRansac-C</h3>
+                    <p data-i18n="proj-lidar-desc">LIDAR nokta bulutu verilerinden 2D doğru tespiti gerçekleştirmek üzere C diliyle sıfırdan yazılmış kararlı ve performanslı RANSAC algoritması.</p>
+                    <div class="project-tags">
+                        <span>C</span>
+                        <span>RANSAC</span>
+                        <span>LIDAR</span>
+                        <span>Algorithms</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- The Last Garage -->
+                <div class="project-card glass" data-tags="java">
+                    <div class="project-header">
+                        <i class="fa-solid fa-chess-rook project-icon text-orange"></i>
+                        <span class="project-tag-badge">Java</span>
+                    </div>
+                    <h3>The Last Garage</h3>
+                    <p>Windows, Linux, macOS ve Android platformlarında sorunsuz çalışan, zombi kıyameti sonrası temalı stratejik kule savunma (Tower Defense) oyunu.</p>
+                    <div class="project-tags">
+                        <span>Java</span>
+                        <span>LibGDX</span>
+                        <span>OOP</span>
+                        <span>Game Dev</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- Citation Graph Visualizer -->
+                <div class="project-card glass" data-tags="java">
+                    <div class="project-header">
+                        <i class="fa-solid fa-circle-nodes project-icon text-pink"></i>
+                        <span class="project-tag-badge">Java</span>
+                    </div>
+                    <h3>Citation Graph Visualizer</h3>
+                    <p>Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz eden ve JavaFX arayüzü ile görselleştiren masaüstü uygulaması.</p>
+                    <div class="project-tags">
+                        <span>JavaFX</span>
+                        <span>Graph Theory</span>
+                        <span>Data Viz</span>
+                        <span>OOP</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank"><i class="fa-brands fa-github"></i> İncele</a>
+                    </div>
+                </div>
+
+                <!-- MiniNotepad (me-tor) -->
+                <div class="project-card glass" data-tags="other">
+                    <div class="project-header">
+                        <i class="fa-solid fa-pen-to-square project-icon text-yellow"></i>
+                        <span class="project-tag-badge">C# / Terminal</span>
+                    </div>
+                    <h3>me-tor (MiniNotepad)</h3>
+                    <p data-i18n="proj-metor-desc">.NET 10 ile geliştirilen, çok seviyeli geri alma/yineleme operasyonları için özel LIFO yığıtı mimarisine sahip VIM benzeri interaktif terminal editörü.</p>
+                    <div class="project-tags">
+                        <span>C#</span>
+                        <span>.NET 10</span>
+                        <span>CLI</span>
+                        <span>LIFO Stack</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- ghelper-linux -->
+                <div class="project-card glass" data-tags="c">
+                    <div class="project-header">
+                        <i class="fa-solid fa-fan project-icon text-cyan"></i>
+                        <span class="project-tag-badge">C / Linux</span>
+                    </div>
+                    <h3>ghelper-linux</h3>
+                    <p data-i18n="proj-ghelper-desc">Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.</p>
+                    <div class="project-tags">
+                        <span>C</span>
+                        <span>Linux</span>
+                        <span>sysfs</span>
+                        <span>Hardware Control</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+                <!-- InstaVault -->
+                <div class="project-card glass" data-tags="security other">
+                    <div class="project-header">
+                        <i class="fa-solid fa-vault project-icon text-purple"></i>
+                        <span class="project-tag-badge">Python / Security</span>
+                    </div>
+                    <h3>InstaVault</h3>
+                    <p data-i18n="proj-instavault-desc">Meta arşivlerini (HTML) yerelde toplayan, işleyen ve içerik tüketim analitiği, takipçi hareketleri ve gizlilik içgörüleri sunan yerel veri kasası.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>Privacy</span>
+                        <span>Security</span>
+                        <span>Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/InstaVault" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+                
+                <!-- VTYS Final Simülatörü -->
+                <div class="project-card glass" data-tags="other">
+                    <div class="project-header">
+                        <i class="fa-solid fa-database project-icon text-blue"></i>
+                        <span class="project-tag-badge">Python / SQL</span>
+                    </div>
+                    <h3>VTYS Final Simülatörü</h3>
+                    <p data-i18n="proj-vtys-desc">Veritabanı Yönetim Sistemleri (VTYS) dersi final sınavı için geliştirilmiş; interaktif SQL sorgu denemeleri, BCNF ayrıştırması ve dış bellek sıralama maliyeti hesaplama gibi modülleri barındıran Python tabanlı CLI simülatörü.</p>
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>SQLite</span>
+                        <span>Normalizasyon</span>
+                        <span>CLI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Terminal Section -->
+    <section id="terminal" class="section terminal-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Terminal Konsolu</h2>
+            <p class="section-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.</p>
+            
+            <div class="interactive-terminal glass">
+                <div class="terminal-bar">
+                    <div class="terminal-buttons">
+                        <span class="term-dot close"></span>
+                        <span class="term-dot minimize"></span>
+                        <span class="term-dot maximize"></span>
+                    </div>
+                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio</div>
+                </div>
+                <div class="terminal-screen" id="terminalScreen">
+                    <div class="terminal-output">
+                        <span class="term-welcome">Terminal Emulator v1.0.0'a hoş geldiniz.</span>
+                        <div class="terminal-output-block">
+                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
+                            <div class="term-response" id="initialHelpOutput">
+                                <!-- Will be loaded dynamically for i18n support -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span>
+                        <input type="text" id="terminalInput" autofocus autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info glass">
+                    <h3>Bağlantıda Kalalım</h3>
+                    <p>Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope text-cyan"></i>
+                            <span>emirberasoguk@proton.me</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone text-yellow"></i>
+                            <a href="tel:+905423774330">+90 542 377 43 30</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-linkedin text-purple"></i>
+                            <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank">linkedin.com/in/emir-bera-soguk</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-github text-green"></i>
+                            <a href="https://github.com/emirberasoguk" target="_blank">github.com/emirberasoguk</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-action-container glass">
+                    <h3>Hızlı İletişim</h3>
+                    <p>Form doldurmak yerine e-posta adresimi doğrudan kopyalayabilir veya e-posta istemcinizi açarak bana yazabilirsiniz.</p>
+                    <div class="email-copy-card">
+                        <span id="emailAddress">emirberasoguk@proton.me</span>
+                        <button id="copyEmailBtn" class="copy-btn" title="E-postayı Kopyala">
+                            <i class="fa-regular fa-copy"></i> Kopyala
+                        </button>
+                    </div>
+                    <a href="mailto:emirberasoguk@proton.me" class="btn btn-primary btn-block"><i class="fa-solid fa-envelope-open-text"></i> E-Posta Gönder</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
+            <p class="footer-meta">Built with <i class="fa-solid fa-heart text-red"></i> on Linux</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
