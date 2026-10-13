@@ -1161,48 +1161,311 @@
         }
 
         /* ==========================================================================
-           RESPONSIVE REFINEMENTS
+           DESTROY WEBSITE FLOATING BAUHAUS BADGE
+           ========================================================================== */
+        .destroy-badge-wrap {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .destroy-badge-bh {
+            display: inline-flex;
+            align-items: center;
+            background: var(--bh-yellow);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            padding: 5px 8px;
+            transform: rotate(-1.5deg);
+            transition: var(--transition-tactile);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .destroy-badge-bh:hover {
+            transform: rotate(0deg) translate(-2px, -2px) scale(1.04);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-white);
+        }
+
+        .destroy-bh-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .destroy-bh-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--bh-red);
+            border-radius: 50%;
+            border: 1.5px solid var(--bh-black);
+            animation: pulseDestroy 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseDestroy {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.35); opacity: 0.6; }
+        }
+
+        .destroy-badge-bh img {
+            display: block;
+            border-radius: 4px;
+            max-width: 155px;
+            height: auto;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE REFINEMENTS & MOBILE KINETIC ANIMATIONS
            ========================================================================== */
         @media (max-width: 1024px) {
             .hero-bauhaus {
                 grid-template-columns: 1fr;
+                gap: 28px;
             }
             .skills-bauhaus-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
             .cv-bauhaus-banner {
                 grid-template-columns: 1fr;
             }
             .cv-color-block {
-                height: 90px;
+                height: 80px;
                 border-right: none;
                 border-bottom: var(--border-heavy);
+                font-size: 2.5rem;
             }
             .about-bauhaus-duo {
                 grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bauhaus-strip {
+                padding: 4px 0;
+            }
+            .strip-inner {
+                padding: 10px 16px;
+                gap: 12px;
+            }
+            .brand-bauhaus {
+                font-size: 1.05rem;
+            }
+            .nav-links-bauhaus {
+                width: 100%;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 6px;
+                gap: 6px;
+                scrollbar-width: none;
+            }
+            .nav-links-bauhaus::-webkit-scrollbar {
+                display: none;
+            }
+            .nav-item-btn {
+                flex-shrink: 0;
+                padding: 7px 12px;
+                font-size: 0.78rem;
+            }
+            .style-switcher-menu {
+                margin-left: auto;
+            }
+            .main-container {
+                padding: 24px 16px 90px;
+            }
+            /* Projects filter scrollable on mobile */
+            .projects-filter-bar {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 10px;
+                gap: 8px;
+                scrollbar-width: none;
+            }
+            .projects-filter-bar::-webkit-scrollbar {
+                display: none;
+            }
+            .bh-filter-btn {
+                flex-shrink: 0;
+                padding: 8px 14px;
+                font-size: 0.82rem;
+            }
+            /* Optimized background geometry on mobile */
+            .shape-circle-blue {
+                width: 180px;
+                height: 180px;
+                top: 40px;
+                right: -60px;
+                opacity: 0.35;
+            }
+            .shape-square-yellow {
+                width: 110px;
+                height: 110px;
+                top: 500px;
+                left: -35px;
+                opacity: 0.4;
+            }
+            .shape-triangle-red {
+                border-left-width: 60px;
+                border-right-width: 60px;
+                border-bottom-width: 110px;
+                top: 1300px;
+                right: -25px;
+                opacity: 0.35;
+            }
+            .shape-pill-blue {
+                width: 140px;
+                height: 50px;
+                top: 2200px;
+                opacity: 0.35;
+            }
+            .shape-stripes-block {
+                width: 90px;
+                height: 90px;
+                top: 3000px;
+                opacity: 0.4;
             }
         }
 
         @media (max-width: 640px) {
             .hero-poster-block {
-                padding: 28px 20px;
+                padding: 28px 18px;
+                box-shadow: var(--shadow-hard);
             }
             .hero-poster-block::before {
                 display: none;
             }
+            .hero-title-giant {
+                font-size: 2.3rem;
+            }
+            .hero-subrole {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+                gap: 8px;
+            }
+            .hero-manifesto {
+                font-size: 1rem;
+                margin-bottom: 26px;
+            }
+            .irregular-button-cluster {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .btn-bh-primary, .btn-bh-blue, .btn-bh-white {
+                width: 100%;
+                justify-content: center;
+                transform: none !important;
+                padding: 13px 18px;
+                font-size: 0.92rem;
+            }
+            .cv-text-block {
+                padding: 24px 18px;
+            }
+            .cv-cta-actions {
+                padding: 0 18px 24px;
+            }
+            .cv-main-head {
+                font-size: 1.35rem;
+            }
             .projects-bauhaus-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .bh-card:nth-child(even), .bh-card:nth-child(odd) {
+            .bh-card {
+                transform: none !important;
+                box-shadow: var(--shadow-hard);
+            }
+            .bh-card:hover {
+                transform: translateY(-2px) !important;
+            }
+            .bh-card-header {
+                padding: 16px 18px;
+            }
+            .bh-card-body {
+                padding: 20px 18px 16px;
+            }
+            .bh-card-footer {
+                padding: 14px 18px;
+            }
+            .about-panel {
+                padding: 26px 18px;
                 transform: none !important;
             }
             .contact-bauhaus-poster {
-                padding: 32px 20px;
+                padding: 32px 18px;
+                box-shadow: var(--shadow-hard);
+            }
+            .contact-title-huge {
+                font-size: 2rem;
+            }
+            .contact-actions-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .btn-contact-email {
+                width: 100%;
+                justify-content: center;
+                font-size: 0.92rem;
+                padding: 14px 16px;
+            }
+            .contact-actions-row .btn-bh-white {
+                width: 100%;
+                justify-content: center;
+            }
+            /* Mobile Destroy Badge Placement */
+            .destroy-badge-wrap {
+                bottom: 14px;
+                left: 14px;
+            }
+            .destroy-badge-bh {
+                padding: 3px 6px;
+                transform: none !important;
+                box-shadow: 3px 3px 0 var(--bh-black);
+            }
+            .destroy-badge-bh img {
+                max-width: 130px;
+            }
+            /* Toast positioning on mobile */
+            .bh-toast {
+                bottom: 14px;
+                right: 14px;
+                left: auto;
+                max-width: calc(100vw - 160px);
+                padding: 12px 16px;
+                font-size: 0.8rem;
             }
             .footer-inner {
                 flex-direction: column;
                 text-align: center;
+                gap: 12px;
             }
+        }
+
+        /* Mobile Touch Tactile Spring Feedback */
+        @media (hover: none) and (pointer: coarse) {
+            button:active, a:active {
+                transform: scale(0.97) !important;
+                transition: transform 0.08s ease !important;
+            }
+            .bh-card:active {
+                transform: scale(0.985) !important;
+            }
+        }
+
+        /* Kinetic Scroll Entrance */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -1239,12 +1502,11 @@
                 </ul>
             </nav>
 
-            <!-- Theme / Style Switcher Hub: All styles preserved -->
+            <!-- Theme / Style Switcher Hub -->
             <div class="style-switcher-menu" title="Farklı Tasarım Varyantlarını Dene">
                 <span class="style-label"><i class="fa-solid fa-shapes"></i> Stil:</span>
                 <a href="index.html" class="style-choice-btn active" title="Bauhaus Tasarımı">Bauhaus</a>
                 <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Liquid Glass">Liquid Glass</a>
-                <a href="index_nothing.html" class="style-choice-btn" title="Nothing Tech (us.nothing.tech)">Nothing</a>
             </div>
         </div>
     </header>
@@ -1894,6 +2156,16 @@
         </div>
     </footer>
 
+    <!-- Bauhaus Destroy This Website Floating Badge -->
+    <aside class="destroy-badge-wrap" aria-label="Eğlence">
+        <a href="https://destroy.spritefusion.com/?from=badge&url=emirberasoguk.github.io" target="_blank" rel="noopener noreferrer" class="destroy-badge-bh" title="Bu siteyi parçala!">
+            <div class="destroy-bh-inner">
+                <span class="destroy-bh-indicator" title="İnteraktif"></span>
+                <img src="https://destroy.spritefusion.com/badge-light.svg" alt="Destroy this website" width="160" height="36" loading="lazy">
+            </div>
+        </a>
+    </aside>
+
     <!-- Tactile Bauhaus Toast Notification -->
     <div class="bh-toast" id="bhToast" role="alert" aria-live="polite">
         <i class="fa-solid fa-circle-check" style="color: var(--bh-yellow);"></i>
@@ -1966,6 +2238,27 @@
                     navigator.vibrate(15);
                 }
             });
+        });
+
+        // 4. Mobile Kinetic Scroll Reveal & Geometric Parallax
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.bh-card, .skill-pillar, .about-panel, .cv-bauhaus-banner');
+            cards.forEach(card => card.classList.add('reveal-on-scroll'));
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+
+                cards.forEach(card => observer.observe(card));
+            } else {
+                cards.forEach(card => card.classList.add('revealed'));
+            }
         });
     </script>
 </body>
