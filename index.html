@@ -3,466 +3,2105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emir Bera Soğuk | Bilgisayar Mühendisi & Siber Güvenlik</title>
-    <meta name="description" content="Emir Bera Soğuk kişisel portfolyö sitesi. Sistem programlama, siber güvenlik, algoritmalar ve nesne yönelimli projelerim.">
-    <!-- Google Fonts -->
+    <title>Emir Bera Soğuk | iOS 27 Liquid Glass Portfolyo</title>
+    <meta name="description" content="Emir Bera Soğuk - Sistem Programlama, Siber Güvenlik ve Algoritma Mimarisi. iOS 27 Liquid Glass ve dokunsal cam arayüzü deneyimi.">
+
+    <!-- Google Fonts: Outfit & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           iOS 27 LIQUID GLASS DESIGN SYSTEM (DESIGN TOKENS & LIQUID VARIABLES)
+           ========================================================================== */
+        :root {
+            --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Liquid Glass Palette */
+            --glass-bg: rgba(255, 255, 255, 0.075);
+            --glass-bg-hover: rgba(255, 255, 255, 0.125);
+            --glass-bg-active: rgba(255, 255, 255, 0.17);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-border-highlight: rgba(255, 255, 255, 0.45);
+            --glass-blur: blur(18px) saturate(160%);
+
+            /* Inset Specular Refraction Shadows */
+            --glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 
+                            0 8px 24px -5px rgba(0, 0, 0, 0.35),
+                            inset 0 1px 1px 0 rgba(255, 255, 255, 0.32),
+                            inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25);
+            
+            --glass-shadow-button: 0 12px 30px -5px rgba(0, 0, 0, 0.4),
+                                  0 4px 12px -2px rgba(0, 0, 0, 0.25),
+                                  inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.45),
+                                  inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.3);
+
+            --glass-shadow-active: 0 4px 14px 0 rgba(0, 0, 0, 0.4),
+                                  inset 0 2px 4px 0 rgba(0, 0, 0, 0.35),
+                                  inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2);
+
+            /* Chromatic Accents */
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-purple: #9d4edd;
+            --accent-magenta: #f72585;
+            --accent-green: #10b981;
+            --accent-gold: #fbbf24;
+
+            /* Squircle & Pill Curvatures */
+            --radius-pill: 9999px;
+            --radius-squircle: 32px;
+            --radius-button: 28px;
+            --radius-card: 34px;
+
+            /* Dynamics */
+            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-tactile: all 0.28s var(--spring-bounce);
+        }
+
+        /* ==========================================================================
+           RESET & FOUNDATION
+           ========================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            color-scheme: dark;
+        }
+
+        body {
+            background-color: #060814;
+            color: #f1f5f9;
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            selection-background-color: var(--accent-cyan);
+            selection-color: #060814;
+        }
+
+        ::selection {
+            background: rgba(0, 242, 254, 0.3);
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           LIQUID AMBIENT BACKGROUND & MESH ORBS
+           ========================================================================== */
+        .ambient-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            opacity: 0.85;
+            background: radial-gradient(circle at 50% 0%, #0d122b 0%, #060814 80%);
+        }
+
+        .liquid-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.55;
+            animation: orbFloat 22s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 420px;
+            height: 420px;
+            top: -100px;
+            left: -60px;
+            background: radial-gradient(circle, #7928ca 0%, #4facfe 70%, transparent 100%);
+            animation-duration: 24s;
+        }
+
+        .orb-2 {
+            width: 380px;
+            height: 380px;
+            top: 30%;
+            right: -80px;
+            background: radial-gradient(circle, #f72585 0%, #7209b7 65%, transparent 100%);
+            animation-duration: 28s;
+            animation-delay: -5s;
+        }
+
+        .orb-3 {
+            width: 450px;
+            height: 450px;
+            bottom: -140px;
+            left: 20%;
+            background: radial-gradient(circle, #00f2fe 0%, #4361ee 70%, transparent 100%);
+            animation-duration: 20s;
+            animation-delay: -10s;
+        }
+
+        .orb-4 {
+            width: 300px;
+            height: 300px;
+            top: 70%;
+            left: -100px;
+            background: radial-gradient(circle, #10b981 0%, #00b4d8 70%, transparent 100%);
+            animation-duration: 26s;
+            animation-delay: -3s;
+        }
+
+        @keyframes orbFloat {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            50% {
+                transform: translate(60px, 80px) scale(1.12) rotate(45deg);
+            }
+            100% {
+                transform: translate(-50px, 40px) scale(0.92) rotate(-30deg);
+            }
+        }
+
+        /* Subtle Noise / Caustic Grain Overlay */
+        .noise-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ==========================================================================
+           LAYOUT & CONTAINER
+           ========================================================================== */
+        .page-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 24px 24px 100px;
+        }
+
+        /* ==========================================================================
+           iOS 27 DYNAMIC ISLAND & FLOATING GLASS NAVIGATION
+           ========================================================================== */
+        .nav-wrapper {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .island-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            width: 100%;
+            max-width: 1080px;
+            padding: 10px 14px 10px 20px;
+            background: rgba(18, 22, 44, 0.55);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-pill);
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition-tactile);
+        }
+
+        .island-nav:hover {
+            border-color: var(--glass-border-highlight);
+            background: rgba(22, 28, 56, 0.68);
+        }
+
+        .brand-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00f2fe, #9d4edd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+        }
+
+        .brand-pulse {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+            background: #10b981;
+            border: 2px solid #0d122b;
+            box-shadow: 0 0 8px #10b981;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: rgba(241, 245, 249, 0.8);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 8px 18px;
+            border-radius: var(--radius-pill);
+            transition: var(--transition-tactile);
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Top Switcher Button to Retro Terminal */
+        .retro-switch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 20px;
+            border-radius: var(--radius-pill);
+            text-decoration: none;
+            color: #5af78e;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            backdrop-filter: blur(10px);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+            transition: var(--transition-tactile);
+            cursor: pointer;
+        }
+
+        .retro-switch-btn:hover {
+            background: rgba(16, 185, 129, 0.22);
+            border-color: rgba(16, 185, 129, 0.6);
+            color: #ffffff;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+        }
+
+        .retro-switch-btn:active {
+            transform: translateY(1px) scale(0.96);
+        }
+
+        /* ==========================================================================
+           HERO SECTION & OPTICAL LIQUID ELEMENTS
+           ========================================================================== */
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 0 60px;
+            position: relative;
+        }
+
+        .ios-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 22px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow-button);
+            font-family: var(--font-display);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 24px;
+            animation: pulseSubtle 3s ease-in-out infinite;
+        }
+
+        .ios-badge-pill i {
+            color: var(--accent-cyan);
+            font-size: 0.95rem;
+        }
+
+        @keyframes pulseSubtle {
+            0%, 100% {
+                border-color: rgba(255, 255, 255, 0.22);
+                box-shadow: var(--glass-shadow-button);
+            }
+            50% {
+                border-color: rgba(0, 242, 254, 0.45);
+                box-shadow: 0 12px 35px -5px rgba(0, 242, 254, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 5.2rem);
+            font-weight: 900;
+            letter-spacing: -0.035em;
+            line-height: 1.05;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .liquid-gradient-text {
+            background: linear-gradient(135deg, #ffffff 15%, #00f2fe 50%, #9d4edd 85%, #f72585 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            filter: drop-shadow(0 4px 15px rgba(0, 242, 254, 0.3));
+        }
+
+        .hero-role-typing {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.8vw, 1.85rem);
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            letter-spacing: -0.015em;
+        }
+
+        .hero-role-typing span.highlight {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .hero-description {
+            max-width: 720px;
+            font-size: 1.12rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* ==========================================================================
+           TACTILE TOUCH PILL BUTTONS (EMAIL, LINKEDIN, GITHUB)
+           ========================================================================== */
+        .tactile-actions-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            width: 100%;
+        }
+
+        .touch-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            border-radius: var(--radius-button);
+            text-decoration: none;
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1.5px solid var(--glass-border);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow-button);
+            transition: var(--transition-tactile);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .touch-pill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%);
+            border-radius: var(--radius-button) var(--radius-button) 0 0;
+            pointer-events: none;
+        }
+
+        .touch-pill i {
+            font-size: 1.25rem;
+            transition: transform 0.25s var(--spring-bounce);
+        }
+
+        /* Specific Pill Hover & Shimmer */
+        .pill-email:hover {
+            background: rgba(0, 242, 254, 0.16);
+            border-color: rgba(0, 242, 254, 0.55);
+            box-shadow: 0 16px 36px -6px rgba(0, 242, 254, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            color: #ffffff;
+        }
+        .pill-email i { color: var(--accent-cyan); }
+
+        .pill-linkedin:hover {
+            background: rgba(10, 102, 194, 0.25);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 16px 36px -6px rgba(10, 102, 194, 0.45), inset 0 2px 2px rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            color: #ffffff;
+        }
+        .pill-linkedin i { color: #38bdf8; }
+
+        .pill-github:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 16px 36px -6px rgba(255, 255, 255, 0.25), inset 0 2px 2px rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px) scale(1.03);
+            color: #ffffff;
+        }
+        .pill-github i { color: #f1f5f9; }
+
+        .touch-pill:active {
+            transform: translateY(2px) scale(0.96) !important;
+            box-shadow: var(--glass-shadow-active) !important;
+        }
+
+        .touch-pill:hover i {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        /* ==========================================================================
+           CALL TO ACTION: MASTER CV DOWNLOAD CARD (CENTRAL HIGHLIGHT)
+           ========================================================================== */
+        .cv-hero-banner {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto 70px;
+            padding: 32px 36px;
+            border-radius: var(--radius-card);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+            border: 1.5px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6), 
+                        0 0 40px -10px rgba(0, 242, 254, 0.2),
+                        inset 0 2px 2px 0 rgba(255, 255, 255, 0.45);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-tactile);
+        }
+
+        .cv-hero-banner:hover {
+            border-color: rgba(0, 242, 254, 0.6);
+            box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.7), 
+                        0 0 50px -5px rgba(0, 242, 254, 0.35),
+                        inset 0 2px 3px 0 rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .cv-icon-orb {
+            width: 74px;
+            height: 74px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(247, 37, 133, 0.4) 100%);
+            border: 1.5px solid rgba(247, 37, 133, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #ff4d6d;
+            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.3), inset 0 2px 2px rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+            transition: transform 0.3s var(--spring-bounce);
+        }
+
+        .cv-hero-banner:hover .cv-icon-orb {
+            transform: scale(1.1) rotate(-6deg);
+        }
+
+        .cv-details {
+            text-align: left;
+        }
+
+        .cv-tag-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: var(--radius-pill);
+            background: rgba(16, 185, 129, 0.16);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #34d399;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cv-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .cv-subtitle {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .cv-action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .cv-download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            border-radius: var(--radius-button);
+            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            color: #04101e;
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.6);
+            transition: var(--transition-tactile);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 16px 40px rgba(0, 242, 254, 0.55), inset 0 2px 3px rgba(255, 255, 255, 0.8);
+            background: linear-gradient(135deg, #38f9d7 0%, #43e97b 100%);
+            color: #032014;
+        }
+
+        .cv-download-btn:active {
+            transform: translateY(2px) scale(0.96);
+        }
+
+        .cv-preview-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-tactile);
+        }
+
+        .cv-preview-link:hover {
+            background: rgba(255, 255, 255, 0.14);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ==========================================================================
+           SECTION HEADERS & PILL CATEGORY FILTERS
+           ========================================================================== */
+        .section-header-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .section-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            backdrop-filter: var(--glass-blur);
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
+        }
+
+        .section-main-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .section-subtext {
+            max-width: 650px;
+            font-size: 1.05rem;
+            color: #94a3b8;
+        }
+
+        /* Tactile Project Filter Pills */
+        .filter-pills-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-pill {
+            padding: 10px 22px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1.5px solid rgba(255, 255, 255, 0.14);
+            backdrop-filter: var(--glass-blur);
+            color: #cbd5e1;
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-tactile);
+            box-shadow: var(--glass-shadow-button);
+        }
+
+        .filter-pill:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .filter-pill.active {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(157, 78, 221, 0.25) 100%);
+            border-color: rgba(0, 242, 254, 0.6);
+            color: #ffffff;
+            box-shadow: 0 10px 25px -4px rgba(0, 242, 254, 0.3), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.4);
+        }
+
+        /* ==========================================================================
+           PROJECTS GRID (10 TACTILE GLASS CARDS)
+           ========================================================================== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 28px;
+            margin-bottom: 90px;
+        }
+
+        .project-glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.025) 100%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: var(--radius-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.32s var(--spring-bounce), box-shadow 0.32s ease, border-color 0.32s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* Refraction Glare Follows Pointer */
+        .project-glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(255, 255, 255, 0.16), transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            border-radius: inherit;
+        }
+
+        .project-glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-glass-card:hover {
+            transform: translateY(-6px) scale(1.018);
+            border-color: var(--glass-border-highlight);
+            box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.7),
+                        0 0 35px -5px rgba(79, 172, 254, 0.25),
+                        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.4);
+        }
+
+        .project-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-icon-capsule {
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            color: var(--accent-cyan);
+            box-shadow: 0 8px 18px -4px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+            transition: transform 0.3s var(--spring-bounce);
+        }
+
+        .project-glass-card:hover .card-icon-capsule {
+            transform: scale(1.12) rotate(-8deg);
+        }
+
+        .project-badge-pill {
+            padding: 5px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 600;
+            color: #94a3b8;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .project-desc {
+            font-size: 0.96rem;
+            color: #cbd5e1;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .tech-pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 24px;
+        }
+
+        .tech-tag {
+            padding: 4px 11px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 500;
+            color: #93c5fd;
+            transition: background 0.2s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        .project-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-inspect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 22px;
+            border-radius: var(--radius-button);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--glass-shadow-button);
+            transition: var(--transition-tactile);
+            cursor: pointer;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .project-inspect-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(79, 172, 254, 0.3) 100%);
+            border-color: rgba(0, 242, 254, 0.55);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 28px -5px rgba(0, 242, 254, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+            color: #ffffff;
+        }
+
+        .project-inspect-btn:active {
+            transform: translateY(1px) scale(0.97);
+        }
+
+        /* ==========================================================================
+           SKILLS & EXPERTISE LIQUID CAPSULES
+           ========================================================================== */
+        .skills-section {
+            margin-bottom: 90px;
+        }
+
+        .skills-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 26px;
+        }
+
+        .skill-group-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: var(--radius-card);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow);
+            padding: 30px;
+            transition: var(--transition-tactile);
+        }
+
+        .skill-group-card:hover {
+            border-color: var(--glass-border-highlight);
+            transform: translateY(-4px);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .skill-icon-pill {
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+        }
+
+        .skill-group-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.015em;
+        }
+
+        .skill-items-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-bubble {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            transition: var(--transition-tactile);
+        }
+
+        .skill-bubble:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           ABOUT & PHILOSOPHY TACTILE CARDS
+           ========================================================================== */
+        .about-section {
+            margin-bottom: 90px;
+        }
+
+        .about-grid-duo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 26px;
+        }
+
+        .about-story-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: var(--radius-card);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow);
+            padding: 34px;
+            transition: var(--transition-tactile);
+        }
+
+        .about-story-card:hover {
+            border-color: var(--glass-border-highlight);
+            transform: translateY(-4px);
+        }
+
+        .story-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            background: rgba(157, 78, 221, 0.18);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            color: #d8b4fe;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .story-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .story-p {
+            font-size: 1.02rem;
+            color: #cbd5e1;
+            line-height: 1.75;
+        }
+
+        /* ==========================================================================
+           CONTACT & DIRECT TOUCH HUB
+           ========================================================================== */
+        .contact-hub-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1.5px solid var(--glass-border);
+            border-radius: var(--radius-card);
+            backdrop-filter: var(--glass-blur);
+            box-shadow: var(--glass-shadow);
+            padding: 44px 36px;
+            margin-bottom: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hub-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.025em;
+            margin-bottom: 12px;
+        }
+
+        .contact-hub-desc {
+            max-width: 620px;
+            margin: 0 auto 36px;
+            font-size: 1.08rem;
+            color: #cbd5e1;
+        }
+
+        .contact-buttons-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .interactive-email-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 26px;
+            border-radius: var(--radius-button);
+            background: rgba(0, 242, 254, 0.12);
+            border: 1.5px solid rgba(0, 242, 254, 0.4);
+            color: #ffffff;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.02rem;
+            cursor: pointer;
+            box-shadow: var(--glass-shadow-button);
+            transition: var(--transition-tactile);
+        }
+
+        .interactive-email-pill:hover {
+            background: rgba(0, 242, 254, 0.22);
+            border-color: rgba(0, 242, 254, 0.7);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 16px 36px rgba(0, 242, 254, 0.35);
+        }
+
+        .interactive-email-pill:active {
+            transform: scale(0.96);
+        }
+
+        .copy-tag-pill {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.15);
+            font-family: var(--font-mono);
+            letter-spacing: 0.04em;
+        }
+
+        /* ==========================================================================
+           FOOTER
+           ========================================================================== */
+        .glass-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 14px;
+            padding: 30px 20px;
+            color: #94a3b8;
+            font-size: 0.92rem;
+        }
+
+        .footer-pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================================================
+           TOAST NOTIFICATION (TACTILE COPY FEEDBACK)
+           ========================================================================== */
+        .glass-toast {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(16, 24, 48, 0.85);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1.5px solid rgba(0, 242, 254, 0.5);
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.4);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.35s var(--spring-bounce);
+        }
+
+        .glass-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .glass-toast i {
+            color: var(--accent-cyan);
+            font-size: 1.15rem;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE REFINEMENTS
+           ========================================================================== */
+        @media (max-width: 900px) {
+            .cv-hero-banner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+                padding: 26px 20px;
+            }
+            .cv-icon-orb {
+                margin: 0 auto;
+            }
+            .cv-details {
+                text-align: center;
+            }
+            .cv-action-buttons {
+                width: 100%;
+            }
+            .cv-download-btn {
+                width: 100%;
+            }
+            .nav-links {
+                display: none;
+            }
+            .island-nav {
+                justify-content: space-between;
+                padding: 8px 14px;
+            }
+            .about-grid-duo {
+                grid-template-columns: 1fr;
+            }
+            .skills-card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-content {
+                padding: 16px 12px 60px;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+                padding: 0 8px;
+            }
+            .tactile-actions-group {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .touch-pill {
+                justify-content: center;
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+            .retro-switch-btn span.label-full {
+                display: none;
+            }
+            .retro-switch-btn::after {
+                content: 'Retro';
+            }
+            .filter-pills-bar {
+                gap: 8px;
+            }
+            .filter-pill {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .project-glass-card {
+                padding: 22px 18px;
+                border-radius: 24px;
+            }
+            .section-main-title {
+                font-size: 1.8rem;
+            }
+            .section-subtext {
+                font-size: 0.95rem;
+                padding: 0 8px;
+            }
+            .contact-hub-card {
+                padding: 28px 16px;
+            }
+            .contact-hub-title {
+                font-size: 1.6rem;
+            }
+            .contact-hub-desc {
+                font-size: 0.95rem;
+            }
+            .about-story-card {
+                padding: 24px 18px;
+            }
+            .skill-group-card {
+                padding: 22px 18px;
+            }
+            .cv-hero-banner {
+                padding: 22px 16px;
+                border-radius: 24px;
+            }
+            .cv-title {
+                font-size: 1.2rem;
+            }
+            .cv-icon-orb {
+                width: 56px;
+                height: 56px;
+                font-size: 1.6rem;
+            }
+            .nav-wrapper {
+                top: 10px;
+                margin-bottom: 32px;
+            }
+            .island-nav {
+                padding: 6px 10px;
+            }
+            .brand-badge span:last-child {
+                font-size: 0.9rem;
+            }
+            .liquid-orb {
+                filter: blur(40px);
+                opacity: 0.4;
+            }
+            .orb-1, .orb-2 { width: 250px; height: 250px; }
+            .orb-3 { width: 300px; height: 300px; }
+            .orb-4 { display: none; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            .hero-role-typing {
+                font-size: 1rem;
+            }
+            .brand-badge span:last-child {
+                display: none;
+            }
+        }
+
+        /* Reduce animations for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .liquid-orb {
+                animation: none;
+            }
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+
+        /* ==========================================================================
+           DESTROY BADGE FLOATING BAR
+           ========================================================================== */
+        .destroy-badge-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            opacity: 0.85;
+            transition: opacity 0.3s ease, transform 0.3s var(--spring-bounce);
+        }
+        .destroy-badge-float:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        .destroy-badge-float img {
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        @media (max-width: 600px) {
+            .destroy-badge-float {
+                bottom: 12px;
+                right: 12px;
+            }
+            .destroy-badge-float img {
+                width: 140px;
+                height: auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Background grid effect -->
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
 
-    <!-- New Theme Selector Banner -->
-    <div style="background: rgba(15, 23, 42, 0.9); border-bottom: 1px solid rgba(255,255,255,0.15); padding: 8px 16px; text-align: center; font-size: 13px; z-index: 1000; position: relative; backdrop-filter: blur(16px); display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
-        <span style="color: #94a3b8; font-weight: 500;">🎨 Yeni Portfolyo Tasarım Seçenekleri:</span>
-        <a href="index_glass.html" style="background: linear-gradient(135deg, rgba(56,189,248,0.25), rgba(192,132,252,0.25)); border: 1px solid rgba(255,255,255,0.3); color: #fff; padding: 4px 14px; border-radius: 20px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-wand-magic-sparkles" style="color: #38bdf8;"></i> 1. Seçenek: iOS 27 Liquid Glass UI
-        </a>
-        <a href="index_terminal.html" style="background: rgba(0,255,102,0.12); border: 1px solid #00ff66; color: #00ff66; padding: 4px 14px; border-radius: 20px; text-decoration: none; font-weight: 600; font-family: monospace; display: inline-flex; align-items: center; gap: 6px;">
-            <i class="fa-solid fa-terminal"></i> 2. Seçenek: TTY Retro ASCII Terminal UI
-        </a>
-        <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #f8fafc; padding: 4px 12px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600;">
-            <i class="fa-solid fa-download"></i> CV İndir
-        </a>
+    <!-- Ambient Liquid Mesh Canvas & Caustic Grain -->
+    <div class="ambient-canvas" aria-hidden="true">
+        <div class="liquid-orb orb-1"></div>
+        <div class="liquid-orb orb-2"></div>
+        <div class="liquid-orb orb-3"></div>
+        <div class="liquid-orb orb-4"></div>
+    </div>
+    <div class="noise-layer" aria-hidden="true"></div>
+
+    <!-- Main Content Container -->
+    <main class="page-content">
+
+        <!-- Top Floating Dynamic Island Navigation -->
+        <header class="nav-wrapper">
+            <nav class="island-nav" aria-label="Ana Gezinti">
+                <a href="#" class="brand-badge" title="Emir Bera Soğuk">
+                    <div class="brand-avatar">
+                        <span>EBS</span>
+                        <div class="brand-pulse" title="Müsait / Aktif"></div>
+                    </div>
+                    <span>Emir Bera Soğuk</span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="#projects" class="nav-link">Projeler</a></li>
+                    <li><a href="#cv" class="nav-link">Özgeçmiş (CV)</a></li>
+                    <li><a href="#skills" class="nav-link">Yetenekler</a></li>
+                    <li><a href="#about" class="nav-link">Hakkımda</a></li>
+                    <li><a href="#contact" class="nav-link">İletişim</a></li>
+                </ul>
+
+                <!-- Switch to Terminal Mode Button -->
+                <a href="index_terminal.html" class="retro-switch-btn" title="TTY Terminal Arayüzüne Geç">
+                    <i class="fa-solid fa-terminal"></i>
+                    <span class="label-full">TTY Terminal (Retro)</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="ios-badge-pill">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span>Sistem Programlama ve Güvenlik Odaklı Portfolyo</span>
+            </div>
+
+            <h1 class="hero-title">
+                Merhaba, Ben <br>
+                <span class="liquid-gradient-text">Emir Bera Soğuk</span>
+            </h1>
+
+            <div class="hero-role-typing">
+                <span class="highlight">Sistem Programlama</span> • Siber Güvenlik • Algoritma Mimarisi
+            </div>
+
+            <p class="hero-description">
+                C, C++ ve Linux tarafında düşük seviyeli sistem araçları, algoritmalar ve güvenlik yazılımları geliştiriyorum. İşin donanıma ve işletim sistemine yakın kısmıyla ilgilenmeyi seviyorum.
+            </p>
+
+            <!-- Tactile Contact & Profile Pills -->
+            <div class="tactile-actions-group">
+                <button class="touch-pill pill-email" id="emailPillBtn" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala & İletişim">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>emirberasoguk@proton.me</span>
+                </button>
+
+                <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="touch-pill pill-linkedin" title="LinkedIn Profili">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+
+                <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="touch-pill pill-github" title="GitHub Profili">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- MASTER CALL TO ACTION: CV DOWNLOAD GLASS BANNER -->
+        <section id="cv" style="scroll-margin-top: 100px;">
+            <div class="cv-hero-banner">
+                <div class="cv-icon-orb">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div class="cv-details">
+                    <div class="cv-tag-pill">
+                        <i class="fa-solid fa-check-circle"></i> Doğrulanmış Özgeçmiş • PDF (386 KB)
+                    </div>
+                    <h2 class="cv-title">Emir Bera Soğuk — Curriculum Vitae</h2>
+                    <p class="cv-subtitle">
+                        Teknik deneyimlerimi, projelerimi ve okul sürecimi özetleyen güncel CV dosyam.
+                    </p>
+                </div>
+
+                <div class="cv-action-buttons">
+                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="cv-download-btn" id="cvDirectDownload" title="CV Dosyasını Doğrudan İndir">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span>CV'yi İndir</span>
+                    </a>
+                    <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-preview-link" title="Yeni Sekmede Önizle">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Önizle / Aç</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECENT PROJECTS SHOWCASE -->
+        <section id="projects" style="scroll-margin-top: 100px;">
+            <div class="section-header-block">
+                <div class="section-badge-pill">
+                    <i class="fa-solid fa-code-fork"></i> Portfolyo
+                </div>
+                <h2 class="section-main-title">Öne Çıkan Projelerim</h2>
+                <p class="section-subtext">
+                    Linux, C/C++, güvenlik ve masaüstü araçları üzerine geliştirdiğim açık kaynaklı çalışmalar.
+                </p>
+            </div>
+
+            <!-- Project Filter Pills -->
+            <div class="filter-pills-bar" role="tablist">
+                <button class="filter-pill active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
+                <button class="filter-pill" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
+                <button class="filter-pill" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
+                <button class="filter-pill" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
+                <button class="filter-pill" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
+            </div>
+
+            <!-- 10 TACTILE GLASS PROJECT CARDS -->
+            <div class="projects-grid" id="projectsGrid">
+
+                <!-- 1. Pi-Cracker -->
+                <article class="project-glass-card" data-category="c security" data-name="pi-cracker">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-key" style="color: #f72585;"></i>
+                            </div>
+                            <span class="project-badge-pill">C / Bash • Güvenlik</span>
+                        </div>
+                        <h3 class="project-title">Pi-Cracker</h3>
+                        <p class="project-desc">
+                            Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Bash</span>
+                            <span class="tech-tag">Pentest</span>
+                            <span class="tech-tag">OSINT</span>
+                            <span class="tech-tag">Cryptography</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. ghelper-linux -->
+                <article class="project-glass-card" data-category="c tools" data-name="ghelper-linux">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-fan" style="color: #00f2fe;"></i>
+                            </div>
+                            <span class="project-badge-pill">C / Linux sysfs</span>
+                        </div>
+                        <h3 class="project-title">ghelper-linux</h3>
+                        <p class="project-desc">
+                            Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Linux Kernel</span>
+                            <span class="tech-tag">sysfs</span>
+                            <span class="tech-tag">Hardware Control</span>
+                            <span class="tech-tag">ASUS TUF</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. me-tor (MiniNotepad) -->
+                <article class="project-glass-card" data-category="tools" data-name="me-tor">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-pen-to-square" style="color: #fbbf24;"></i>
+                            </div>
+                            <span class="project-badge-pill">C# / .NET 10</span>
+                        </div>
+                        <h3 class="project-title">me-tor (MiniNotepad)</h3>
+                        <p class="project-desc">
+                            .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">.NET 10</span>
+                            <span class="tech-tag">CLI</span>
+                            <span class="tech-tag">LIFO Stack</span>
+                            <span class="tech-tag">Text Editor</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. InstaVault -->
+                <article class="project-glass-card" data-category="security tools" data-name="instavault">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-vault" style="color: #a855f7;"></i>
+                            </div>
+                            <span class="project-badge-pill">Python / Gizlilik</span>
+                        </div>
+                        <h3 class="project-title">InstaVault</h3>
+                        <p class="project-desc">
+                            Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Privacy</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">Offline Vault</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. veritabani-calisma-simulasyonu -->
+                <article class="project-glass-card" data-category="tools" data-name="vtys-sim">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-database" style="color: #38bdf8;"></i>
+                            </div>
+                            <span class="project-badge-pill">Python / SQL</span>
+                        </div>
+                        <h3 class="project-title">VTYS Simülatörü</h3>
+                        <p class="project-desc">
+                            İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Normalizasyon</span>
+                            <span class="tech-tag">Disk IO Cost</span>
+                            <span class="tech-tag">CLI</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6. C-ryptFile -->
+                <article class="project-glass-card" data-category="c security" data-name="cryptfile">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-file-shield" style="color: #00f2fe;"></i>
+                            </div>
+                            <span class="project-badge-pill">C • Kripto & Sıkıştırma</span>
+                        </div>
+                        <h3 class="project-title">C-ryptFile</h3>
+                        <p class="project-desc">
+                            Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Huffman Tree</span>
+                            <span class="tech-tag">Bitwise Compression</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">CLI</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. LidarRansac-C -->
+                <article class="project-glass-card" data-category="c" data-name="lidarransac">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-satellite-dish" style="color: #10b981;"></i>
+                            </div>
+                            <span class="project-badge-pill">C • Geometri Algoritmaları</span>
+                        </div>
+                        <h3 class="project-title">LidarRansac-C</h3>
+                        <p class="project-desc">
+                            2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">RANSAC</span>
+                            <span class="tech-tag">LIDAR</span>
+                            <span class="tech-tag">Point Cloud</span>
+                            <span class="tech-tag">Numerical Analysis</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. TheLastGarage -->
+                <article class="project-glass-card" data-category="java" data-name="thelastgarage">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-chess-rook" style="color: #f97316;"></i>
+                            </div>
+                            <span class="project-badge-pill">Java / LibGDX</span>
+                        </div>
+                        <h3 class="project-title">TheLastGarage</h3>
+                        <p class="project-desc">
+                            LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">LibGDX</span>
+                            <span class="tech-tag">OOP Architecture</span>
+                            <span class="tech-tag">Game Engine</span>
+                            <span class="tech-tag">Cross-Platform</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9. Citation Graph Visualizer -->
+                <article class="project-glass-card" data-category="java" data-name="citationgraph">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-circle-nodes" style="color: #ec4899;"></i>
+                            </div>
+                            <span class="project-badge-pill">Java / JavaFX</span>
+                        </div>
+                        <h3 class="project-title">Citation Graph Visualizer</h3>
+                        <p class="project-desc">
+                            Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JavaFX</span>
+                            <span class="tech-tag">Graph Theory</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">OOP</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. dotfiles -->
+                <article class="project-glass-card" data-category="tools" data-name="dotfiles">
+                    <div>
+                        <div class="project-top-row">
+                            <div class="card-icon-capsule">
+                                <i class="fa-solid fa-sliders" style="color: #60a5fa;"></i>
+                            </div>
+                            <span class="project-badge-pill">Linux • Wayland / Hyprland</span>
+                        </div>
+                        <h3 class="project-title">dotfiles</h3>
+                        <p class="project-desc">
+                            Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="tech-pill-list">
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">Hyprland</span>
+                            <span class="tech-tag">Neovim (Lua)</span>
+                            <span class="tech-tag">Kitty</span>
+                            <span class="tech-tag">Bash/Zsh</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
+                                <span>GitHub'da İncele</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- SKILLS & EXPERTISE -->
+        <section class="skills-section" id="skills" style="scroll-margin-top: 100px;">
+            <div class="section-header-block">
+                <div class="section-badge-pill">
+                    <i class="fa-solid fa-microchip"></i> Yetkinlikler
+                </div>
+                <h2 class="section-main-title">Teknoloji & Mimari Altyapı</h2>
+                <p class="section-subtext">
+                    Aktif olarak kod yazdığım diller, araçlar ve üzerine kafa yorduğum alanlar.
+                </p>
+            </div>
+
+            <div class="skills-card-grid">
+                <!-- Group 1: Sistem & Diller -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <div class="skill-icon-pill">
+                            <i class="fa-solid fa-terminal" style="color: #00f2fe;"></i>
+                        </div>
+                        <h3 class="skill-group-title">Sistem & Programlama</h3>
+                    </div>
+                    <div class="skill-items-container">
+                        <span class="skill-bubble"><i class="fa-solid fa-code text-cyan"></i> C / C++</span>
+                        <span class="skill-bubble"><i class="fa-brands fa-python text-blue"></i> Python</span>
+                        <span class="skill-bubble"><i class="fa-brands fa-java text-orange"></i> Java</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-hashtag text-purple"></i> C# (.NET)</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-terminal text-green"></i> Bash / Zsh</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-database text-yellow"></i> SQL / SQLite</span>
+                    </div>
+                </div>
+
+                <!-- Group 2: Güvenlik & Mimari -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <div class="skill-icon-pill">
+                            <i class="fa-solid fa-shield-halved" style="color: #9d4edd;"></i>
+                        </div>
+                        <h3 class="skill-group-title">Güvenlik & Algoritmalar</h3>
+                    </div>
+                    <div class="skill-items-container">
+                        <span class="skill-bubble"><i class="fa-solid fa-shield-cat"></i> Siber Güvenlik</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-fingerprint"></i> OSINT Analizi</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-lock"></i> Kriptografi & Huffman</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-diagram-project"></i> Graf Teorisi</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-chart-line"></i> RANSAC Algoritması</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-cubes"></i> OOP Tasarım Kalıpları</span>
+                    </div>
+                </div>
+
+                <!-- Group 3: Ortam & Geliştirici Araçları -->
+                <div class="skill-group-card">
+                    <div class="skill-header">
+                        <div class="skill-icon-pill">
+                            <i class="fa-brands fa-linux" style="color: #10b981;"></i>
+                        </div>
+                        <h3 class="skill-group-title">Ortam & Geliştirici Araçları</h3>
+                    </div>
+                    <div class="skill-items-container">
+                        <span class="skill-bubble"><i class="fa-brands fa-linux"></i> GNU/Linux (TUF/Arch)</span>
+                        <span class="skill-bubble"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-keyboard"></i> Neovim / Vim</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-microchip"></i> Linux sysfs / Kernel API</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-bug"></i> GDB / Valgrind</span>
+                        <span class="skill-bubble"><i class="fa-solid fa-network-wired"></i> Wireshark & Sniffing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT & PHILOSOPHY -->
+        <section class="about-section" id="about" style="scroll-margin-top: 100px;">
+            <div class="section-header-block">
+                <div class="section-badge-pill">
+                    <i class="fa-solid fa-user-astronaut"></i> Vizyon
+                </div>
+                <h2 class="section-main-title">Mühendislik Yaklaşımım</h2>
+                <p class="section-subtext">
+                    Yazılım geliştirirken dikkat ettiğim ilkeler ve ilgi duyduğum konular.
+                </p>
+            </div>
+
+            <div class="about-grid-duo">
+                <div class="about-story-card">
+                    <span class="story-badge"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
+                    <h3 class="story-title">Düşük Seviye ve Sade Kod</h3>
+                    <p class="story-p">
+                        Bir şey yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum.
+                    </p>
+                </div>
+
+                <div class="about-story-card">
+                    <span class="story-badge"><i class="fa-solid fa-compass"></i> İlgi & Odak Noktam</span>
+                    <h3 class="story-title">Güvenlik ve Çekirdek İlgisi</h3>
+                    <p class="story-p">
+                        Linux çekirdek arayüzleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir sistem inşa ederken olası güvenlik açıklarını en baştan düşünerek tasarlamaya çalışıyorum.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT HUB -->
+        <section id="contact" style="scroll-margin-top: 100px;">
+            <div class="contact-hub-card">
+                <div class="section-badge-pill">
+                    <i class="fa-solid fa-satellite"></i> Bağlantı
+                </div>
+                <h2 class="contact-hub-title">Doğrudan İletişime Geçin</h2>
+                <p class="contact-hub-desc">
+                    Proje fikirleri, açık kaynak katkıları, staj veya iş olanakları için bana yazabilirsiniz.
+                </p>
+
+                <div class="contact-buttons-cluster">
+                    <button class="interactive-email-pill" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>emirberasoguk@proton.me</span>
+                        <span class="copy-tag-pill" id="copyLabel">Kopyala</span>
+                    </button>
+
+                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="touch-pill pill-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="touch-pill pill-github" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="tel:+905423774330" class="touch-pill" style="border-color: rgba(251, 191, 36, 0.4); color: #fbbf24;" title="Telefon ile Ulaş">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+90 542 377 43 30</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="glass-footer">
+            <div class="footer-pill-badge">
+                <i class="fa-solid fa-shield-heart" style="color: #f72585;"></i>
+                <span>Emir Bera Soğuk &bull; iOS 27 Liquid Glass Arayüzü</span>
+            </div>
+            <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
+        </footer>
+
+    </main>
+
+    <!-- Destroy This Website Badge -->
+    <a href="https://destroy.spritefusion.com/?from=badge&url=emirberasoguk.github.io" target="_blank" rel="noopener noreferrer" class="destroy-badge-float" title="Bu siteyi parçala!">
+        <img src="https://destroy.spritefusion.com/badge-light.svg" alt="Destroy this website" width="180" height="40" loading="lazy">
+    </a>
+
+    <!-- TACTILE TOAST NOTIFICATION -->
+    <div class="glass-toast" id="glassToast" role="alert" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
     </div>
 
-    <!-- Navigation Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-term">emir@linux:</span><span class="logo-tilde">~</span><span class="logo-prompt">$</span>
-            </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Menüyü Aç">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <nav class="nav-menu" id="navMenu">
-                <ul>
-                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-user text-cyan"></i> Hakkımda</a></li>
-                    <li><a href="#skills" class="nav-link"><i class="fa-solid fa-gears text-purple"></i> Yetenekler</a></li>
-                    <li><a href="#projects" class="nav-link"><i class="fa-solid fa-code text-pink"></i> Projeler</a></li>
-                    <li><a href="#terminal" class="nav-link"><i class="fa-solid fa-terminal text-green"></i> Konsol</a></li>
-                    <li><a href="#contact" class="nav-link"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <!-- ==========================================================================
+         INTERACTIVE SCRIPTS (SMOOTH MOTION, 3D GLASS TILT & HAPTIC FEEDBACK)
+         ========================================================================== */ -->
+    <script>
+        // 1. Interactive Refraction Sheen on Glass Cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const glassCards = document.querySelectorAll('.project-glass-card, .cv-hero-banner, .skill-group-card');
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="os-badge">
-                    <i class="fa-brands fa-linux"></i> Linux Geliştiricisi
-                </div>
-                <h1 class="hero-title">Merhaba, ben <span class="gradient-text">Emir Bera</span></h1>
-                <h2 class="hero-subtitle">
-                    <span id="typing-text"></span><span class="cursor">|</span>
-                </h2>
-                <p class="hero-description">
-                    Sistem programlama, siber güvenlik ve algoritmalar üzerine odaklanmış bir yazılım mühendisiyim. Karmaşık problemleri basit, optimize ve güvenli kodlarla çözmeyi seviyorum.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Projelerimi Gör</a>
-                    <a href="#terminal" class="btn btn-secondary"><i class="fa-solid fa-terminal"></i> Terminali Başlat</a>
-                </div>
-            </div>
+            glassCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
 
-            <!-- Terminal Mockup (Kitty Theme) -->
-            <div class="kitty-terminal-wrapper">
-                <div class="kitty-header">
-                    <div class="kitty-actions">
-                        <span class="dot close"></span>
-                        <span class="dot minimize"></span>
-                        <span class="dot maximize"></span>
-                    </div>
-                    <div class="kitty-title">
-                        <i class="fa-solid fa-terminal"></i> kitty: emir@linux-terminal
-                    </div>
-                    <div class="kitty-tab">
-                        <span>neofetch</span>
-                    </div>
-                </div>
-                <div class="kitty-body">
-                    <div class="neofetch-container">
-                        <div class="neofetch-logo">
-      <pre class="ascii-logo">
-      <span class="text-cyan">  .---.</span>
-      <span class="text-cyan"> |o_o  |</span>
-      <span class="text-cyan"> |:_/  |</span>
-      <span class="text-cyan">//   \\ \\</span>
-      <span class="text-cyan">(|     | )</span>
-      <span class="text-cyan">/'\_   _/`\\</span>
-      <span class="text-cyan">\\___)=(___/</span>
-      </pre>
-                        </div>
-                        <div class="neofetch-info">
-                            <span class="neofetch-user">emir</span><span class="neofetch-host">@linux-desktop</span>
-                            <hr class="neofetch-divider">
-                            <p><span class="neofetch-key" data-i18n="neofetch-name-key"><i class="fa-solid fa-user text-cyan"></i> İsim:</span> <span class="neofetch-val">Emir Bera Soğuk</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-field-key"><i class="fa-solid fa-laptop-code text-purple"></i> Alan:</span> <span class="neofetch-val" data-i18n="neofetch-field-val">Yazılım Mühendisliği & Siber Güvenlik</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-os-key"><i class="fa-brands fa-linux text-green"></i> OS:</span> <span class="neofetch-val">GNU/Linux</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-shell-key"><i class="fa-solid fa-microchip text-pink"></i> Shell:</span> <span class="neofetch-val">bash / zsh</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-focus-key"><i class="fa-solid fa-bullseye text-yellow"></i> Odak:</span> <span class="neofetch-val" data-i18n="neofetch-focus-val">Algoritmalar, Sistem Programlama, OOP</span></p>
-                            <p><span class="neofetch-key" data-i18n="neofetch-target-key"><i class="fa-solid fa-rocket text-cyan"></i> Hedef:</span> <span class="neofetch-val" data-i18n="neofetch-target-val">Güvenli ve yüksek performanslı sistemler tasarlamak</span></p>
-                            <div class="color-blocks">
-                                <span class="block bg-black"></span>
-                                <span class="block bg-red"></span>
-                                <span class="block bg-green"></span>
-                                <span class="block bg-yellow"></span>
-                                <span class="block bg-blue"></span>
-                                <span class="block bg-magenta"></span>
-                                <span class="block bg-cyan"></span>
-                                <span class="block bg-white"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Parallax subtle interaction for background orbs with cursor
+            let mouseTargetX = 0;
+            let mouseTargetY = 0;
+            let currentX = 0;
+            let currentY = 0;
+            const orbs = document.querySelectorAll('.liquid-orb');
 
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="about-sec-title"><i class="fa-solid fa-circle-info text-cyan"></i> Hakkımda</h2>
-            <div class="about-grid">
-                <div class="about-card glass">
-                    <h3 data-i18n="about-phil-title"><i class="fa-solid fa-brain text-cyan"></i> Felsefem</h3>
-                    <p data-i18n="about-phil-text">Yazılım geliştirmeyi sadece kod yazmak olarak değil, sistemlerin çalışma mantığını kavrayarak en düşük seviyede optimize ve güvenli çözümler üretmek olarak görüyorum. C ve C++ ile sistem geliştirirken gösterdiğim özeni, yüksek seviyeli dillerde mimari tasarlarken de koruyorum.</p>
-                </div>
-                <div class="about-card glass">
-                    <h3 data-i18n="about-int-title"><i class="fa-solid fa-shield-halved text-purple"></i> İlgi Alanlarım</h3>
-                    <p data-i18n="about-int-text">İşletim sistemleri, ağ protokolleri, tersine mühendislik ve siber güvenlik ana ilgi alanlarımdır. Geliştirdiğim projelerde güvenlik ve performansı her zaman birinci öncelik olarak ele alıyorum.</p>
-                </div> 
-            </div>
-        </div>
-    </section>
+            window.addEventListener('mousemove', (e) => {
+                mouseTargetX = (e.clientX / window.innerWidth - 0.5) * 40;
+                mouseTargetY = (e.clientY / window.innerHeight - 0.5) * 40;
+            });
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="skills-sec-title"><i class="fa-solid fa-sliders text-purple"></i> Yetenekler & Teknolojiler</h2>
-            <div class="skills-grid">
-                <div class="skills-category glass">
-                    <h3 data-i18n="skills-cat1"><span class="skill-dot bg-red"></span> Diller & Sistem</h3>
-                    <ul class="skill-list">
-                        <li><i class="fa-solid fa-code text-red"></i> <span>C / C++</span></li>
-                        <li><i class="fa-brands fa-python text-blue"></i> <span>Python</span></li>
-                        <li><i class="fa-brands fa-java text-orange"></i> <span>Java</span></li>
-                        <li><i class="fa-solid fa-hashtag text-purple"></i> <span>C#</span></li>
-                        <li><i class="fa-solid fa-hashtag text-pink"></i> <span>SQL</span></li>
-                    </ul>
-                </div>
-                <div class="skills-category glass">
-                    <h3 data-i18n="skills-cat2"><span class="skill-dot bg-green"></span> Araçlar & Ortam</h3>
-                    <ul class="skill-list">
-                        <li><i class="fa-brands fa-linux text-green"></i> <span>Linux</span></li>
-                        <li><i class="fa-brands fa-git-alt text-orange"></i> <span>Git / GitHub</span></li>
-                        <li><i class="fa-solid fa-terminal text-cyan"></i> <span>Bash / Zsh Scripting</span></li>
-                        <li><i class="fa-solid fa-keyboard text-purple"></i> <span>Neovim / Vim</span></li>
-                    </ul>
-                </div>
-                <div class="skills-category glass">
-                    <h3 data-i18n="skills-cat3"><span class="skill-dot bg-cyan"></span> Mimari & Güvenlik</h3>
-                    <ul class="skill-list">
-                        <li><i class="fa-solid fa-shield-cat text-cyan"></i> <span data-i18n="skills-item-sec">Siber Güvenlik & OSINT</span></li>
-                        <li><i class="fa-solid fa-diagram-project text-purple"></i> <span data-i18n="skills-item-oop">OOP (Nesne Yönelimli)</span></li>
-                        <li><i class="fa-solid fa-chart-line text-pink"></i> <span data-i18n="skills-item-algo">Algoritmalar & Veri Yapıları</span></li>
-                        <li><i class="fa-solid fa-network-wired text-yellow"></i> <span data-i18n="skills-item-net">Ağ Protokolleri & Sniffing</span></li>
-                        <li><i class="fa-solid fa-database text-blue"></i> <span data-i18n="skills-item-db">Veritabanı Yönetimi</span></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="skills-badge-container">
-                <img src="https://skillicons.dev/icons?i=c,cpp,python,java,cs,linux,git,bash,neovim,mysql,godot&theme=dark" alt="Yetenek İkonları" class="skills-badges">
-            </div>
-        </div>
-    </section>
+            function renderOrbSpring() {
+                currentX += (mouseTargetX - currentX) * 0.05;
+                currentY += (mouseTargetY - currentY) * 0.05;
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title" data-i18n="projects-sec-title"><i class="fa-solid fa-box-open text-pink"></i> Projelerim</h2>
-            
-            <!-- Filters -->
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all" data-i18n="filter-all">Tümü</button>
-                <button class="filter-btn" data-filter="c" data-i18n="filter-c">C / C++</button>
-                <button class="filter-btn" data-filter="java" data-i18n="filter-java">Java</button>
-                <button class="filter-btn" data-filter="security" data-i18n="filter-security">Siber Güvenlik</button>
-                <button class="filter-btn" data-filter="other" data-i18n="filter-other">Diğer</button>
-            </div>
+                orbs.forEach((orb, idx) => {
+                    const factor = (idx + 1) * 0.35;
+                    orb.style.transform = `translate(${currentX * factor}px, ${currentY * factor}px)`;
+                });
+                requestAnimationFrame(renderOrbSpring);
+            }
+            renderOrbSpring();
+        });
 
-            <!-- Grid -->
-            <div class="projects-grid" id="projectsGrid">
-                
-                <!-- Pi-Cracker -->
-                <div class="project-card glass" data-tags="c security">
-                    <div class="project-header">
-                        <i class="fa-solid fa-key project-icon text-red"></i>
-                        <span class="project-tag-badge">C / Bash</span>
-                    </div>
-                    <h3>Pi-Cracker</h3>
-                    <p data-i18n="proj-pi-desc">Pi sayısının basamaklarını kullanarak şifre analizi ve kırma denemesi yapan, OSINT hibrit saldırılarını destekleyen gelişmiş bir sızma testi aracı.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>Bash</span>
-                        <span>Security</span>
-                        <span>OSINT</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
+        // 2. Project Filtering with Smooth Spring Visibility
+        function filterProjects(category, btnElement) {
+            // Update active state on filter pills
+            const filterBtns = document.querySelectorAll('.filter-pill');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
 
-                <!-- C-ryptFile -->
-                <div class="project-card glass" data-tags="c security">
-                    <div class="project-header">
-                        <i class="fa-solid fa-file-shield project-icon text-cyan"></i>
-                        <span class="project-tag-badge">C</span>
-                    </div>
-                    <h3>C-ryptFile</h3>
-                    <p data-i18n="proj-crypt-desc">Huffman kodlaması algoritmasını kullanarak dosyaları güvenli bir şekilde şifrelemek ve aynı anda sıkıştırmak için tasarlanmış terminal uygulaması.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>Cryptography</span>
-                        <span>Huffman</span>
-                        <span>CLI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
+            const cards = document.querySelectorAll('.project-glass-card');
+            cards.forEach(card => {
+                const cardCategories = card.getAttribute('data-category') || '';
+                if (category === 'all' || cardCategories.includes(category)) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95) translateY(10px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1) translateY(0)';
+                    }, 20);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
-                <!-- LidarRansac-C -->
-                <div class="project-card glass" data-tags="c">
-                    <div class="project-header">
-                        <i class="fa-solid fa-satellite-dish project-icon text-green"></i>
-                        <span class="project-tag-badge">C</span>
-                    </div>
-                    <h3>LidarRansac-C</h3>
-                    <p data-i18n="proj-lidar-desc">LIDAR nokta bulutu verilerinden 2D doğru tespiti gerçekleştirmek üzere C diliyle sıfırdan yazılmış kararlı ve performanslı RANSAC algoritması.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>RANSAC</span>
-                        <span>LIDAR</span>
-                        <span>Algorithms</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
+        // 3. Tactile Copy to Clipboard with Toast Notification
+        function copyEmailToClipboard() {
+            const email = 'emirberasoguk@proton.me';
+            navigator.clipboard.writeText(email).then(() => {
+                showToast('E-posta panoya kopyalandı: ' + email);
+                const copyLabels = document.querySelectorAll('#copyLabel');
+                copyLabels.forEach(label => {
+                    const originalText = label.textContent;
+                    label.textContent = 'Kopyalandı!';
+                    label.style.background = 'rgba(16, 185, 129, 0.3)';
+                    setTimeout(() => {
+                        label.textContent = originalText;
+                        label.style.background = '';
+                    }, 2000);
+                });
+            }).catch(() => {
+                // Fallback mailto
+                window.location.href = 'mailto:' + email;
+            });
+        }
 
-                <!-- The Last Garage -->
-                <div class="project-card glass" data-tags="java">
-                    <div class="project-header">
-                        <i class="fa-solid fa-chess-rook project-icon text-orange"></i>
-                        <span class="project-tag-badge">Java</span>
-                    </div>
-                    <h3>The Last Garage</h3>
-                    <p>Windows, Linux, macOS ve Android platformlarında sorunsuz çalışan, zombi kıyameti sonrası temalı stratejik kule savunma (Tower Defense) oyunu.</p>
-                    <div class="project-tags">
-                        <span>Java</span>
-                        <span>LibGDX</span>
-                        <span>OOP</span>
-                        <span>Game Dev</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
+        function showToast(message) {
+            const toast = document.getElementById('glassToast');
+            const toastMsg = document.getElementById('toastMessage');
+            if (!toast || !toastMsg) return;
 
-                <!-- Citation Graph Visualizer -->
-                <div class="project-card glass" data-tags="java">
-                    <div class="project-header">
-                        <i class="fa-solid fa-circle-nodes project-icon text-pink"></i>
-                        <span class="project-tag-badge">Java</span>
-                    </div>
-                    <h3>Citation Graph Visualizer</h3>
-                    <p>Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz eden ve JavaFX arayüzü ile görselleştiren masaüstü uygulaması.</p>
-                    <div class="project-tags">
-                        <span>JavaFX</span>
-                        <span>Graph Theory</span>
-                        <span>Data Viz</span>
-                        <span>OOP</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank"><i class="fa-brands fa-github"></i> İncele</a>
-                    </div>
-                </div>
+            toastMsg.textContent = message;
+            toast.classList.add('show');
 
-                <!-- MiniNotepad (me-tor) -->
-                <div class="project-card glass" data-tags="other">
-                    <div class="project-header">
-                        <i class="fa-solid fa-pen-to-square project-icon text-yellow"></i>
-                        <span class="project-tag-badge">C# / Terminal</span>
-                    </div>
-                    <h3>me-tor (MiniNotepad)</h3>
-                    <p data-i18n="proj-metor-desc">.NET 10 ile geliştirilen, çok seviyeli geri alma/yineleme operasyonları için özel LIFO yığıtı mimarisine sahip VIM benzeri interaktif terminal editörü.</p>
-                    <div class="project-tags">
-                        <span>C#</span>
-                        <span>.NET 10</span>
-                        <span>CLI</span>
-                        <span>LIFO Stack</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
+            clearTimeout(window.__toastTimeout);
+            window.__toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3200);
+        }
 
-                <!-- ghelper-linux -->
-                <div class="project-card glass" data-tags="c">
-                    <div class="project-header">
-                        <i class="fa-solid fa-fan project-icon text-cyan"></i>
-                        <span class="project-tag-badge">C / Linux</span>
-                    </div>
-                    <h3>ghelper-linux</h3>
-                    <p data-i18n="proj-ghelper-desc">Linux işletim sistemi için geliştirilmiş, sistem durumunu ve donanım bilgilerini hem CLI hem de GUI (GTK/X11) üzerinden sunan C tabanlı sistem yardımcısı.</p>
-                    <div class="project-tags">
-                        <span>C</span>
-                        <span>Linux</span>
-                        <span>sysfs</span>
-                        <span>Hardware Control</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
-
-                <!-- InstaVault -->
-                <div class="project-card glass" data-tags="security other">
-                    <div class="project-header">
-                        <i class="fa-solid fa-vault project-icon text-purple"></i>
-                        <span class="project-tag-badge">Python / Security</span>
-                    </div>
-                    <h3>InstaVault</h3>
-                    <p data-i18n="proj-instavault-desc">Meta arşivlerini (HTML) yerelde toplayan, işleyen ve içerik tüketim analitiği, takipçi hareketleri ve gizlilik içgörüleri sunan yerel veri kasası.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Privacy</span>
-                        <span>Security</span>
-                        <span>Analytics</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/InstaVault" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
-                
-                <!-- VTYS Final Simülatörü -->
-                <div class="project-card glass" data-tags="other">
-                    <div class="project-header">
-                        <i class="fa-solid fa-database project-icon text-blue"></i>
-                        <span class="project-tag-badge">Python / SQL</span>
-                    </div>
-                    <h3>VTYS Final Simülatörü</h3>
-                    <p data-i18n="proj-vtys-desc">Veritabanı Yönetim Sistemleri (VTYS) dersi final sınavı için geliştirilmiş; interaktif SQL sorgu denemeleri, BCNF ayrıştırması ve dış bellek sıralama maliyeti hesaplama gibi modülleri barındıran Python tabanlı CLI simülatörü.</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>SQLite</span>
-                        <span>Normalizasyon</span>
-                        <span>CLI</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank"><i class="fa-brands fa-github"></i> <span data-i18n="proj-inspect">İncele</span></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Terminal Section -->
-    <section id="terminal" class="section terminal-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-terminal text-green"></i> Etkileşimli Terminal Konsolu</h2>
-            <p class="section-subtitle">Aşağıdaki terminali kullanarak projelerimi ve yeteneklerimi sorgulayabilirsin. Terminal estetiğiyle dizayn edilmiştir.</p>
-            
-            <div class="interactive-terminal glass">
-                <div class="terminal-bar">
-                    <div class="terminal-buttons">
-                        <span class="term-dot close"></span>
-                        <span class="term-dot minimize"></span>
-                        <span class="term-dot maximize"></span>
-                    </div>
-                    <div class="terminal-header-title">emir@linux-desktop: ~/portfolio</div>
-                </div>
-                <div class="terminal-screen" id="terminalScreen">
-                    <div class="terminal-output">
-                        <span class="term-welcome">Terminal Emulator v1.0.0'a hoş geldiniz.</span>
-                        <div class="terminal-output-block">
-                            <div class="terminal-input-echo"><span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span> <span class="text-main">help</span></div>
-                            <div class="term-response" id="initialHelpOutput">
-                                <!-- Will be loaded dynamically for i18n support -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="terminal-input-line">
-                        <span class="terminal-prompt">emir@linux-terminal <span class="logo-tilde">~</span> ></span>
-                        <input type="text" id="terminalInput" autofocus autocomplete="off" spellcheck="false">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-envelope text-yellow"></i> İletişim</h2>
-            <div class="contact-wrapper">
-                <div class="contact-info glass">
-                    <h3>Bağlantıda Kalalım</h3>
-                    <p>Projelerim hakkında konuşmak, iş birliği yapmak veya sadece yazılım dünyasından sohbet etmek isterseniz benimle iletişime geçebilirsiniz.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fa-solid fa-envelope text-cyan"></i>
-                            <span>emirberasoguk@proton.me</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-phone text-yellow"></i>
-                            <a href="tel:+905423774330">+90 542 377 43 30</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-brands fa-linkedin text-purple"></i>
-                            <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank">linkedin.com/in/emir-bera-soguk</a>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-brands fa-github text-green"></i>
-                            <a href="https://github.com/emirberasoguk" target="_blank">github.com/emirberasoguk</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-action-container glass">
-                    <h3>Hızlı İletişim</h3>
-                    <p>Form doldurmak yerine e-posta adresimi doğrudan kopyalayabilir veya e-posta istemcinizi açarak bana yazabilirsiniz.</p>
-                    <div class="email-copy-card">
-                        <span id="emailAddress">emirberasoguk@proton.me</span>
-                        <button id="copyEmailBtn" class="copy-btn" title="E-postayı Kopyala">
-                            <i class="fa-regular fa-copy"></i> Kopyala
-                        </button>
-                    </div>
-                    <a href="mailto:emirberasoguk@proton.me" class="btn btn-primary btn-block"><i class="fa-solid fa-envelope-open-text"></i> E-Posta Gönder</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
-            <p class="footer-meta">Built with <i class="fa-solid fa-heart text-red"></i> on Linux</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+        // 4. Subtle Tactile Audio-less Click Vibration (if Web Vibration API supported)
+        document.querySelectorAll('.touch-pill, .cv-download-btn, .filter-pill, .retro-switch-btn').forEach(el => {
+            el.addEventListener('click', () => {
+                if (navigator.vibrate) {
+                    navigator.vibrate(12);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
