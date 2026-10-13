@@ -222,6 +222,45 @@
             gap: 16px;
         }
 
+        .strip-controls-cluster {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-switcher-menu {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            background: var(--bh-cream);
+            padding: 2px 4px;
+            border: var(--border-light);
+            box-shadow: 1px 1px 0 var(--bh-black);
+        }
+
+        .lang-btn {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 6px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--bh-black);
+            cursor: pointer;
+            transition: var(--transition-tactile);
+            line-height: 1;
+        }
+
+        .lang-btn.active {
+            background: var(--bh-black);
+            color: var(--bh-white);
+            border-color: var(--bh-black);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--bh-yellow);
+        }
+
         .strip-nav-wrapper {
             display: flex;
             align-items: center;
@@ -1286,24 +1325,30 @@
                 align-items: center;
                 justify-content: space-between;
                 width: 100%;
-                gap: 8px;
+                gap: 6px;
             }
-            .brand-bauhaus {
-                font-size: 0.95rem;
-                gap: 8px;
+            .strip-controls-cluster {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                flex-shrink: 0;
             }
-            .brand-composition {
-                transform: scale(0.85);
-                transform-origin: left center;
+            .lang-switcher-menu {
+                padding: 2px 3px;
+                gap: 2px;
+            }
+            .lang-btn {
+                padding: 3px 5px;
+                font-size: 0.68rem;
             }
             .style-switcher-menu {
-                padding: 2px 4px;
-                gap: 4px;
+                padding: 2px 3px;
+                gap: 3px;
                 margin-left: 0;
             }
             .style-choice-btn {
-                padding: 4px 8px;
-                font-size: 0.72rem;
+                padding: 3px 6px;
+                font-size: 0.68rem;
             }
             .strip-nav-wrapper {
                 width: 100%;
@@ -1552,23 +1597,32 @@
                         <div class="brand-shape-triangle"></div>
                         <div class="brand-shape-square"></div>
                     </div>
-                    <span>EMİR BERA SOĞUK</span>
+                    <span data-i18n="brand_title">EMİR BERA SOĞUK</span>
                 </a>
 
-                <!-- Theme / Style Switcher Hub -->
-                <div class="style-switcher-menu" title="Arayüz temasını değiştir">
-                    <a href="index.html" class="style-choice-btn active" title="Geometrik Tema">Geometrik</a>
-                    <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Cam Tema">Cam</a>
+                <div class="strip-controls-cluster">
+                    <!-- Language Selector Hub (TR / EN / ES) -->
+                    <div class="lang-switcher-menu" role="group" aria-label="Dil / Language / Idioma">
+                        <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')" title="Türkçe">TR</button>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English">EN</button>
+                        <button class="lang-btn" data-lang="es" onclick="setLanguage('es')" title="Español">ES</button>
+                    </div>
+
+                    <!-- Theme / Style Switcher Hub -->
+                    <div class="style-switcher-menu" title="Arayüz temasını değiştir">
+                        <a href="index.html" class="style-choice-btn active" title="Geometrik Tema" data-i18n="theme_geo">Geometrik</a>
+                        <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Cam Tema" data-i18n="theme_glass">Cam</a>
+                    </div>
                 </div>
             </div>
 
             <nav class="strip-nav-wrapper" aria-label="Ana Gezinti">
                 <ul class="nav-links-bauhaus">
-                    <li><a href="#projects" class="nav-item-btn">Projeler</a></li>
-                    <li><a href="#cv" class="nav-item-btn">Özgeçmiş</a></li>
-                    <li><a href="#skills" class="nav-item-btn">Yetkinlikler</a></li>
-                    <li><a href="#about" class="nav-item-btn">Hakkımda</a></li>
-                    <li><a href="#contact" class="nav-item-btn">İletişim</a></li>
+                    <li><a href="#projects" class="nav-item-btn" data-i18n="nav_projects">Projeler</a></li>
+                    <li><a href="#cv" class="nav-item-btn" data-i18n="nav_cv">Özgeçmiş</a></li>
+                    <li><a href="#skills" class="nav-item-btn" data-i18n="nav_skills">Yetkinlikler</a></li>
+                    <li><a href="#about" class="nav-item-btn" data-i18n="nav_about">Hakkımda</a></li>
+                    <li><a href="#contact" class="nav-item-btn" data-i18n="nav_contact">İletişim</a></li>
                 </ul>
             </nav>
         </div>
@@ -1582,23 +1636,19 @@
             <div class="hero-poster-block">
                 <div class="hero-tagline-capsule">
                     <i class="fa-solid fa-terminal"></i>
-                    <span>Bilgisayar Mühendisliği & Siber Güvenlik</span>
+                    <span data-i18n="hero_tagline">Bilgisayar Mühendisliği & Siber Güvenlik</span>
                 </div>
 
                 <h1 class="hero-title-giant">
-                    Emir Bera <br>
-                    <span class="accent-blue">Soğuk</span>
+                    <span data-i18n="hero_greeting">Merhaba, Ben</span> <br>
+                    <span class="accent-blue">Emir Bera Soğuk</span>
                 </h1>
 
-                <div class="hero-subrole">
-                    <span>Sistem Programlama</span>
-                    <span class="bullet">•</span>
-                    <span>Sızma Testi & Red Team</span>
-                    <span class="bullet">•</span>
-                    <span>C & Linux</span>
+                <div class="hero-subrole" data-i18n="hero_role_typing">
+                    Sistem Programlama • Sızma Testi & Red Team • C & Linux
                 </div>
 
-                <p class="hero-manifesto">
+                <p class="hero-manifesto" data-i18n="hero_manifesto">
                     Kocaeli Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. C, C++ ve Linux ortamında düşük seviyeli sistem araçları, parola deneme yazılımları ve sızma testi araçları geliştiriyorum. İşin donanıma ve işletim sistemine temas eden kısmıyla ilgileniyorum.
                 </p>
 
@@ -1611,7 +1661,7 @@
 
                     <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-blue" title="Doğrudan CV İndir">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
-                        <span>CV'yi İndir</span>
+                        <span data-i18n="btn_download_cv">CV'yi İndir</span>
                     </a>
 
                     <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="GitHub">
@@ -1629,27 +1679,27 @@
             <!-- Asymmetrical Bauhaus Aside Composition -->
             <div class="hero-aside-composition">
                 <div class="aside-geo-card">
-                    <div class="aside-geo-title">Mühendislik Metrikleri</div>
-                    <p style="font-size: 0.95rem; opacity: 0.9;">
+                    <div class="aside-geo-title" data-i18n="aside_metrics_title">Mühendislik Metrikleri</div>
+                    <p style="font-size: 0.95rem; opacity: 0.9;" data-i18n="aside_metrics_desc">
                         Kocaeli Üniversitesi Bilgisayar Mühendisliği & Red Team Güvenlik Araştırmaları.
                     </p>
 
                     <div class="aside-stats-grid">
                         <div class="stat-box-bh">
                             <div class="stat-number">10+</div>
-                            <div class="stat-label">Açık Kaynak Proje</div>
+                            <div class="stat-label" data-i18n="metric_projects">Açık Kaynak Proje</div>
                         </div>
                         <div class="stat-box-bh">
                             <div class="stat-number">C / C++</div>
-                            <div class="stat-label">Sistem & Araçlar</div>
+                            <div class="stat-label" data-i18n="metric_lang">Sistem & Araçlar</div>
                         </div>
                         <div class="stat-box-bh">
                             <div class="stat-number">Linux</div>
-                            <div class="stat-label">sysfs & Çekirdek API</div>
+                            <div class="stat-label" data-i18n="metric_kernel">sysfs & Çekirdek API</div>
                         </div>
                         <div class="stat-box-bh">
                             <div class="stat-number">KOUBK</div>
-                            <div class="stat-label">Başkan Yardımcısı</div>
+                            <div class="stat-label" data-i18n="metric_role">Başkan Yardımcısı</div>
                         </div>
                     </div>
 
@@ -1659,9 +1709,9 @@
                 <div class="aside-quote-box">
                     <div class="aside-quote-title">
                         <i class="fa-solid fa-shield-halved"></i>
-                        <span>Pratik & Staj Deneyimi</span>
+                        <span data-i18n="aside_quote_title">Pratik & Staj Deneyimi</span>
                     </div>
-                    <p class="aside-quote-text">
+                    <p class="aside-quote-text" data-i18n="aside_quote_text">
                         Nesil Teknoloji ve SiberTim'de sızma testi stajları yaptım; Kocaeli Üniversitesi Bilgisayar Kulübü'nde (KOUBK) başkan yardımcılığı yürütüyorum.
                     </p>
                 </div>
@@ -1676,9 +1726,9 @@
                 </div>
 
                 <div class="cv-text-block">
-                    <div class="cv-tag">Doğrulanmış Belge • PDF (386 KB)</div>
-                    <h2 class="cv-main-head">Emir Bera Soğuk — Curriculum Vitae</h2>
-                    <p class="cv-subline">
+                    <div class="cv-tag" data-i18n="cv_verified_tag">Doğrulanmış Belge • PDF (386 KB)</div>
+                    <h2 class="cv-main-head" data-i18n="cv_main_title">Emir Bera Soğuk — Curriculum Vitae</h2>
+                    <p class="cv-subline" data-i18n="cv_subtitle">
                         Teknik deneyimlerimi, projelerimi, üniversite sürecimi ve siber güvenlik sertifikasyonlarımı içeren güncel özgeçmiş dosyam.
                     </p>
                 </div>
@@ -1686,11 +1736,11 @@
                 <div class="cv-cta-actions">
                     <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-primary" style="transform: none;" title="CV Dosyasını İndir">
                         <i class="fa-solid fa-download"></i>
-                        <span>CV'yi İndir (PDF)</span>
+                        <span data-i18n="btn_download_cv">CV'yi İndir (PDF)</span>
                     </a>
                     <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="Yeni Sekmede Aç">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span>Önizle / Aç</span>
+                        <span data-i18n="btn_preview_cv">Önizle / Aç</span>
                     </a>
                 </div>
             </div>
@@ -1702,22 +1752,22 @@
                 <div class="bh-section-title-wrap">
                     <span class="bh-section-num">01</span>
                     <div>
-                        <h2 class="bh-section-title">Öne Çıkan Projelerim</h2>
-                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                        <h2 class="bh-section-title" data-i18n="projects_section_title">Öne Çıkan Projelerim</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;" data-i18n="projects_section_desc">
                             Linux, C/C++, sistem araçları ve güvenlik üzerine geliştirdiğim açık kaynaklı çalışmalar.
                         </p>
                     </div>
                 </div>
-                <div class="bh-section-badge">10 Proje Listelendi</div>
+                <div class="bh-section-badge" data-i18n="projects_badge">10 Proje Listelendi</div>
             </div>
 
-            <!-- Interactive Bauhaus Filter Buttons -->
+            <!-- Interactive Filter Buttons -->
             <div class="projects-filter-bar" role="tablist">
-                <button class="bh-filter-btn active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
-                <button class="bh-filter-btn" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
-                <button class="bh-filter-btn" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
-                <button class="bh-filter-btn" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
-                <button class="bh-filter-btn" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
+                <button class="bh-filter-btn active" data-filter="all" onclick="filterProjects('all', this)" data-i18n="filter_all">Tümü (10)</button>
+                <button class="bh-filter-btn" data-filter="c" onclick="filterProjects('c', this)" data-i18n="filter_c">C / C++ & Sistem</button>
+                <button class="bh-filter-btn" data-filter="security" onclick="filterProjects('security', this)" data-i18n="filter_sec">Siber Güvenlik</button>
+                <button class="bh-filter-btn" data-filter="java" onclick="filterProjects('java', this)" data-i18n="filter_java">Java / OOP</button>
+                <button class="bh-filter-btn" data-filter="tools" onclick="filterProjects('tools', this)" data-i18n="filter_tools">CLI & Araçlar</button>
             </div>
 
             <!-- 10 Bauhaus Geometric Project Cards -->
@@ -1727,12 +1777,12 @@
                 <article class="bh-card theme-yellow" data-category="c security" data-name="pi-cracker">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">C / Bash • Güvenlik</span>
+                            <span class="bh-card-badge" data-i18n="p1_badge">C / Bash • Güvenlik</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-key"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">Pi-Cracker</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p1_title">Pi-Cracker</h3>
+                            <p class="bh-card-desc" data-i18n="p1_desc">
                                 Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1746,7 +1796,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1756,12 +1806,12 @@
                 <article class="bh-card theme-blue" data-category="c tools" data-name="ghelper-linux">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">C / Linux sysfs</span>
+                            <span class="bh-card-badge" data-i18n="p2_badge">C / Linux sysfs</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-fan"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">ghelper-linux</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p2_title">ghelper-linux</h3>
+                            <p class="bh-card-desc" data-i18n="p2_desc">
                                 Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1774,7 +1824,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1784,12 +1834,12 @@
                 <article class="bh-card" data-category="tools" data-name="me-tor">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">C# / .NET 10</span>
+                            <span class="bh-card-badge" data-i18n="p3_badge">C# / .NET 10</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">me-tor (MiniNotepad)</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p3_title">me-tor (MiniNotepad)</h3>
+                            <p class="bh-card-desc" data-i18n="p3_desc">
                                 .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1803,7 +1853,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1813,12 +1863,12 @@
                 <article class="bh-card theme-yellow" data-category="security tools" data-name="instavault">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">Python / Gizlilik</span>
+                            <span class="bh-card-badge" data-i18n="p4_badge">Python / Gizlilik</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-vault"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">InstaVault</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p4_title">InstaVault</h3>
+                            <p class="bh-card-desc" data-i18n="p4_desc">
                                 Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1831,7 +1881,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1841,12 +1891,12 @@
                 <article class="bh-card" data-category="tools" data-name="vtys-sim">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">Python / SQL</span>
+                            <span class="bh-card-badge" data-i18n="p5_badge">Python / SQL</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-database"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">VTYS Simülatörü</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p5_title">VTYS Simülatörü</h3>
+                            <p class="bh-card-desc" data-i18n="p5_desc">
                                 İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1859,7 +1909,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1869,12 +1919,12 @@
                 <article class="bh-card theme-blue" data-category="c security" data-name="cryptfile">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">C • Kripto & Sıkıştırma</span>
+                            <span class="bh-card-badge" data-i18n="p6_badge">C • Kripto & Sıkıştırma</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-file-shield"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">C-ryptFile</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p6_title">C-ryptFile</h3>
+                            <p class="bh-card-desc" data-i18n="p6_desc">
                                 Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1887,7 +1937,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1897,12 +1947,12 @@
                 <article class="bh-card" data-category="c" data-name="lidarransac">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">C • Geometri Algoritmaları</span>
+                            <span class="bh-card-badge" data-i18n="p7_badge">C • Geometri Algoritmaları</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">LidarRansac-C</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p7_title">LidarRansac-C</h3>
+                            <p class="bh-card-desc" data-i18n="p7_desc">
                                 2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1915,7 +1965,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1925,12 +1975,12 @@
                 <article class="bh-card theme-yellow" data-category="java" data-name="thelastgarage">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">Java / LibGDX</span>
+                            <span class="bh-card-badge" data-i18n="p8_badge">Java / LibGDX</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-chess-rook"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">TheLastGarage</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p8_title">TheLastGarage</h3>
+                            <p class="bh-card-desc" data-i18n="p8_desc">
                                 LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1943,7 +1993,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1953,12 +2003,12 @@
                 <article class="bh-card" data-category="java" data-name="citationgraph">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">Java / JavaFX</span>
+                            <span class="bh-card-badge" data-i18n="p9_badge">Java / JavaFX</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-circle-nodes"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">Citation Graph Visualizer</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p9_title">Citation Graph Visualizer</h3>
+                            <p class="bh-card-desc" data-i18n="p9_desc">
                                 Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
                             </p>
                             <div class="bh-tag-cluster">
@@ -1971,7 +2021,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -1981,12 +2031,12 @@
                 <article class="bh-card theme-blue" data-category="tools" data-name="dotfiles">
                     <div>
                         <div class="bh-card-header">
-                            <span class="bh-card-badge">Linux • Hyprland</span>
+                            <span class="bh-card-badge" data-i18n="p10_badge">Linux • Hyprland</span>
                             <div class="bh-card-icon"><i class="fa-solid fa-sliders"></i></div>
                         </div>
                         <div class="bh-card-body">
-                            <h3 class="bh-card-title">dotfiles</h3>
-                            <p class="bh-card-desc">
+                            <h3 class="bh-card-title" data-i18n="p10_title">dotfiles</h3>
+                            <p class="bh-card-desc" data-i18n="p10_desc">
                                 Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
                             </p>
                             <div class="bh-tag-cluster">
@@ -2000,7 +2050,7 @@
                     </div>
                     <div class="bh-card-footer">
                         <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
-                            <span>GitHub'da İncele</span>
+                            <span data-i18n="btn_inspect_github">GitHub'da İncele</span>
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
                     </div>
@@ -2015,13 +2065,13 @@
                 <div class="bh-section-title-wrap">
                     <span class="bh-section-num">02</span>
                     <div>
-                        <h2 class="bh-section-title">Teknoloji & Yetkinlikler</h2>
-                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                        <h2 class="bh-section-title" data-i18n="skills_section_title">Teknoloji & Yetkinlikler</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;" data-i18n="skills_section_desc">
                             Aktif olarak kod geliştirdiğim programlama dilleri, kütüphaneler ve sistem araçları.
                         </p>
                     </div>
                 </div>
-                <div class="bh-section-badge">Mühendislik Altyapısı</div>
+                <div class="bh-section-badge" data-i18n="skills_badge">Mühendislik Altyapısı</div>
             </div>
 
             <div class="skills-bauhaus-grid">
@@ -2029,7 +2079,7 @@
                 <div class="skill-pillar">
                     <div class="pillar-header blue">
                         <span class="bh-card-badge">01 // KATMAN</span>
-                        <h3 class="pillar-title">Sistem & Programlama</h3>
+                        <h3 class="pillar-title" data-i18n="skill_col1_title">Sistem & Programlama</h3>
                     </div>
                     <div class="pillar-body">
                         <div class="skill-item-block">
@@ -2063,7 +2113,7 @@
                 <div class="skill-pillar">
                     <div class="pillar-header yellow">
                         <span class="bh-card-badge">02 // KATMAN</span>
-                        <h3 class="pillar-title">Güvenlik & Algoritmalar</h3>
+                        <h3 class="pillar-title" data-i18n="skill_col2_title">Güvenlik & Algoritmalar</h3>
                     </div>
                     <div class="pillar-body">
                         <div class="skill-item-block">
@@ -2097,7 +2147,7 @@
                 <div class="skill-pillar">
                     <div class="pillar-header white">
                         <span class="bh-card-badge">03 // KATMAN</span>
-                        <h3 class="pillar-title">Ortam & Araçlar</h3>
+                        <h3 class="pillar-title" data-i18n="skill_col3_title">Ortam & Araçlar</h3>
                     </div>
                     <div class="pillar-body">
                         <div class="skill-item-block">
@@ -2135,28 +2185,28 @@
                 <div class="bh-section-title-wrap">
                     <span class="bh-section-num">03</span>
                     <div>
-                        <h2 class="bh-section-title">Hakkımda & Odaklandığım Alanlar</h2>
-                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                        <h2 class="bh-section-title" data-i18n="about_section_title">Hakkımda & Odaklandığım Alanlar</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;" data-i18n="about_section_desc">
                             Sistem programlama ve siber güvenlik tarafındaki pratik çalışmalarım.
                         </p>
                     </div>
                 </div>
-                <div class="bh-section-badge">Deneyim</div>
+                <div class="bh-section-badge" data-i18n="about_badge">Deneyim</div>
             </div>
 
             <div class="about-bauhaus-duo">
                 <div class="about-panel panel-left">
-                    <span class="about-panel-tag"><i class="fa-solid fa-terminal"></i> Sistem Programlama</span>
-                    <h3 class="about-panel-title">Düşük Seviye Sistem Araçları</h3>
-                    <p class="about-panel-p">
+                    <span class="about-panel-tag"><i class="fa-solid fa-terminal"></i> <span data-i18n="about_card1_tag">Sistem Programlama</span></span>
+                    <h3 class="about-panel-title" data-i18n="about_card1_title">Düşük Seviye Sistem Araçları</h3>
+                    <p class="about-panel-p" data-i18n="about_card1_desc">
                         C ve C++ ile çalışırken bellek yönetimi ve sistem çağrıları (sysfs, POSIX) üzerinde kod yazıyorum. Fan kontrolünden dosya sıkıştırma ve şifrelemeye kadar doğrudan işletim sistemi arayüzleriyle çalışan araçlar geliştiriyorum.
                     </p>
                 </div>
 
                 <div class="about-panel panel-right">
-                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> Güvenlik & Ağ</span>
-                    <h3 class="about-panel-title">Sızma Testi ve Zafiyet Analizi</h3>
-                    <p class="about-panel-p">
+                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="about_card2_tag">Güvenlik & Ağ</span></span>
+                    <h3 class="about-panel-title" data-i18n="about_card2_title">Sızma Testi ve Zafiyet Analizi</h3>
+                    <p class="about-panel-p" data-i18n="about_card2_desc">
                         SiberTim ve Nesil Teknoloji stajlarımda sızma testleri, kurumsal ağ keşfi, web zafiyet analizleri ve Wi-Fi güvenliği üzerine çalıştım. Yazdığım araçlarda girdi doğrulaması ve yetki sınırlarını baştan hesaba katıyorum.
                     </p>
                 </div>
@@ -2168,12 +2218,12 @@
             <div class="contact-bauhaus-poster">
                 <div class="contact-geo-circle" aria-hidden="true"></div>
 
-                <div class="cv-tag" style="background: var(--bh-black); margin-bottom: 14px;">04 // BAĞLANTI & İLETİŞİM</div>
-                <h2 class="contact-title-huge">
+                <div class="cv-tag" style="background: var(--bh-black); margin-bottom: 14px;" data-i18n="contact_badge">04 // BAĞLANTI & İLETİŞİM</div>
+                <h2 class="contact-title-huge" data-i18n="contact_title">
                     Birlikte Yeni Projeler <br>
                     İnşa Edelim.
                 </h2>
-                <p class="contact-lead">
+                <p class="contact-lead" data-i18n="contact_desc">
                     Sistem programlama, siber güvenlik, açık kaynak katkıları veya staj/iş olanakları için doğrudan iletişime geçebilirsiniz.
                 </p>
 
@@ -2208,13 +2258,13 @@
     <footer class="bauhaus-footer">
         <div class="footer-inner">
             <div>
-                <strong>EMİR BERA SOĞUK</strong> &bull; SİSTEM PROGRAMLAMA & SİBER GÜVENLİK
+                <strong data-i18n="footer_tag">EMİR BERA SOĞUK • SİSTEM PROGRAMLAMA & SİBER GÜVENLİK</strong>
             </div>
-            <div>
+            <div data-i18n="footer_copy">
                 &copy; 2026 TÜM HAKLARI SAKLIDIR.
             </div>
             <div>
-                <a href="#hero" style="border-bottom: 2px solid var(--bh-black);">BAŞA DÖN ↑</a>
+                <a href="#hero" style="border-bottom: 2px solid var(--bh-black);" data-i18n="footer_back_top">BAŞA DÖN ↑</a>
             </div>
         </div>
     </footer>
@@ -2234,6 +2284,9 @@
         <i class="fa-solid fa-circle-check" style="color: var(--bh-yellow);"></i>
         <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
     </div>
+
+    <!-- i18n Engine -->
+    <script src="i18n.js"></script>
 
     <!-- Interactive Scripts -->
     <script>

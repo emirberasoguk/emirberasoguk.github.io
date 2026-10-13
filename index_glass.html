@@ -298,6 +298,39 @@
             border-color: rgba(255, 255, 255, 0.15);
         }
 
+        /* Language Switcher in Glass Style */
+        .lang-switcher-menu {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-pill);
+            backdrop-filter: var(--glass-blur);
+        }
+        .lang-btn {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 7px;
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-pill);
+            color: rgba(255, 255, 255, 0.65);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .lang-btn:hover:not(.active) {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
         /* Top Switcher Button to Retro Terminal */
         .retro-switch-btn {
             display: inline-flex;
@@ -1412,18 +1445,23 @@
                 </a>
 
                 <ul class="nav-links">
-                    <li><a href="#projects" class="nav-link">Projeler</a></li>
-                    <li><a href="#cv" class="nav-link">Özgeçmiş (CV)</a></li>
-                    <li><a href="#skills" class="nav-link">Yetenekler</a></li>
-                    <li><a href="#about" class="nav-link">Hakkımda</a></li>
-                    <li><a href="#contact" class="nav-link">İletişim</a></li>
+                    <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Projeler</a></li>
+                    <li><a href="#cv" class="nav-link" data-i18n="nav_cv">Özgeçmiş</a></li>
+                    <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Yetkinlikler</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav_about">Hakkımda</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav_contact">İletişim</a></li>
                 </ul>
 
-                <!-- Switch to Bauhaus -->
+                <!-- Theme and Language Switcher -->
                 <div style="display: flex; gap: 8px; align-items: center;">
-                    <a href="index.html" class="retro-switch-btn" style="border-color: rgba(255, 208, 0, 0.45); color: #ffd000;" title="Bauhaus Tasarımına Geç">
+                    <div class="lang-switcher-menu" role="group" aria-label="Dil / Language / Idioma">
+                        <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')" title="Türkçe">TR</button>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')" title="English">EN</button>
+                        <button class="lang-btn" data-lang="es" onclick="setLanguage('es')" title="Español">ES</button>
+                    </div>
+                    <a href="index.html" class="retro-switch-btn" style="border-color: rgba(255, 208, 0, 0.45); color: #ffd000;" title="Geometrik Tasarıma Geç">
                         <i class="fa-solid fa-shapes"></i>
-                        <span class="label-full">Bauhaus</span>
+                        <span class="label-full" data-i18n="theme_geo">Geometrik</span>
                     </a>
                 </div>
             </nav>
@@ -1432,21 +1470,21 @@
         <!-- Hero Section -->
         <section class="hero-section" id="hero">
             <div class="ios-badge-pill">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Sistem Programlama ve Güvenlik Odaklı Portfolyo</span>
+                <i class="fa-solid fa-terminal"></i>
+                <span data-i18n="hero_tagline">Bilgisayar Mühendisliği & Siber Güvenlik</span>
             </div>
 
             <h1 class="hero-title">
-                Merhaba, Ben <br>
+                <span data-i18n="hero_greeting">Merhaba, Ben</span> <br>
                 <span class="liquid-gradient-text">Emir Bera Soğuk</span>
             </h1>
 
-            <div class="hero-role-typing">
-                <span class="highlight">Sistem Programlama</span> • Siber Güvenlik • Algoritma Mimarisi
+            <div class="hero-role-typing" data-i18n="hero_role_typing">
+                Sistem Programlama • Sızma Testi & Red Team • C & Linux
             </div>
 
-            <p class="hero-description">
-                C, C++ ve Linux tarafında düşük seviyeli sistem araçları, algoritmalar ve güvenlik yazılımları geliştiriyorum. İşin donanıma ve işletim sistemine yakın kısmıyla ilgilenmeyi seviyorum.
+            <p class="hero-description" data-i18n="hero_manifesto">
+                Kocaeli Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. C, C++ ve Linux ortamında düşük seviyeli sistem araçları, parola deneme yazılımları ve sızma testi araçları geliştiriyorum. İşin donanıma ve işletim sistemine temas eden kısmıyla ilgileniyorum.
             </p>
 
             <!-- Tactile Contact & Profile Pills -->
@@ -1488,11 +1526,11 @@
                 <div class="cv-action-buttons">
                     <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="cv-download-btn" id="cvDirectDownload" title="CV Dosyasını Doğrudan İndir">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
-                        <span>CV'yi İndir</span>
+                        <span data-i18n="btn_download_cv">CV'yi İndir</span>
                     </a>
                     <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-preview-link" title="Yeni Sekmede Önizle">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        <span>Önizle / Aç</span>
+                        <span data-i18n="btn_preview_cv">Önizle / Aç</span>
                     </a>
                 </div>
             </div>
@@ -1501,22 +1539,22 @@
         <!-- RECENT PROJECTS SHOWCASE -->
         <section id="projects" style="scroll-margin-top: 100px;">
             <div class="section-header-block">
-                <div class="section-badge-pill">
+                <div class="section-badge-pill" data-i18n="projects_badge">
                     <i class="fa-solid fa-code-fork"></i> Portfolyo
                 </div>
-                <h2 class="section-main-title">Öne Çıkan Projelerim</h2>
-                <p class="section-subtext">
+                <h2 class="section-main-title" data-i18n="projects_section_title">Öne Çıkan Projelerim</h2>
+                <p class="section-subtext" data-i18n="projects_section_desc">
                     Linux, C/C++, güvenlik ve masaüstü araçları üzerine geliştirdiğim açık kaynaklı çalışmalar.
                 </p>
             </div>
 
             <!-- Project Filter Pills -->
             <div class="filter-pills-bar" role="tablist">
-                <button class="filter-pill active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
-                <button class="filter-pill" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
-                <button class="filter-pill" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
-                <button class="filter-pill" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
-                <button class="filter-pill" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
+                <button class="filter-pill active" data-filter="all" onclick="filterProjects('all', this)" data-i18n="filter_all">Tümü (10)</button>
+                <button class="filter-pill" data-filter="c" onclick="filterProjects('c', this)" data-i18n="filter_c">C / C++ & Sistem</button>
+                <button class="filter-pill" data-filter="security" onclick="filterProjects('security', this)" data-i18n="filter_sec">Siber Güvenlik</button>
+                <button class="filter-pill" data-filter="java" onclick="filterProjects('java', this)" data-i18n="filter_java">Java / OOP</button>
+                <button class="filter-pill" data-filter="tools" onclick="filterProjects('tools', this)" data-i18n="filter_tools">CLI & Araçlar</button>
             </div>
 
             <!-- 10 TACTILE GLASS PROJECT CARDS -->
@@ -1992,6 +2030,9 @@
         <i class="fa-solid fa-circle-check"></i>
         <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
     </div>
+
+    <!-- i18n Engine -->
+    <script src="i18n.js"></script>
 
     <!-- ==========================================================================
          INTERACTIVE SCRIPTS (SMOOTH MOTION, 3D GLASS TILT & HAPTIC FEEDBACK)
