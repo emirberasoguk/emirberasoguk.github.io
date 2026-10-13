@@ -1,0 +1,51 @@
+{
+  "project_name": "emirberasoguk.github.io",
+  "root_directory": "/home/emir/Projects/Github/emirberasoguk.github.io",
+  "total_files_scanned": 7,
+  "top_extensions": [
+    [
+      "",
+      2
+    ],
+    [
+      ".css",
+      1
+    ],
+    [
+      ".md",
+      1
+    ],
+    [
+      ".html",
+      1
+    ],
+    [
+      ".js",
+      1
+    ]
+  ],
+  "tracked_code_nodes": 5,
+  "nodes": [
+    {
+      "path": "style.css",
+      "ext": "css"
+    },
+    {
+      "path": "README.md",
+      "ext": "md"
+    },
+    {
+      "path": "index.html",
+      "ext": "html"
+    },
+    {
+      "path": "script.js",
+      "ext": "js"
+    },
+    {
+      "path": ".graph.json",
+      "ext": "json"
+    }
+  ],
+  "schema_version": "graphify-v1.0"
+}
