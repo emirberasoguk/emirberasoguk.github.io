@@ -1,0 +1,15 @@
+feature,area,priority,original,clone,notes
+Dot Matrix NDOT Headline Typography,brand,must,yes,yes,Clean-room Google Font Silkscreen implementation
+Phone (2a) Glyph Interface LED Simulation,hardware,must,yes,yes,Interactive SVG lighting with strobe sequencer
+Translucent Smoked Acrylic Cassette Cards,ui,must,yes,yes,Backdrop-filter blur 16px with hairline border
+Signature Nothing Red Recording Indicator,branding,must,yes,yes,Pulsing red recording dot animation
+Tactile Mechanical Pill Buttons,components,must,yes,yes,Oval pill buttons with hover micro-motion
+Category Filtering for Products and Projects,navigation,must,yes,yes,Instant tab filtering with CSS scale transitions
+Hardware Capability Rack Specs,specifications,must,yes,yes,3-column hardware chassis component
+Curriculum Vitae Download Cassette,acquisition,must,yes,yes,Direct verified PDF download and preview
+Audio-Reactive Glyph Strobing,hardware,should,yes,yes,Interactive click triggers light pulse sequence
+Dot Matrix Micro Grid Wallpaper,background,should,yes,yes,Pure CSS radial-gradient 24px grid
+Style Switcher Hub (Bauhaus Liquid Glass Nothing),ecosystem,should,yes,yes,Unified switcher across all views
+Tactile Toast Clipboard Feedback,interaction,should,yes,yes,Non-intrusive haptic notification with audio-free vibration
+Physical E-Commerce Shopping Cart,commerce,could,yes,skip,Replaced by open-source repo download and PDF acquisition
+Proprietary Device Firmware Drivers,firmware,skip,yes,skip,Hardware proprietary binaries out of scope
