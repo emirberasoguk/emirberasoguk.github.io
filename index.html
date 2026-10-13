@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emir Bera Soğuk — Bauhaus Portfolyo</title>
-    <meta name="description" content="Emir Bera Soğuk — Sistem Programlama, Düşük Seviye Mimariler ve Siber Güvenlik. Bauhaus tasarım sistemi, asimetrik kompozisyonlar ve geometrik formlar.">
+    <title>Emir Bera Soğuk | Sistem Programlama ve Siber Güvenlik</title>
+    <meta name="description" content="Emir Bera Soğuk kişisel portfolyosu. C, C++, Linux sistem araçları, siber güvenlik ve açık kaynak projelerim.">
 
     <!-- Google Fonts: Plus Jakarta Sans (Crisp Geometric Legibility), Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +64,9 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
         }
 
         body {
@@ -72,9 +75,10 @@
             font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
             position: relative;
             min-height: 100vh;
-            /* Bauhaus subtle dot grid wallpaper */
             background-image: 
                 radial-gradient(circle at 1px 1px, rgba(17, 17, 17, 0.12) 1.5px, transparent 0);
             background-size: 32px 32px;
@@ -96,6 +100,8 @@
         .bg-shapes-container {
             position: fixed;
             inset: 0;
+            width: 100%;
+            max-width: 100vw;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -194,6 +200,8 @@
             background: var(--bh-white);
             border-bottom: var(--border-heavy);
             box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 100vw;
         }
 
         .strip-inner {
@@ -204,7 +212,20 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            flex-wrap: wrap;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .strip-brand-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .strip-nav-wrapper {
+            display: flex;
+            align-items: center;
+            min-width: 0;
         }
 
         .brand-bauhaus {
@@ -212,8 +233,8 @@
             align-items: center;
             gap: 12px;
             font-family: var(--font-display);
-            font-weight: 900;
-            font-size: 1.25rem;
+            font-weight: 800;
+            font-size: 1.15rem;
             letter-spacing: -0.03em;
         }
 
@@ -224,8 +245,8 @@
         }
 
         .brand-shape-circle {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             background: var(--bh-blue);
             border: 2px solid var(--bh-black);
@@ -234,14 +255,14 @@
         .brand-shape-triangle {
             width: 0;
             height: 0;
-            border-left: 9px solid transparent;
-            border-right: 9px solid transparent;
-            border-bottom: 16px solid var(--bh-yellow);
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 15px solid var(--bh-yellow);
         }
 
         .brand-shape-square {
-            width: 15px;
-            height: 15px;
+            width: 14px;
+            height: 14px;
             background: var(--bh-red);
             border: 2px solid var(--bh-black);
         }
@@ -251,12 +272,13 @@
             align-items: center;
             gap: 8px;
             list-style: none;
-            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
         }
 
         .nav-item-btn {
             font-family: var(--font-heading);
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 700;
             padding: 8px 14px;
             background: var(--bh-white);
@@ -344,9 +366,9 @@
             overflow: hidden;
         }
 
-        /* Irregular graphic tape corner */
+        /* Corner metadata tag */
         .hero-poster-block::before {
-            content: "EST. 2026 // BAUHAUS 01";
+            content: "C / LINUX // x86_64";
             position: absolute;
             top: 24px;
             right: -60px;
@@ -1245,21 +1267,58 @@
 
         @media (max-width: 768px) {
             .top-bauhaus-strip {
-                padding: 4px 0;
+                padding: 0;
+                width: 100%;
+                max-width: 100vw;
+                overflow: hidden;
             }
             .strip-inner {
-                padding: 10px 16px;
-                gap: 12px;
+                padding: 8px 12px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .strip-brand-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                gap: 8px;
             }
             .brand-bauhaus {
-                font-size: 1.05rem;
+                font-size: 0.95rem;
+                gap: 8px;
+            }
+            .brand-composition {
+                transform: scale(0.85);
+                transform-origin: left center;
+            }
+            .style-switcher-menu {
+                padding: 2px 4px;
+                gap: 4px;
+                margin-left: 0;
+            }
+            .style-choice-btn {
+                padding: 4px 8px;
+                font-size: 0.72rem;
+            }
+            .strip-nav-wrapper {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                overflow: hidden;
             }
             .nav-links-bauhaus {
                 width: 100%;
+                max-width: 100%;
                 overflow-x: auto;
-                flex-wrap: nowrap;
                 -webkit-overflow-scrolling: touch;
-                padding-bottom: 6px;
+                display: flex;
+                flex-wrap: nowrap;
+                padding: 2px 0 4px;
                 gap: 6px;
                 scrollbar-width: none;
             }
@@ -1268,14 +1327,17 @@
             }
             .nav-item-btn {
                 flex-shrink: 0;
-                padding: 7px 12px;
-                font-size: 0.78rem;
-            }
-            .style-switcher-menu {
-                margin-left: auto;
+                padding: 6px 11px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+                box-shadow: 1.5px 1.5px 0 var(--bh-black);
             }
             .main-container {
-                padding: 24px 16px 90px;
+                padding: 20px 14px 90px;
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+                overflow-x: hidden;
             }
             /* Projects filter scrollable on mobile */
             .projects-filter-bar {
@@ -1480,34 +1542,35 @@
         <div class="shape-stripes-block"></div>
     </div>
 
-    <!-- Sticky Bauhaus Navigation & Style Switcher -->
+    <!-- Sticky Navigation & Style Switcher -->
     <header class="top-bauhaus-strip">
         <div class="strip-inner">
-            <a href="#" class="brand-bauhaus" title="Emir Bera Soğuk">
-                <div class="brand-composition" aria-hidden="true">
-                    <div class="brand-shape-circle"></div>
-                    <div class="brand-shape-triangle"></div>
-                    <div class="brand-shape-square"></div>
-                </div>
-                <span>EMİR BERA SOĞUK</span>
-            </a>
+            <div class="strip-brand-row">
+                <a href="#" class="brand-bauhaus" title="Emir Bera Soğuk">
+                    <div class="brand-composition" aria-hidden="true">
+                        <div class="brand-shape-circle"></div>
+                        <div class="brand-shape-triangle"></div>
+                        <div class="brand-shape-square"></div>
+                    </div>
+                    <span>EMİR BERA SOĞUK</span>
+                </a>
 
-            <nav aria-label="Ana Gezinti">
+                <!-- Theme / Style Switcher Hub -->
+                <div class="style-switcher-menu" title="Arayüz temasını değiştir">
+                    <a href="index.html" class="style-choice-btn active" title="Geometrik Tema">Geometrik</a>
+                    <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Cam Tema">Cam</a>
+                </div>
+            </div>
+
+            <nav class="strip-nav-wrapper" aria-label="Ana Gezinti">
                 <ul class="nav-links-bauhaus">
                     <li><a href="#projects" class="nav-item-btn">Projeler</a></li>
-                    <li><a href="#cv" class="nav-item-btn">CV (Özgeçmiş)</a></li>
+                    <li><a href="#cv" class="nav-item-btn">Özgeçmiş</a></li>
                     <li><a href="#skills" class="nav-item-btn">Yetkinlikler</a></li>
-                    <li><a href="#about" class="nav-item-btn">Vizyon</a></li>
+                    <li><a href="#about" class="nav-item-btn">Hakkımda</a></li>
                     <li><a href="#contact" class="nav-item-btn">İletişim</a></li>
                 </ul>
             </nav>
-
-            <!-- Theme / Style Switcher Hub -->
-            <div class="style-switcher-menu" title="Farklı Tasarım Varyantlarını Dene">
-                <span class="style-label"><i class="fa-solid fa-shapes"></i> Stil:</span>
-                <a href="index.html" class="style-choice-btn active" title="Bauhaus Tasarımı">Bauhaus</a>
-                <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Liquid Glass">Liquid Glass</a>
-            </div>
         </div>
     </header>
 
@@ -1518,8 +1581,8 @@
         <section class="hero-bauhaus" id="hero">
             <div class="hero-poster-block">
                 <div class="hero-tagline-capsule">
-                    <i class="fa-solid fa-shapes"></i>
-                    <span>Sistem Mimarisi & Siber Güvenlik</span>
+                    <i class="fa-solid fa-terminal"></i>
+                    <span>Bilgisayar Mühendisliği & Siber Güvenlik</span>
                 </div>
 
                 <h1 class="hero-title-giant">
@@ -1529,14 +1592,14 @@
 
                 <div class="hero-subrole">
                     <span>Sistem Programlama</span>
-                    <span class="bullet">■</span>
-                    <span>Siber Güvenlik</span>
-                    <span class="bullet">▲</span>
-                    <span>Algoritma Mimarisi</span>
+                    <span class="bullet">•</span>
+                    <span>Sızma Testi & Red Team</span>
+                    <span class="bullet">•</span>
+                    <span>C & Linux</span>
                 </div>
 
                 <p class="hero-manifesto">
-                    C, C++ ve Linux çekirdek katmanında düşük seviyeli sistem araçları, performans odaklı algoritmalar ve güvenlik yazılımları geliştiriyorum. Gereksiz katmanları ayıklayıp doğrudan donanım ve işletim sistemi mantığıyla çalışan sade ve sağlam çözümler üretiyorum.
+                    Kocaeli Üniversitesi Bilgisayar Mühendisliği öğrencisiyim. C, C++ ve Linux ortamında düşük seviyeli sistem araçları, parola deneme yazılımları ve sızma testi araçları geliştiriyorum. İşin donanıma ve işletim sistemine temas eden kısmıyla ilgileniyorum.
                 </p>
 
                 <!-- Düzensiz Asimetrik Buton Grubu -->
@@ -1577,29 +1640,29 @@
                             <div class="stat-label">Açık Kaynak Proje</div>
                         </div>
                         <div class="stat-box-bh">
-                            <div class="stat-number">C/C++</div>
-                            <div class="stat-label">Düşük Seviye Odak</div>
+                            <div class="stat-number">C / C++</div>
+                            <div class="stat-label">Sistem & Araçlar</div>
                         </div>
                         <div class="stat-box-bh">
                             <div class="stat-number">Linux</div>
-                            <div class="stat-label">sysfs & Kernel API</div>
+                            <div class="stat-label">sysfs & Çekirdek API</div>
                         </div>
                         <div class="stat-box-bh">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Yerel Mimari</div>
+                            <div class="stat-number">KOUBK</div>
+                            <div class="stat-label">Başkan Yardımcısı</div>
                         </div>
                     </div>
 
-                    <div class="geo-stamp">Bauhaus 2026</div>
+                    <div class="geo-stamp">KOU / 2026</div>
                 </div>
 
                 <div class="aside-quote-box">
                     <div class="aside-quote-title">
-                        <i class="fa-solid fa-cube"></i>
-                        <span>Tasarım İlkesi</span>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Pratik & Staj Deneyimi</span>
                     </div>
                     <p class="aside-quote-text">
-                        "Form işlevi takip eder. Kodda da arayüzde de süsten uzak, doğrudan amaca hizmet eden geometrik kesinlik."
+                        Nesil Teknoloji ve SiberTim'de sızma testi stajları yaptım; Kocaeli Üniversitesi Bilgisayar Kulübü'nde (KOUBK) başkan yardımcılığı yürütüyorum.
                     </p>
                 </div>
             </div>
@@ -2072,29 +2135,29 @@
                 <div class="bh-section-title-wrap">
                     <span class="bh-section-num">03</span>
                     <div>
-                        <h2 class="bh-section-title">Mühendislik Yaklaşımım</h2>
+                        <h2 class="bh-section-title">Hakkımda & Odaklandığım Alanlar</h2>
                         <p style="font-size: 1rem; color: #444; margin-top: 4px;">
-                            Yazılım ve sistem mimarisine bakış açım.
+                            Sistem programlama ve siber güvenlik tarafındaki pratik çalışmalarım.
                         </p>
                     </div>
                 </div>
-                <div class="bh-section-badge">Vizyon</div>
+                <div class="bh-section-badge">Deneyim</div>
             </div>
 
             <div class="about-bauhaus-duo">
                 <div class="about-panel panel-left">
-                    <span class="about-panel-tag"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
-                    <h3 class="about-panel-title">Düşük Seviye ve Sade Kod</h3>
+                    <span class="about-panel-tag"><i class="fa-solid fa-terminal"></i> Sistem Programlama</span>
+                    <h3 class="about-panel-title">Düşük Seviye Sistem Araçları</h3>
                     <p class="about-panel-p">
-                        Bir yazılım yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum. Fazla katmanlar yerine sade ve yalın mantık kurmayı tercih ediyorum.
+                        C ve C++ ile çalışırken bellek yönetimi ve sistem çağrıları (sysfs, POSIX) üzerinde kod yazıyorum. Fan kontrolünden dosya sıkıştırma ve şifrelemeye kadar doğrudan işletim sistemi arayüzleriyle çalışan araçlar geliştiriyorum.
                     </p>
                 </div>
 
                 <div class="about-panel panel-right">
-                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> Odak Noktam</span>
-                    <h3 class="about-panel-title">Güvenlik ve Çekirdek İlgisi</h3>
+                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> Güvenlik & Ağ</span>
+                    <h3 class="about-panel-title">Sızma Testi ve Zafiyet Analizi</h3>
                     <p class="about-panel-p">
-                        Linux çekirdek arayüzleri, donanım kontrol düğümleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir mimari kurarken olası saldırı vektörlerini ve yetki sınırlarını en baştan düşünerek tasarlıyorum.
+                        SiberTim ve Nesil Teknoloji stajlarımda sızma testleri, kurumsal ağ keşfi, web zafiyet analizleri ve Wi-Fi güvenliği üzerine çalıştım. Yazdığım araçlarda girdi doğrulaması ve yetki sınırlarını baştan hesaba katıyorum.
                     </p>
                 </div>
             </div>
@@ -2145,7 +2208,7 @@
     <footer class="bauhaus-footer">
         <div class="footer-inner">
             <div>
-                <strong>EMİR BERA SOĞUK</strong> &bull; BAUHAUS TASARIM SİSTEMİ
+                <strong>EMİR BERA SOĞUK</strong> &bull; SİSTEM PROGRAMLAMA & SİBER GÜVENLİK
             </div>
             <div>
                 &copy; 2026 TÜM HAKLARI SAKLIDIR.
