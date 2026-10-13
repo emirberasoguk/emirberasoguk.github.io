@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>emir@arch-tuf: ~ (TTY Terminal Portfolio)</title>
+  <meta name="description" content="Emir Bera Soğuk - TTY Retro Terminal & ASCII Box Portfolyo Deneyimi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #040804;
+      --text-color: #00ff66;
+      --dim-color: #00aa44;
+      --bright-color: #55ff99;
+      --accent-color: #00ffcc;
+      --cursor-color: #00ff66;
+      --border-color: #00ff66;
+      --glow-shadow: 0 0 10px rgba(0, 255, 102, 0.45);
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    body.theme-amber {
+      --bg-color: #0a0600;
+      --text-color: #ffb000;
+      --dim-color: #b37b00;
+      --bright-color: #ffd266;
+      --accent-color: #ffcc00;
+      --cursor-color: #ffb000;
+      --border-color: #ffb000;
+      --glow-shadow: 0 0 10px rgba(255, 176, 0, 0.45);
+    }
+
+    body.theme-cyan {
+      --bg-color: #020912;
+      --text-color: #00e5ff;
+      --dim-color: #0099aa;
+      --bright-color: #66f0ff;
+      --accent-color: #38bdf8;
+      --cursor-color: #00e5ff;
+      --border-color: #00e5ff;
+      --glow-shadow: 0 0 10px rgba(0, 229, 255, 0.45);
+    }
+
+    body.theme-mono {
+      --bg-color: #0a0a0a;
+      --text-color: #e5e5e5;
+      --dim-color: #888888;
+      --bright-color: #ffffff;
+      --accent-color: #cccccc;
+      --cursor-color: #ffffff;
+      --border-color: #aaaaaa;
+      --glow-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.45;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 20px;
+      position: relative;
+      text-shadow: var(--glow-shadow);
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    /* CRT Scanline & Flicker Filter */
+    .crt-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      opacity: 0.85;
+    }
+
+    .crt-vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9998;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
+    }
+
+    /* Terminal Container */
+    .terminal-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Top Control Bar */
+    .top-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border: 1px dashed var(--border-color);
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .top-toolbar .title {
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .theme-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .theme-btn:hover, .theme-btn.active {
+      background: var(--text-color);
+      color: var(--bg-color);
+      font-weight: 700;
+    }
+
+    .switch-view-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 6px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .switch-view-btn:hover {
+      background: var(--text-color);
+      color: var(--bg-color);
+    }
+
+    /* ASCII Blocks & Boxes */
+    pre {
+      font-family: var(--font-mono);
+      white-space: pre-wrap;
+      word-break: break-all;
+      margin-bottom: 24px;
+      line-height: 1.35;
+    }
+
+    .box-frame {
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      margin-bottom: 24px;
+      background: rgba(0, 0, 0, 0.4);
+      position: relative;
+    }
+
+    .box-header {
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background: var(--bg-color);
+      padding: 0 8px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* Links & Clickable Buttons */
+    a {
+      color: var(--bright-color);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    a:hover {
+      background: var(--text-color);
+      color: var(--bg-color);
+      text-decoration: none;
+    }
+
+    .ascii-btn {
+      display: inline-block;
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      color: var(--bright-color);
+      text-decoration: none;
+      font-weight: 700;
+      margin: 4px 6px 4px 0;
+      background: rgba(0, 0, 0, 0.6);
+      transition: all 0.15s;
+    }
+
+    .ascii-btn:hover {
+      background: var(--text-color);
+      color: var(--bg-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px var(--glow-shadow);
+    }
+
+    .ascii-btn-hero {
+      border: 2px solid var(--border-color);
+      padding: 12px 24px;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Project Cards Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      border-color: var(--bright-color);
+      box-shadow: var(--glow-shadow);
+    }
+
+    .project-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--bright-color);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-tech {
+      font-size: 12px;
+      color: var(--dim-color);
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      color: var(--text-color);
+    }
+
+    /* Interactive Command Prompt Line */
+    .cli-box {
+      border: 1px solid var(--border-color);
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.7);
+      margin-top: 30px;
+    }
+
+    .cli-history {
+      max-height: 160px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .cli-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cli-prompt {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .cli-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--bright-color);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      width: 100%;
+      text-shadow: var(--glow-shadow);
+    }
+
+    .blink-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--cursor-color);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      body { padding: 12px; font-size: 12px; }
+      .ascii-btn { display: block; width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CRT Visual Filters -->
+  <div class="crt-overlay"></div>
+  <div class="crt-vignette"></div>
+
+  <div class="terminal-container">
+
+    <!-- Top Mode Switch & Color Palette Selector -->
+    <header class="top-toolbar">
+      <div class="title">
+        <span>[TTY_CONSOLE // VT100_EMULATOR]</span>
+      </div>
+      <div class="theme-buttons">
+        <span>PALETTE:</span>
+        <button class="theme-btn active" data-theme="green" onclick="setTheme('green')">GRN</button>
+        <button class="theme-btn" data-theme="amber" onclick="setTheme('amber')">AMB</button>
+        <button class="theme-btn" data-theme="cyan" onclick="setTheme('cyan')">CYN</button>
+        <button class="theme-btn" data-theme="mono" onclick="setTheme('mono')">MONO</button>
+        <a href="index.html" class="switch-view-btn" style="color: #ffd000; border-color: #ffd000; margin-right: 6px;">
+          <span>▲ BAUHAUS UI</span>
+        </a>
+        <a href="index_glass.html" class="switch-view-btn">
+          <span>❖ LIQUID GLASS</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- ASCII Banner -->
+    <pre>
+┌────────────────────────────────────────────────────────────────────────────────┐
+│  ███████╗███╗   ███╗██╗██████╗     ██████╗ ███████╗██████╗  █████╗             │
+│  ██╔════╝████╗ ████║██║██╔══██╗    ██╔══██╗██╔════╝██╔══██╗██╔══██╗            │
+│  █████╗  ██╔████╔██║██║██████╔╝    ██████╔╝█████╗  ██████╔╝███████║            │
+│  ██╔══╝  ██║╚██╔╝██║██║██╔══██╗    ██╔══██╗██╔══╝  ██╔══██╗██╔══██║            │
+│  ███████╗██║ ╚═╝ ██║██║██║  ██║    ██████╔╝███████╗██║  ██║██║  ██║            │
+│  ╚══════╝╚═╝     ╚═╝╚═╝╚═╝  ╚═╝    ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝            │
+│                                                                                │
+│  HOST: arch-tuf // ARCH_x86_64 // ROLE: SOFTWARE ENG & RED TEAM RES // KOUBK  │
+└────────────────────────────────────────────────────────────────────────────────┘
+    </pre>
+
+    <!-- Quick Action / Download CV Box -->
+    <div class="box-frame">
+      <div class="box-header">[ QUICK_ACTIONS // DIRECT_CV_DOWNLOAD ]</div>
+      <p style="margin-bottom: 14px;">
+        Aşağıdaki buton ile güncel özgeçmişi (CV) tek tıkla cihazınıza indirebilirsiniz:
+      </p>
+      <div>
+        <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="ascii-btn ascii-btn-hero">
+          [ ⬇ TEK TIKLA CV İNDİR (PDF) ]
+        </a>
+        <a href="mailto:emirberasoguk@proton.me" class="ascii-btn">
+          [ ✉ PROTONMAIL: emirberasoguk@proton.me ]
+        </a>
+        <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" class="ascii-btn">
+          [ 💼 LINKEDIN: in/emir-bera-soguk ]
+        </a>
+        <a href="https://github.com/emirberasoguk" target="_blank" class="ascii-btn">
+          [ 🐙 GITHUB: /emirberasoguk ]
+        </a>
+      </div>
+    </div>
+
+    <!-- System Telemetry & Skills Box -->
+    <div class="box-frame">
+      <div class="box-header">[ SYS_TELEMETRY // TECHNICAL_ARSENAL ]</div>
+      <pre style="margin-bottom: 0;">
+OPERATOR    : Emir Bera Soğuk (emir@archlinux)
+UNIVERSITY  : Kocaeli Üniversitesi - Bilgisayar Mühendisliği (Lisans)
+COMMUNITY   : KOUBK (Kocaeli Uni. CS Club) - Başkan Yardımcısı
+SYS_LEVEL   : C (Linux Kernel, ACPI, POSIX), Bash/Zsh, Neovim, Git
+HIGH_LEVEL  : Python, C# (.NET 10), Java (LibGDX, JavaFX), SQLite
+SECURITY    : Red Team, Entropi/Şifre Kırma, Huffman Şifreleme, Wireshark, OSINT
+ALGORITHMS  : RANSAC (2D LiDAR), Huffman Coding, Graph Theory, BCNF Normalization
+STATUS      : [████████████████████████████████████████] 100% OPERATIONAL
+      </pre>
+    </div>
+
+    <!-- Selected Projects Grid -->
+    <div class="box-frame">
+      <div class="box-header">[ REPOSITORIES // 10_CORE_PROJECTS ]</div>
+      <div class="projects-grid">
+
+        <!-- 01. Pi-Cracker -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>01. Pi-Cracker</span>
+              <span>[ACTIVE]</span>
+            </div>
+            <div class="project-tech">TECH: C · Bash · Security · OSINT</div>
+            <div class="project-desc">
+              Pi sayısının basamakları üzerinde entropi analizi gerçekleştirerek şifre kırma simülasyonu ve hibrit OSINT saldırıları yürüten güvenlik algoritması.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 02. ghelper-linux -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>02. ghelper-linux</span>
+              <span>[SYS_UTIL]</span>
+            </div>
+            <div class="project-tech">TECH: C · Linux · ACPI · TUF/ROG</div>
+            <div class="project-desc">
+              ASUS ROG/TUF notebooklar için fan profilleri, pil şarj eşiği ve RGB klavye aydınlatmasını Linux altında doğrudan donanım yazmacından yöneten C aracı.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 03. me-tor / MiniNotepad -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>03. me-tor (MiniNotepad)</span>
+              <span>[TUI_APP]</span>
+            </div>
+            <div class="project-tech">TECH: C# · .NET 10 · LIFO Stack · CLI</div>
+            <div class="project-desc">
+              .NET 10 ile geliştirilen, çift yönlü LIFO geri alma/yineleme (undo/redo) yığıt mimarisine, dosya gezginine ve VIM blok seçim moduna sahip terminal editörü.
+            </div>
+          </div>
+          <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 04. InstaVault -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>04. InstaVault</span>
+              <span>[PRIVACY]</span>
+            </div>
+            <div class="project-tech">TECH: Python · JSON · Local Analytics</div>
+            <div class="project-desc">
+              Meta Instagram veri arşivlerini tamamen yerel makinede parse eden, takip dengesizliklerini ve silinen içerikleri analiz eden açık kaynak gizlilik kasası.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 05. veritabani-calisma-simulasyonu -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>05. veritabani-calisma-simulasyonu</span>
+              <span>[DBMS_SIM]</span>
+            </div>
+            <div class="project-tech">TECH: Python · SQLite · Normalization</div>
+            <div class="project-desc">
+              Veritabanı Yönetim Sistemleri CLI simülatörü: İnteraktif SQL denemeleri, BCNF ayrıştırması ve harici bellek merge sort I/O maliyet motoru.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 06. C-ryptFile -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>06. C-ryptFile</span>
+              <span>[ENCRYPT]</span>
+            </div>
+            <div class="project-tech">TECH: C · Huffman · Cryptography</div>
+            <div class="project-desc">
+              Huffman kodlaması algoritması kullanarak dosyaları aynı anda sıkıştırıp şifreleyen C tabanlı terminal veri koruma uygulaması.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 07. LidarRansac-C -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>07. LidarRansac-C</span>
+              <span>[ALGORITHM]</span>
+            </div>
+            <div class="project-tech">TECH: C · RANSAC · 2D LiDAR · Math</div>
+            <div class="project-desc">
+              Gürültülü 2D LiDAR lazer tarama nokta bulutu verilerinden aykırı değerleri filtreleyerek doğruları yüksek doğrulukla çıkaran C uygulaması.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 08. TheLastGarage -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>08. TheLastGarage</span>
+              <span>[GAME_DEV]</span>
+            </div>
+            <div class="project-tech">TECH: Java · LibGDX · OOP Architecture</div>
+            <div class="project-desc">
+              Post-apokaliptik zombi evreninde geçen çoklu platform destekli stratejik kule savunma oyunu.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 09. Citation Graph Visualizer -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>09. Citation Graph Visualizer</span>
+              <span>[GRAPH_VIZ]</span>
+            </div>
+            <div class="project-tech">TECH: Java · JavaFX · Graph Theory</div>
+            <div class="project-desc">
+              Akademik makale ve yazarların atıf ağlarını graf teorisi yaklaşımları ile analiz edip görselleştiren masaüstü programı.
+            </div>
+          </div>
+          <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+        <!-- 10. dotfiles -->
+        <div class="project-card">
+          <div>
+            <div class="project-title">
+              <span>10. dotfiles</span>
+              <span>[ENV_CONFIG]</span>
+            </div>
+            <div class="project-tech">TECH: Bash · Zsh · Neovim · Linux TUI</div>
+            <div class="project-desc">
+              Kişisel Linux geliştirme ortamı konfigürasyonları: Zsh, Neovim, terminal kısayolları ve sistem otomasyonları.
+            </div>
+          </div>
+          <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" class="ascii-btn">
+            [ ➜ GITHUB_REPO ]
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Interactive Terminal Command Line Prompt -->
+    <div class="cli-box">
+      <div class="cli-history" id="cliHistory">
+        <div>[SYSTEM READY] Type <b>help</b>, <b>cat cv</b>, <b>projects</b>, <b>contact</b>, or <b>clear</b>:</div>
+      </div>
+      <div class="cli-input-row">
+        <span class="cli-prompt">emir@archlinux:~$</span>
+        <input type="text" id="cliInput" class="cli-input" autofocus autocomplete="off" spellcheck="false" placeholder="komut yazın...">
+        <span class="blink-cursor"></span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function setTheme(name) {
+      document.body.className = '';
+      document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+      if (name !== 'green') {
+        document.body.classList.add('theme-' + name);
+      }
+      const activeBtn = document.querySelector(`.theme-btn[data-theme="${name}"]`);
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    const cliInput = document.getElementById('cliInput');
+    const cliHistory = document.getElementById('cliHistory');
+
+    const commands = {
+      help: () => 'Kullanılabilir komutlar: help, cv (veya cat cv), projects, contact, skills, clear, theme [green|amber|cyan|mono], glass',
+      cv: () => {
+        window.location.href = 'Emir_Bera_Soguk_CV.pdf';
+        return 'CV indiriliyor: Emir_Bera_Soguk_CV.pdf [OK]';
+      },
+      'cat cv': () => {
+        window.location.href = 'Emir_Bera_Soguk_CV.pdf';
+        return 'CV indiriliyor: Emir_Bera_Soguk_CV.pdf [OK]';
+      },
+      projects: () => 'Seçili Projeler: 1. Pi-Cracker 2. ghelper-linux 3. me-tor 4. InstaVault 5. veritabani-sim 6. C-ryptFile 7. LidarRansac-C 8. TheLastGarage 9. CitationGraph 10. dotfiles',
+      contact: () => 'Email: emirberasoguk@proton.me | LinkedIn: in/emir-bera-soguk | GitHub: github.com/emirberasoguk',
+      skills: () => 'C, Linux Kernel/ACPI, POSIX, Python, C# (.NET 10), Java, Bash/Zsh, Neovim, Wireshark, SQLite, Red Team',
+      glass: () => {
+        window.location.href = 'index_glass.html';
+        return 'iOS 27 Liquid Glass görünümüne geçiliyor...';
+      },
+      clear: () => {
+        cliHistory.innerHTML = '';
+        return '';
+      }
+    };
+
+    cliInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        const val = cliInput.value.trim().toLowerCase();
+        cliInput.value = '';
+        if (!val) return;
+
+        const row = document.createElement('div');
+        row.innerHTML = `<span style="color:var(--dim-color)">emir@archlinux:~$</span> ${escapeHtml(val)}`;
+        cliHistory.appendChild(row);
+
+        let res = '';
+        if (val.startsWith('theme ')) {
+          const t = val.split(' ')[1];
+          if (['green', 'amber', 'cyan', 'mono'].includes(t)) {
+            setTheme(t);
+            res = `Tema '${t}' olarak ayarlandı.`;
+          } else {
+            res = 'Geçersiz tema! Seçenekler: green, amber, cyan, mono';
+          }
+        } else if (commands[val]) {
+          res = commands[val]();
+        } else {
+          res = `Komut bulunamadı: '${val}'. 'help' yazarak komut listesini görün.`;
+        }
+
+        if (res) {
+          const resRow = document.createElement('div');
+          resRow.style.color = 'var(--bright-color)';
+          resRow.textContent = res;
+          cliHistory.appendChild(resRow);
+        }
+
+        cliHistory.scrollTop = cliHistory.scrollHeight;
+      }
+    });
+  </script>
+</body>
+</html>

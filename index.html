@@ -3,72 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emir Bera Soğuk | iOS 27 Liquid Glass Portfolyo</title>
-    <meta name="description" content="Emir Bera Soğuk - Sistem Programlama, Siber Güvenlik ve Algoritma Mimarisi. iOS 27 Liquid Glass ve dokunsal cam arayüzü deneyimi.">
+    <title>Emir Bera Soğuk — Bauhaus Portfolyo</title>
+    <meta name="description" content="Emir Bera Soğuk — Sistem Programlama, Düşük Seviye Mimariler ve Siber Güvenlik. Bauhaus tasarım sistemi, asimetrik kompozisyonlar ve geometrik formlar.">
 
-    <!-- Google Fonts: Outfit & Inter -->
+    <!-- Google Fonts: Space Grotesk, Syne, Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
 
     <!-- FontAwesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         /* ==========================================================================
-           iOS 27 LIQUID GLASS DESIGN SYSTEM (DESIGN TOKENS & LIQUID VARIABLES)
+           BAUHAUS DESIGN SYSTEM TOKENS
+           Master Palette: Ultramarine Blue, Cadmium Yellow, Stark White & Pitch Black
            ========================================================================== */
         :root {
-            --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            /* Bauhaus Primary Colors */
+            --bh-blue: #0d47a1;          /* Deep Cobalt / Ultramarine Blue */
+            --bh-blue-light: #1976d2;    /* Electric Accent Blue */
+            --bh-yellow: #ffd000;        /* Pure Cadmium Yellow */
+            --bh-yellow-soft: #ffe066;   /* Pale Yellow for hover */
+            --bh-white: #ffffff;         /* Stark Canvas White */
+            --bh-offwhite: #f7f7f3;      /* Warm Paper / Architectural Linen */
+            --bh-cream: #f0f0ea;         /* Bauhaus Studio Gray-Cream */
+            --bh-black: #111111;         /* Deep Pitch Black (Borders & Ink) */
+            --bh-red: #d90429;           /* Traditional Bauhaus Red Accent */
+
+            /* Architectural Grid & Border Constants */
+            --border-thick: 3px solid var(--bh-black);
+            --border-heavy: 4px solid var(--bh-black);
+            --border-light: 2px solid var(--bh-black);
+
+            /* Bauhaus Tactile Hard Shadows */
+            --shadow-hard-sm: 3px 3px 0 var(--bh-black);
+            --shadow-hard: 5px 5px 0 var(--bh-black);
+            --shadow-hard-lg: 8px 8px 0 var(--bh-black);
+            --shadow-hard-blue: 5px 5px 0 var(--bh-blue);
+            --shadow-hard-yellow: 5px 5px 0 var(--bh-yellow);
+
+            /* Typography */
+            --font-display: 'Syne', 'Space Grotesk', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
 
-            /* Liquid Glass Palette */
-            --glass-bg: rgba(255, 255, 255, 0.075);
-            --glass-bg-hover: rgba(255, 255, 255, 0.125);
-            --glass-bg-active: rgba(255, 255, 255, 0.17);
-            --glass-border: rgba(255, 255, 255, 0.18);
-            --glass-border-highlight: rgba(255, 255, 255, 0.45);
-            --glass-blur: blur(18px) saturate(160%);
-
-            /* Inset Specular Refraction Shadows */
-            --glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 
-                            0 8px 24px -5px rgba(0, 0, 0, 0.35),
-                            inset 0 1px 1px 0 rgba(255, 255, 255, 0.32),
-                            inset 0 -1px 2px 0 rgba(0, 0, 0, 0.25);
-            
-            --glass-shadow-button: 0 12px 30px -5px rgba(0, 0, 0, 0.4),
-                                  0 4px 12px -2px rgba(0, 0, 0, 0.25),
-                                  inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.45),
-                                  inset 0 -1.5px 2px 0 rgba(0, 0, 0, 0.3);
-
-            --glass-shadow-active: 0 4px 14px 0 rgba(0, 0, 0, 0.4),
-                                  inset 0 2px 4px 0 rgba(0, 0, 0, 0.35),
-                                  inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2);
-
-            /* Chromatic Accents */
-            --accent-cyan: #00f2fe;
-            --accent-blue: #4facfe;
-            --accent-purple: #9d4edd;
-            --accent-magenta: #f72585;
-            --accent-green: #10b981;
-            --accent-gold: #fbbf24;
-
-            /* Squircle & Pill Curvatures */
-            --radius-pill: 9999px;
-            --radius-squircle: 32px;
-            --radius-button: 28px;
-            --radius-card: 34px;
-
-            /* Dynamics */
-            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-            --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
-            --transition-tactile: all 0.28s var(--spring-bounce);
+            /* Transitions */
+            --transition-tactile: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;
         }
 
-        /* ==========================================================================
-           RESET & FOUNDATION
-           ========================================================================== */
+        /* Reset & Foundation */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -79,1416 +64,1307 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
-            color-scheme: dark;
         }
 
         body {
-            background-color: #060814;
-            color: #f1f5f9;
+            background-color: var(--bh-offwhite);
+            color: var(--bh-black);
             font-family: var(--font-body);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
             min-height: 100vh;
-            selection-background-color: var(--accent-cyan);
-            selection-color: #060814;
+            /* Bauhaus subtle dot grid wallpaper */
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(17, 17, 17, 0.12) 1.5px, transparent 0);
+            background-size: 32px 32px;
         }
 
         ::selection {
-            background: rgba(0, 242, 254, 0.3);
-            color: #ffffff;
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         /* ==========================================================================
-           LIQUID AMBIENT BACKGROUND & MESH ORBS
+           GEOMETRIC FLOATING BACKGROUND FORMS (IRREGULAR PLACEMENTS)
            ========================================================================== */
-        .ambient-canvas {
+        .bg-shapes-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
+            pointer-events: none;
             z-index: 0;
-            pointer-events: none;
             overflow: hidden;
-            opacity: 0.85;
-            background: radial-gradient(circle at 50% 0%, #0d122b 0%, #060814 80%);
         }
 
-        .liquid-orb {
+        .shape-circle-blue {
             position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.55;
-            animation: orbFloat 22s ease-in-out infinite alternate;
-        }
-
-        .orb-1 {
-            width: 420px;
-            height: 420px;
-            top: -100px;
-            left: -60px;
-            background: radial-gradient(circle, #7928ca 0%, #4facfe 70%, transparent 100%);
-            animation-duration: 24s;
-        }
-
-        .orb-2 {
-            width: 380px;
-            height: 380px;
-            top: 30%;
+            top: 60px;
             right: -80px;
-            background: radial-gradient(circle, #f72585 0%, #7209b7 65%, transparent 100%);
-            animation-duration: 28s;
-            animation-delay: -5s;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: var(--bh-blue);
+            opacity: 0.95;
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-lg);
+            animation: floatShapeSlow 18s ease-in-out infinite alternate;
         }
 
-        .orb-3 {
-            width: 450px;
-            height: 450px;
-            bottom: -140px;
-            left: 20%;
-            background: radial-gradient(circle, #00f2fe 0%, #4361ee 70%, transparent 100%);
-            animation-duration: 20s;
-            animation-delay: -10s;
+        .shape-square-yellow {
+            position: absolute;
+            top: 580px;
+            left: -50px;
+            width: 180px;
+            height: 180px;
+            background: var(--bh-yellow);
+            border: var(--border-thick);
+            transform: rotate(14deg);
+            box-shadow: var(--shadow-hard-lg);
+            animation: rotateShapeSlow 22s linear infinite;
         }
 
-        .orb-4 {
-            width: 300px;
-            height: 300px;
-            top: 70%;
-            left: -100px;
-            background: radial-gradient(circle, #10b981 0%, #00b4d8 70%, transparent 100%);
-            animation-duration: 26s;
-            animation-delay: -3s;
+        .shape-triangle-red {
+            position: absolute;
+            top: 1450px;
+            right: -40px;
+            width: 0;
+            height: 0;
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-bottom: 190px solid var(--bh-red);
+            transform: rotate(-18deg);
+            opacity: 0.85;
+            filter: drop-shadow(6px 6px 0 var(--bh-black));
         }
 
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            50% {
-                transform: translate(60px, 80px) scale(1.12) rotate(45deg);
-            }
-            100% {
-                transform: translate(-50px, 40px) scale(0.92) rotate(-30deg);
-            }
+        .shape-pill-blue {
+            position: absolute;
+            top: 2400px;
+            left: 20px;
+            width: 220px;
+            height: 80px;
+            background: var(--bh-blue);
+            border-radius: 9999px;
+            border: var(--border-thick);
+            transform: rotate(-10deg);
+            box-shadow: var(--shadow-hard);
+            opacity: 0.9;
         }
 
-        /* Subtle Noise / Caustic Grain Overlay */
-        .noise-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.035;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        .shape-stripes-block {
+            position: absolute;
+            top: 3200px;
+            right: 40px;
+            width: 140px;
+            height: 140px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bh-black),
+                var(--bh-black) 10px,
+                var(--bh-yellow) 10px,
+                var(--bh-yellow) 20px
+            );
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transform: rotate(6deg);
+        }
+
+        @keyframes floatShapeSlow {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(40px) rotate(8deg); }
+        }
+
+        @keyframes rotateShapeSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* ==========================================================================
-           LAYOUT & CONTAINER
+           TOP ARCHITECTURAL BAR & STYLE SELECTOR
            ========================================================================== */
-        .page-content {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1240px;
-            margin: 0 auto;
-            padding: 24px 24px 100px;
-        }
-
-        /* ==========================================================================
-           iOS 27 DYNAMIC ISLAND & FLOATING GLASS NAVIGATION
-           ========================================================================== */
-        .nav-wrapper {
+        .top-bauhaus-strip {
             position: sticky;
-            top: 20px;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 48px;
+            top: 0;
+            z-index: 1000;
+            background: var(--bh-white);
+            border-bottom: var(--border-heavy);
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
         }
 
-        .island-nav {
+        .strip-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 12px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            width: 100%;
-            max-width: 1080px;
-            padding: 10px 14px 10px 20px;
-            background: rgba(18, 22, 44, 0.55);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-pill);
-            box-shadow: var(--glass-shadow);
-            transition: var(--transition-tactile);
+            flex-wrap: wrap;
         }
 
-        .island-nav:hover {
-            border-color: var(--glass-border-highlight);
-            background: rgba(22, 28, 56, 0.68);
-        }
-
-        .brand-badge {
+        .brand-bauhaus {
             display: flex;
             align-items: center;
             gap: 12px;
-            text-decoration: none;
-            color: #ffffff;
             font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: -0.01em;
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
         }
 
-        .brand-avatar {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00f2fe, #9d4edd);
+        .brand-composition {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 242, 254, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
-            position: relative;
+            gap: 4px;
         }
 
-        .brand-pulse {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            bottom: 0;
-            right: 0;
+        .brand-shape-circle {
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
-            background: #10b981;
-            border: 2px solid #0d122b;
-            box-shadow: 0 0 8px #10b981;
+            background: var(--bh-blue);
+            border: 2px solid var(--bh-black);
         }
 
-        .nav-links {
+        .brand-shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 16px solid var(--bh-yellow);
+        }
+
+        .brand-shape-square {
+            width: 15px;
+            height: 15px;
+            background: var(--bh-red);
+            border: 2px solid var(--bh-black);
+        }
+
+        .nav-links-bauhaus {
             display: flex;
             align-items: center;
             gap: 8px;
             list-style: none;
+            flex-wrap: wrap;
         }
 
-        .nav-link {
-            text-decoration: none;
-            color: rgba(241, 245, 249, 0.8);
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 0.92rem;
-            padding: 8px 18px;
-            border-radius: var(--radius-pill);
-            transition: var(--transition-tactile);
-            border: 1px solid transparent;
-        }
-
-        .nav-link:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        /* Top Switcher Button to Retro Terminal */
-        .retro-switch-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 9px 20px;
-            border-radius: var(--radius-pill);
-            text-decoration: none;
-            color: #5af78e;
-            background: rgba(16, 185, 129, 0.12);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            backdrop-filter: blur(10px);
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-            transition: var(--transition-tactile);
-            cursor: pointer;
-        }
-
-        .retro-switch-btn:hover {
-            background: rgba(16, 185, 129, 0.22);
-            border-color: rgba(16, 185, 129, 0.6);
-            color: #ffffff;
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-        }
-
-        .retro-switch-btn:active {
-            transform: translateY(1px) scale(0.96);
-        }
-
-        /* ==========================================================================
-           HERO SECTION & OPTICAL LIQUID ELEMENTS
-           ========================================================================== */
-        .hero-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 40px 0 60px;
-            position: relative;
-        }
-
-        .ios-badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 22px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow-button);
-            font-family: var(--font-display);
+        .nav-item-btn {
+            font-family: var(--font-heading);
             font-size: 0.88rem;
             font-weight: 700;
-            color: #e2e8f0;
-            margin-bottom: 24px;
-            animation: pulseSubtle 3s ease-in-out infinite;
-        }
-
-        .ios-badge-pill i {
-            color: var(--accent-cyan);
-            font-size: 0.95rem;
-        }
-
-        @keyframes pulseSubtle {
-            0%, 100% {
-                border-color: rgba(255, 255, 255, 0.22);
-                box-shadow: var(--glass-shadow-button);
-            }
-            50% {
-                border-color: rgba(0, 242, 254, 0.45);
-                box-shadow: 0 12px 35px -5px rgba(0, 242, 254, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-            }
-        }
-
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(3rem, 7vw, 5.2rem);
-            font-weight: 900;
-            letter-spacing: -0.035em;
-            line-height: 1.05;
-            margin-bottom: 16px;
-            color: #ffffff;
-            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .liquid-gradient-text {
-            background: linear-gradient(135deg, #ffffff 15%, #00f2fe 50%, #9d4edd 85%, #f72585 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-            filter: drop-shadow(0 4px 15px rgba(0, 242, 254, 0.3));
-        }
-
-        .hero-role-typing {
-            font-family: var(--font-display);
-            font-size: clamp(1.2rem, 2.8vw, 1.85rem);
-            font-weight: 600;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            letter-spacing: -0.015em;
-        }
-
-        .hero-role-typing span.highlight {
-            color: #38bdf8;
-            font-weight: 700;
-        }
-
-        .hero-description {
-            max-width: 720px;
-            font-size: 1.12rem;
-            color: #cbd5e1;
-            line-height: 1.7;
-            margin-bottom: 40px;
-            font-weight: 400;
-        }
-
-        /* ==========================================================================
-           TACTILE TOUCH PILL BUTTONS (EMAIL, LINKEDIN, GITHUB)
-           ========================================================================== */
-        .tactile-actions-group {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 48px;
-            width: 100%;
-        }
-
-        .touch-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 28px;
-            border-radius: var(--radius-button);
-            text-decoration: none;
-            color: #ffffff;
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1.5px solid var(--glass-border);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow-button);
+            padding: 8px 14px;
+            background: var(--bh-white);
+            border: var(--border-light);
+            box-shadow: 2px 2px 0 var(--bh-black);
             transition: var(--transition-tactile);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            user-select: none;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
 
-        .touch-pill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 100%);
-            border-radius: var(--radius-button) var(--radius-button) 0 0;
-            pointer-events: none;
+        .nav-item-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-yellow);
         }
 
-        .touch-pill i {
-            font-size: 1.25rem;
-            transition: transform 0.25s var(--spring-bounce);
-        }
-
-        /* Specific Pill Hover & Shimmer */
-        .pill-email:hover {
-            background: rgba(0, 242, 254, 0.16);
-            border-color: rgba(0, 242, 254, 0.55);
-            box-shadow: 0 16px 36px -6px rgba(0, 242, 254, 0.35), inset 0 2px 2px rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px) scale(1.03);
-            color: #ffffff;
-        }
-        .pill-email i { color: var(--accent-cyan); }
-
-        .pill-linkedin:hover {
-            background: rgba(10, 102, 194, 0.25);
-            border-color: rgba(56, 189, 248, 0.6);
-            box-shadow: 0 16px 36px -6px rgba(10, 102, 194, 0.45), inset 0 2px 2px rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px) scale(1.03);
-            color: #ffffff;
-        }
-        .pill-linkedin i { color: #38bdf8; }
-
-        .pill-github:hover {
-            background: rgba(255, 255, 255, 0.18);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 16px 36px -6px rgba(255, 255, 255, 0.25), inset 0 2px 2px rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px) scale(1.03);
-            color: #ffffff;
-        }
-        .pill-github i { color: #f1f5f9; }
-
-        .touch-pill:active {
-            transform: translateY(2px) scale(0.96) !important;
-            box-shadow: var(--glass-shadow-active) !important;
-        }
-
-        .touch-pill:hover i {
-            transform: scale(1.15) rotate(-5deg);
-        }
-
-        /* ==========================================================================
-           CALL TO ACTION: MASTER CV DOWNLOAD CARD (CENTRAL HIGHLIGHT)
-           ========================================================================== */
-        .cv-hero-banner {
-            width: 100%;
-            max-width: 920px;
-            margin: 0 auto 70px;
-            padding: 32px 36px;
-            border-radius: var(--radius-card);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
-            border: 1.5px solid rgba(255, 255, 255, 0.25);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.6), 
-                        0 0 40px -10px rgba(0, 242, 254, 0.2),
-                        inset 0 2px 2px 0 rgba(255, 255, 255, 0.45);
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            align-items: center;
-            gap: 28px;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-tactile);
-        }
-
-        .cv-hero-banner:hover {
-            border-color: rgba(0, 242, 254, 0.6);
-            box-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.7), 
-                        0 0 50px -5px rgba(0, 242, 254, 0.35),
-                        inset 0 2px 3px 0 rgba(255, 255, 255, 0.6);
-            transform: translateY(-3px);
-        }
-
-        .cv-icon-orb {
-            width: 74px;
-            height: 74px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(247, 37, 133, 0.4) 100%);
-            border: 1.5px solid rgba(247, 37, 133, 0.5);
+        /* Style switcher pill */
+        .style-switcher-menu {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            color: #ff4d6d;
-            box-shadow: 0 10px 25px rgba(247, 37, 133, 0.3), inset 0 2px 2px rgba(255, 255, 255, 0.4);
-            flex-shrink: 0;
-            transition: transform 0.3s var(--spring-bounce);
-        }
-
-        .cv-hero-banner:hover .cv-icon-orb {
-            transform: scale(1.1) rotate(-6deg);
-        }
-
-        .cv-details {
-            text-align: left;
-        }
-
-        .cv-tag-pill {
-            display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 4px 12px;
-            border-radius: var(--radius-pill);
-            background: rgba(16, 185, 129, 0.16);
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            color: #34d399;
+            background: var(--bh-cream);
+            padding: 4px 6px;
+            border: var(--border-light);
+            border-radius: 4px;
+        }
+
+        .style-label {
             font-family: var(--font-mono);
-            font-size: 0.76rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0 4px;
+            text-transform: uppercase;
         }
 
-        .cv-title {
-            font-family: var(--font-display);
-            font-size: 1.45rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-            margin-bottom: 4px;
-        }
-
-        .cv-subtitle {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            line-height: 1.5;
-        }
-
-        .cv-action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            flex-shrink: 0;
-        }
-
-        .cv-download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: var(--radius-button);
-            background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-            color: #04101e;
-            font-family: var(--font-display);
-            font-size: 1.05rem;
-            font-weight: 800;
-            letter-spacing: -0.01em;
-            text-decoration: none;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.6);
-            transition: var(--transition-tactile);
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .cv-download-btn:hover {
-            transform: translateY(-2px) scale(1.04);
-            box-shadow: 0 16px 40px rgba(0, 242, 254, 0.55), inset 0 2px 3px rgba(255, 255, 255, 0.8);
-            background: linear-gradient(135deg, #38f9d7 0%, #43e97b 100%);
-            color: #032014;
-        }
-
-        .cv-download-btn:active {
-            transform: translateY(2px) scale(0.96);
-        }
-
-        .cv-preview-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #cbd5e1;
-            font-family: var(--font-display);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
+        .style-choice-btn {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 10px;
+            border: 2px solid var(--bh-black);
+            background: var(--bh-white);
             transition: var(--transition-tactile);
         }
 
-        .cv-preview-link:hover {
-            background: rgba(255, 255, 255, 0.14);
-            color: #ffffff;
-            border-color: rgba(255, 255, 255, 0.3);
+        .style-choice-btn.active {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            box-shadow: 2px 2px 0 var(--bh-black);
+        }
+
+        .style-choice-btn:hover:not(.active) {
+            background: var(--bh-yellow);
+            transform: translate(-1px, -1px);
         }
 
         /* ==========================================================================
-           SECTION HEADERS & PILL CATEGORY FILTERS
+           MAIN CONTENT WRAPPER
            ========================================================================== */
-        .section-header-block {
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==========================================================================
+           HERO SECTION: ASYMMETRICAL BAUHAUS POSTER COMPOSITION
+           ========================================================================== */
+        .hero-bauhaus {
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 32px;
+            align-items: stretch;
+            margin-bottom: 70px;
+        }
+
+        .hero-poster-block {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Irregular graphic tape corner */
+        .hero-poster-block::before {
+            content: "EST. 2026 // BAUHAUS 01";
+            position: absolute;
+            top: 24px;
+            right: -60px;
+            background: var(--bh-yellow);
+            border: var(--border-light);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 6px 64px;
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 0 var(--bh-black);
+            letter-spacing: 0.1em;
+        }
+
+        .hero-tagline-capsule {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            padding: 6px 16px;
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title-giant {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title-giant .accent-blue {
+            color: var(--bh-blue);
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-title-giant .accent-blue::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 12px;
+            background: var(--bh-yellow);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .hero-subrole {
+            font-family: var(--font-mono);
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: var(--bh-cream);
+            border-left: 6px solid var(--bh-blue);
+            padding: 10px 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-subrole span.bullet {
+            color: var(--bh-red);
+            font-size: 1.2rem;
+        }
+
+        .hero-manifesto {
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: #2b2b2b;
+            margin-bottom: 36px;
+            max-width: 620px;
+        }
+
+        /* Düzensiz Asimetrik Buton Grubu */
+        .irregular-button-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-bh-primary {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 14px 28px;
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transform: rotate(-1.5deg);
+        }
+
+        .btn-bh-primary:hover {
+            transform: rotate(0deg) translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-yellow-soft);
+        }
+
+        .btn-bh-blue {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 14px 24px;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transform: rotate(1.2deg);
+        }
+
+        .btn-bh-blue:hover {
+            transform: rotate(0deg) translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-blue-light);
+        }
+
+        .btn-bh-white {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 14px 22px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .btn-bh-white:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-yellow);
+        }
+
+        /* Hero Asymmetrical Aside Composition */
+        .hero-aside-composition {
             display: flex;
             flex-direction: column;
+            gap: 24px;
+        }
+
+        .aside-geo-card {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 32px;
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        .aside-geo-card .geo-stamp {
+            position: absolute;
+            bottom: -15px;
+            right: 20px;
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            transform: rotate(-3deg);
+            text-transform: uppercase;
+        }
+
+        .aside-geo-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .aside-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .stat-box-bh {
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            padding: 12px;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--bh-blue);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .aside-quote-box {
+            background: var(--bh-yellow);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 28px;
+            transform: rotate(-1.5deg);
+        }
+
+        .aside-quote-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
             align-items: center;
-            text-align: center;
+            gap: 8px;
+        }
+
+        .aside-quote-text {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           SECTION HEADER COMPONENT (BAUHAUS POSTER STYLE)
+           ========================================================================== */
+        .bh-section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 36px;
+            padding-bottom: 16px;
+            border-bottom: 4px solid var(--bh-black);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .bh-section-title-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .bh-section-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--bh-blue);
+            -webkit-text-stroke: 1.5px var(--bh-black);
+            text-shadow: 2px 2px 0 var(--bh-yellow);
+        }
+
+        .bh-section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .bh-section-badge {
+            background: var(--bh-white);
+            border: var(--border-light);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            box-shadow: var(--shadow-hard-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ==========================================================================
+           CV BANNER: BAUHAUS BLUE & YELLOW CONSTRUCT
+           ========================================================================== */
+        .cv-bauhaus-banner {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-color-block {
+            background: var(--bh-yellow);
+            height: 100%;
+            border-right: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--bh-black);
+        }
+
+        .cv-text-block {
+            padding: 32px 36px;
+        }
+
+        .cv-tag {
+            display: inline-block;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cv-main-head {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .cv-subline {
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .cv-cta-actions {
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ==========================================================================
+           PROJECTS SECTION: DYNAMIC BAUHAUS FILTER & ASYMMETRIC GRID
+           ========================================================================== */
+        .projects-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-bottom: 36px;
         }
 
-        .section-badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 18px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            backdrop-filter: var(--glass-blur);
-            font-family: var(--font-display);
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--accent-cyan);
-            margin-bottom: 12px;
-        }
-
-        .section-main-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.8rem);
+        .bh-filter-btn {
+            font-family: var(--font-heading);
             font-weight: 800;
-            letter-spacing: -0.03em;
-            color: #ffffff;
-            margin-bottom: 12px;
-        }
-
-        .section-subtext {
-            max-width: 650px;
-            font-size: 1.05rem;
-            color: #94a3b8;
-        }
-
-        /* Tactile Project Filter Pills */
-        .filter-pills-bar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .filter-pill {
-            padding: 10px 22px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1.5px solid rgba(255, 255, 255, 0.14);
-            backdrop-filter: var(--glass-blur);
-            color: #cbd5e1;
-            font-family: var(--font-display);
-            font-size: 0.92rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            background: var(--bh-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-sm);
             cursor: pointer;
             transition: var(--transition-tactile);
-            box-shadow: var(--glass-shadow-button);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
-        .filter-pill:hover {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
+        .bh-filter-btn.active {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            box-shadow: var(--shadow-hard);
+            transform: translate(-2px, -2px);
         }
 
-        .filter-pill.active {
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(157, 78, 221, 0.25) 100%);
-            border-color: rgba(0, 242, 254, 0.6);
-            color: #ffffff;
-            box-shadow: 0 10px 25px -4px rgba(0, 242, 254, 0.3), inset 0 1.5px 1.5px rgba(255, 255, 255, 0.4);
+        .bh-filter-btn:hover:not(.active) {
+            background: var(--bh-yellow);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-hard);
         }
 
-        /* ==========================================================================
-           PROJECTS GRID (10 TACTILE GLASS CARDS)
-           ========================================================================== */
-        .projects-grid {
+        /* Asymmetric Projects Grid: Some cards take full width or irregular offsets */
+        .projects-bauhaus-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 28px;
             margin-bottom: 90px;
         }
 
-        .project-glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.025) 100%);
-            border: 1.5px solid var(--glass-border);
-            border-radius: var(--radius-card);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow);
-            padding: 30px;
+        .bh-card {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            transition: var(--transition-tactile);
+            padding: 0;
             overflow: hidden;
-            transition: transform 0.32s var(--spring-bounce), box-shadow 0.32s ease, border-color 0.32s ease;
-            transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
-        /* Refraction Glare Follows Pointer */
-        .project-glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle 280px at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(255, 255, 255, 0.16), transparent 70%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            border-radius: inherit;
+        /* Irregular subtle tilt on alternating cards */
+        .bh-card:nth-child(even) {
+            transform: rotate(0.6deg);
+        }
+        .bh-card:nth-child(odd) {
+            transform: rotate(-0.5deg);
         }
 
-        .project-glass-card:hover::before {
-            opacity: 1;
+        .bh-card:hover {
+            transform: rotate(0deg) translate(-4px, -4px) !important;
+            box-shadow: var(--shadow-hard-lg);
         }
 
-        .project-glass-card:hover {
-            transform: translateY(-6px) scale(1.018);
-            border-color: var(--glass-border-highlight);
-            box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.7),
-                        0 0 35px -5px rgba(79, 172, 254, 0.25),
-                        inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.4);
-        }
-
-        .project-top-row {
+        .bh-card-header {
+            padding: 20px 24px;
+            border-bottom: var(--border-thick);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background: var(--bh-cream);
+        }
+
+        .bh-card.theme-blue .bh-card-header {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+        }
+
+        .bh-card.theme-yellow .bh-card-header {
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+        }
+
+        .bh-card-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: 2px solid var(--bh-black);
+            text-transform: uppercase;
+        }
+
+        .bh-card-icon {
+            font-size: 1.35rem;
+        }
+
+        .bh-card-body {
+            padding: 26px 24px 20px;
+            flex: 1;
+        }
+
+        .bh-card-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+
+        .bh-card-desc {
+            font-size: 0.94rem;
+            line-height: 1.55;
+            color: #333;
             margin-bottom: 20px;
         }
 
-        .card-icon-capsule {
-            width: 52px;
-            height: 52px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.35rem;
-            color: var(--accent-cyan);
-            box-shadow: 0 8px 18px -4px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-            transition: transform 0.3s var(--spring-bounce);
-        }
-
-        .project-glass-card:hover .card-icon-capsule {
-            transform: scale(1.12) rotate(-8deg);
-        }
-
-        .project-badge-pill {
-            padding: 5px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.16);
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            font-weight: 600;
-            color: #94a3b8;
-        }
-
-        .project-title {
-            font-family: var(--font-display);
-            font-size: 1.45rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .project-desc {
-            font-size: 0.96rem;
-            color: #cbd5e1;
-            line-height: 1.65;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .tech-pill-list {
+        .bh-tag-cluster {
             display: flex;
             flex-wrap: wrap;
-            gap: 7px;
-            margin-bottom: 24px;
+            gap: 6px;
+            margin-top: auto;
         }
 
-        .tech-tag {
-            padding: 4px 11px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .bh-tag {
             font-family: var(--font-mono);
-            font-size: 0.74rem;
-            font-weight: 500;
-            color: #93c5fd;
-            transition: background 0.2s ease;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            background: var(--bh-cream);
+            border: 1.5px solid var(--bh-black);
+            color: var(--bh-black);
         }
 
-        .tech-tag:hover {
-            background: rgba(255, 255, 255, 0.12);
-            color: #ffffff;
-        }
-
-        .project-card-footer {
+        .bh-card-footer {
+            padding: 16px 24px;
+            border-top: var(--border-thick);
+            background: var(--bh-white);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            justify-content: flex-end;
         }
 
-        .project-inspect-btn {
+        .bh-inspect-btn {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 8px 16px;
+            background: var(--bh-yellow);
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            text-transform: uppercase;
             display: inline-flex;
             align-items: center;
-            gap: 9px;
-            padding: 10px 22px;
-            border-radius: var(--radius-button);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-family: var(--font-display);
-            font-size: 0.92rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: var(--glass-shadow-button);
+            gap: 8px;
             transition: var(--transition-tactile);
-            cursor: pointer;
-            width: 100%;
-            justify-content: center;
         }
 
-        .project-inspect-btn:hover {
-            background: linear-gradient(135deg, rgba(0, 242, 254, 0.25) 0%, rgba(79, 172, 254, 0.3) 100%);
-            border-color: rgba(0, 242, 254, 0.55);
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 12px 28px -5px rgba(0, 242, 254, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-            color: #ffffff;
-        }
-
-        .project-inspect-btn:active {
-            transform: translateY(1px) scale(0.97);
+        .bh-inspect-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-blue);
+            color: var(--bh-white);
         }
 
         /* ==========================================================================
-           SKILLS & EXPERTISE LIQUID CAPSULES
+           SKILLS SECTION: 3 BAUHAUS GRAPHIC POSTER PILLARS
            ========================================================================== */
-        .skills-section {
+        .skills-bauhaus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
             margin-bottom: 90px;
         }
 
-        .skills-card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 26px;
+        .skill-pillar {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            position: relative;
+            padding-bottom: 24px;
         }
 
-        .skill-group-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-            border: 1.5px solid var(--glass-border);
-            border-radius: var(--radius-card);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow);
-            padding: 30px;
-            transition: var(--transition-tactile);
+        .pillar-header {
+            padding: 24px;
+            border-bottom: var(--border-thick);
+            position: relative;
         }
 
-        .skill-group-card:hover {
-            border-color: var(--glass-border-highlight);
-            transform: translateY(-4px);
+        .pillar-header.blue {
+            background: var(--bh-blue);
+            color: var(--bh-white);
         }
 
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 22px;
+        .pillar-header.yellow {
+            background: var(--bh-yellow);
+            color: var(--bh-black);
         }
 
-        .skill-icon-pill {
-            width: 46px;
-            height: 46px;
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: var(--accent-cyan);
+        .pillar-header.white {
+            background: var(--bh-white);
+            color: var(--bh-black);
         }
 
-        .skill-group-title {
+        .pillar-title {
             font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.015em;
+            font-size: 1.35rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-top: 8px;
         }
 
-        .skill-items-container {
+        .pillar-body {
+            padding: 24px;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 10px;
         }
 
-        .skill-bubble {
-            display: inline-flex;
+        .skill-item-block {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #f1f5f9;
-            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--bh-offwhite);
+            border: var(--border-light);
+            box-shadow: 2px 2px 0 var(--bh-black);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.92rem;
             transition: var(--transition-tactile);
         }
 
-        .skill-bubble:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.35);
-            transform: scale(1.05);
-            color: #ffffff;
+        .skill-item-block:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-yellow);
         }
 
         /* ==========================================================================
-           ABOUT & PHILOSOPHY TACTILE CARDS
+           ABOUT / PHILOSOPHY: TWO OFFSET BAUHAUS PANELS
            ========================================================================== */
-        .about-section {
+        .about-bauhaus-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
             margin-bottom: 90px;
         }
 
-        .about-grid-duo {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 26px;
+        .about-panel {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 40px;
+            position: relative;
         }
 
-        .about-story-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1.5px solid var(--glass-border);
-            border-radius: var(--radius-card);
-            backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow);
-            padding: 34px;
-            transition: var(--transition-tactile);
+        .about-panel.panel-left {
+            transform: rotate(-0.8deg);
         }
 
-        .about-story-card:hover {
-            border-color: var(--glass-border-highlight);
-            transform: translateY(-4px);
+        .about-panel.panel-right {
+            transform: rotate(0.8deg);
+            background: var(--bh-cream);
         }
 
-        .story-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: var(--radius-pill);
-            background: rgba(157, 78, 221, 0.18);
-            border: 1px solid rgba(157, 78, 221, 0.4);
-            color: #d8b4fe;
+        .about-panel-tag {
+            display: inline-block;
+            background: var(--bh-black);
+            color: var(--bh-white);
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .about-panel-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
             margin-bottom: 16px;
         }
 
-        .story-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 12px;
-            letter-spacing: -0.02em;
-        }
-
-        .story-p {
-            font-size: 1.02rem;
-            color: #cbd5e1;
-            line-height: 1.75;
+        .about-panel-p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2b2b2b;
         }
 
         /* ==========================================================================
-           CONTACT & DIRECT TOUCH HUB
+           CONTACT SECTION: HUGE BAUHAUS POSTER WITH TACTILE ACTIONS
            ========================================================================== */
-        .contact-hub-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1.5px solid var(--glass-border);
-            border-radius: var(--radius-card);
-            backdrop-filter: var(--glass-blur);
-            box-shadow: var(--glass-shadow);
-            padding: 44px 36px;
-            margin-bottom: 70px;
-            text-align: center;
+        .contact-bauhaus-poster {
+            background: var(--bh-yellow);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 56px 48px;
             position: relative;
+            margin-bottom: 80px;
             overflow: hidden;
         }
 
-        .contact-hub-title {
+        .contact-geo-circle {
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--bh-blue);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
+            pointer-events: none;
+        }
+
+        .contact-title-huge {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 3.5vw, 2.6rem);
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: -0.025em;
-            margin-bottom: 12px;
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-hub-desc {
-            max-width: 620px;
-            margin: 0 auto 36px;
-            font-size: 1.08rem;
-            color: #cbd5e1;
+        .contact-lead {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-bottom: 36px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
         }
 
-        .contact-buttons-cluster {
+        .contact-actions-row {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
             gap: 16px;
-            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
 
-        .interactive-email-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 26px;
-            border-radius: var(--radius-button);
-            background: rgba(0, 242, 254, 0.12);
-            border: 1.5px solid rgba(0, 242, 254, 0.4);
-            color: #ffffff;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1.02rem;
-            cursor: pointer;
-            box-shadow: var(--glass-shadow-button);
+        .btn-contact-email {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 16px 28px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
             transition: var(--transition-tactile);
-        }
-
-        .interactive-email-pill:hover {
-            background: rgba(0, 242, 254, 0.22);
-            border-color: rgba(0, 242, 254, 0.7);
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 16px 36px rgba(0, 242, 254, 0.35);
-        }
-
-        .interactive-email-pill:active {
-            transform: scale(0.96);
-        }
-
-        .copy-tag-pill {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.15);
-            font-family: var(--font-mono);
-            letter-spacing: 0.04em;
-        }
-
-        /* ==========================================================================
-           FOOTER
-           ========================================================================== */
-        .glass-footer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 14px;
-            padding: 30px 20px;
-            color: #94a3b8;
-            font-size: 0.92rem;
-        }
-
-        .footer-pill-badge {
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            border-radius: var(--radius-pill);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+
+        .btn-contact-email:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-blue);
+            color: var(--bh-white);
         }
 
         /* ==========================================================================
-           TOAST NOTIFICATION (TACTILE COPY FEEDBACK)
+           FOOTER (ARCHITECTURAL INSCRIPTION)
            ========================================================================== */
-        .glass-toast {
-            position: fixed;
-            bottom: 32px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: rgba(16, 24, 48, 0.85);
-            backdrop-filter: blur(24px) saturate(180%);
-            border: 1.5px solid rgba(0, 242, 254, 0.5);
-            color: #ffffff;
-            padding: 14px 28px;
-            border-radius: var(--radius-pill);
-            font-family: var(--font-display);
+        .bauhaus-footer {
+            border-top: var(--border-heavy);
+            background: var(--bh-white);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
             font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* TOAST NOTIFICATION */
+        .bh-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bh-black);
+            color: var(--bh-white);
+            border: 3px solid var(--bh-yellow);
+            padding: 16px 24px;
+            font-family: var(--font-heading);
+            font-weight: 800;
             font-size: 0.95rem;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-hard);
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 242, 254, 0.4);
-            z-index: 1000;
+            z-index: 99999;
+            transform: translateY(120%);
             opacity: 0;
-            pointer-events: none;
-            transition: all 0.35s var(--spring-bounce);
+            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
         }
 
-        .glass-toast.show {
-            transform: translateX(-50%) translateY(0);
+        .bh-toast.show {
+            transform: translateY(0);
             opacity: 1;
-            pointer-events: auto;
-        }
-
-        .glass-toast i {
-            color: var(--accent-cyan);
-            font-size: 1.15rem;
         }
 
         /* ==========================================================================
            RESPONSIVE REFINEMENTS
            ========================================================================== */
-        @media (max-width: 900px) {
-            .cv-hero-banner {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 20px;
-                padding: 26px 20px;
-            }
-            .cv-icon-orb {
-                margin: 0 auto;
-            }
-            .cv-details {
-                text-align: center;
-            }
-            .cv-action-buttons {
-                width: 100%;
-            }
-            .cv-download-btn {
-                width: 100%;
-            }
-            .nav-links {
-                display: none;
-            }
-            .island-nav {
-                justify-content: space-between;
-                padding: 8px 14px;
-            }
-            .about-grid-duo {
+        @media (max-width: 1024px) {
+            .hero-bauhaus {
                 grid-template-columns: 1fr;
             }
-            .skills-card-grid {
+            .skills-bauhaus-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv-bauhaus-banner {
+                grid-template-columns: 1fr;
+            }
+            .cv-color-block {
+                height: 90px;
+                border-right: none;
+                border-bottom: var(--border-heavy);
+            }
+            .about-bauhaus-duo {
                 grid-template-columns: 1fr;
             }
         }
 
-        @media (max-width: 600px) {
-            .page-content {
-                padding: 16px 12px 60px;
+        @media (max-width: 640px) {
+            .hero-poster-block {
+                padding: 28px 20px;
             }
-            .projects-grid {
+            .hero-poster-block::before {
+                display: none;
+            }
+            .projects-bauhaus-grid {
                 grid-template-columns: 1fr;
-                gap: 18px;
             }
-            .hero-title {
-                font-size: 2.2rem;
+            .bh-card:nth-child(even), .bh-card:nth-child(odd) {
+                transform: none !important;
             }
-            .hero-description {
-                font-size: 1rem;
-                padding: 0 8px;
+            .contact-bauhaus-poster {
+                padding: 32px 20px;
             }
-            .tactile-actions-group {
+            .footer-inner {
                 flex-direction: column;
-                align-items: stretch;
-                gap: 10px;
-            }
-            .touch-pill {
-                justify-content: center;
-                width: 100%;
-                padding: 14px 20px;
-                font-size: 0.95rem;
-            }
-            .retro-switch-btn span.label-full {
-                display: none;
-            }
-            .retro-switch-btn::after {
-                content: 'Retro';
-            }
-            .filter-pills-bar {
-                gap: 8px;
-            }
-            .filter-pill {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
-            .project-glass-card {
-                padding: 22px 18px;
-                border-radius: 24px;
-            }
-            .section-main-title {
-                font-size: 1.8rem;
-            }
-            .section-subtext {
-                font-size: 0.95rem;
-                padding: 0 8px;
-            }
-            .contact-hub-card {
-                padding: 28px 16px;
-            }
-            .contact-hub-title {
-                font-size: 1.6rem;
-            }
-            .contact-hub-desc {
-                font-size: 0.95rem;
-            }
-            .about-story-card {
-                padding: 24px 18px;
-            }
-            .skill-group-card {
-                padding: 22px 18px;
-            }
-            .cv-hero-banner {
-                padding: 22px 16px;
-                border-radius: 24px;
-            }
-            .cv-title {
-                font-size: 1.2rem;
-            }
-            .cv-icon-orb {
-                width: 56px;
-                height: 56px;
-                font-size: 1.6rem;
-            }
-            .nav-wrapper {
-                top: 10px;
-                margin-bottom: 32px;
-            }
-            .island-nav {
-                padding: 6px 10px;
-            }
-            .brand-badge span:last-child {
-                font-size: 0.9rem;
-            }
-            .liquid-orb {
-                filter: blur(40px);
-                opacity: 0.4;
-            }
-            .orb-1, .orb-2 { width: 250px; height: 250px; }
-            .orb-3 { width: 300px; height: 300px; }
-            .orb-4 { display: none; }
-        }
-
-        @media (max-width: 380px) {
-            .hero-title {
-                font-size: 1.9rem;
-            }
-            .hero-role-typing {
-                font-size: 1rem;
-            }
-            .brand-badge span:last-child {
-                display: none;
-            }
-        }
-
-        /* Reduce animations for users who prefer reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .liquid-orb {
-                animation: none;
-            }
-            * {
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-            }
-        }
-
-        /* ==========================================================================
-           DESTROY BADGE FLOATING BAR
-           ========================================================================== */
-        .destroy-badge-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            opacity: 0.85;
-            transition: opacity 0.3s ease, transform 0.3s var(--spring-bounce);
-        }
-        .destroy-badge-float:hover {
-            opacity: 1;
-            transform: scale(1.08);
-        }
-        .destroy-badge-float img {
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-        @media (max-width: 600px) {
-            .destroy-badge-float {
-                bottom: 12px;
-                right: 12px;
-            }
-            .destroy-badge-float img {
-                width: 140px;
-                height: auto;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient Liquid Mesh Canvas & Caustic Grain -->
-    <div class="ambient-canvas" aria-hidden="true">
-        <div class="liquid-orb orb-1"></div>
-        <div class="liquid-orb orb-2"></div>
-        <div class="liquid-orb orb-3"></div>
-        <div class="liquid-orb orb-4"></div>
+    <!-- Dynamic Architectural Floating Shapes in Background -->
+    <div class="bg-shapes-container" aria-hidden="true">
+        <div class="shape-circle-blue"></div>
+        <div class="shape-square-yellow"></div>
+        <div class="shape-triangle-red"></div>
+        <div class="shape-pill-blue"></div>
+        <div class="shape-stripes-block"></div>
     </div>
-    <div class="noise-layer" aria-hidden="true"></div>
 
-    <!-- Main Content Container -->
-    <main class="page-content">
+    <!-- Sticky Bauhaus Navigation & Style Switcher -->
+    <header class="top-bauhaus-strip">
+        <div class="strip-inner">
+            <a href="#" class="brand-bauhaus" title="Emir Bera Soğuk">
+                <div class="brand-composition" aria-hidden="true">
+                    <div class="brand-shape-circle"></div>
+                    <div class="brand-shape-triangle"></div>
+                    <div class="brand-shape-square"></div>
+                </div>
+                <span>EMİR BERA SOĞUK</span>
+            </a>
 
-        <!-- Top Floating Dynamic Island Navigation -->
-        <header class="nav-wrapper">
-            <nav class="island-nav" aria-label="Ana Gezinti">
-                <a href="#" class="brand-badge" title="Emir Bera Soğuk">
-                    <div class="brand-avatar">
-                        <span>EBS</span>
-                        <div class="brand-pulse" title="Müsait / Aktif"></div>
-                    </div>
-                    <span>Emir Bera Soğuk</span>
-                </a>
-
-                <ul class="nav-links">
-                    <li><a href="#projects" class="nav-link">Projeler</a></li>
-                    <li><a href="#cv" class="nav-link">Özgeçmiş (CV)</a></li>
-                    <li><a href="#skills" class="nav-link">Yetenekler</a></li>
-                    <li><a href="#about" class="nav-link">Hakkımda</a></li>
-                    <li><a href="#contact" class="nav-link">İletişim</a></li>
+            <nav aria-label="Ana Gezinti">
+                <ul class="nav-links-bauhaus">
+                    <li><a href="#projects" class="nav-item-btn">Projeler</a></li>
+                    <li><a href="#cv" class="nav-item-btn">CV (Özgeçmiş)</a></li>
+                    <li><a href="#skills" class="nav-item-btn">Yetkinlikler</a></li>
+                    <li><a href="#about" class="nav-item-btn">Vizyon</a></li>
+                    <li><a href="#contact" class="nav-item-btn">İletişim</a></li>
                 </ul>
-
-                <!-- Switch to Terminal Mode Button -->
-                <a href="index_terminal.html" class="retro-switch-btn" title="TTY Terminal Arayüzüne Geç">
-                    <i class="fa-solid fa-terminal"></i>
-                    <span class="label-full">TTY Terminal (Retro)</span>
-                </a>
             </nav>
-        </header>
 
-        <!-- Hero Section -->
-        <section class="hero-section" id="hero">
-            <div class="ios-badge-pill">
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>Sistem Programlama ve Güvenlik Odaklı Portfolyo</span>
+            <!-- Theme / Style Switcher Hub: All styles preserved -->
+            <div class="style-switcher-menu" title="Farklı Tasarım Varyantlarını Dene">
+                <span class="style-label"><i class="fa-solid fa-shapes"></i> Stil:</span>
+                <a href="index.html" class="style-choice-btn active" title="Bauhaus Tasarımı">Bauhaus</a>
+                <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Liquid Glass">Liquid Glass</a>
+                <a href="index_retro.html" class="style-choice-btn" title="TTY Retro Terminal">Retro</a>
             </div>
+        </div>
+    </header>
 
-            <h1 class="hero-title">
-                Merhaba, Ben <br>
-                <span class="liquid-gradient-text">Emir Bera Soğuk</span>
-            </h1>
+    <!-- Main Container -->
+    <main class="main-container">
 
-            <div class="hero-role-typing">
-                <span class="highlight">Sistem Programlama</span> • Siber Güvenlik • Algoritma Mimarisi
-            </div>
-
-            <p class="hero-description">
-                C, C++ ve Linux tarafında düşük seviyeli sistem araçları, algoritmalar ve güvenlik yazılımları geliştiriyorum. İşin donanıma ve işletim sistemine yakın kısmıyla ilgilenmeyi seviyorum.
-            </p>
-
-            <!-- Tactile Contact & Profile Pills -->
-            <div class="tactile-actions-group">
-                <button class="touch-pill pill-email" id="emailPillBtn" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala & İletişim">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>emirberasoguk@proton.me</span>
-                </button>
-
-                <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="touch-pill pill-linkedin" title="LinkedIn Profili">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    <span>LinkedIn</span>
-                </a>
-
-                <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="touch-pill pill-github" title="GitHub Profili">
-                    <i class="fa-brands fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- MASTER CALL TO ACTION: CV DOWNLOAD GLASS BANNER -->
-        <section id="cv" style="scroll-margin-top: 100px;">
-            <div class="cv-hero-banner">
-                <div class="cv-icon-orb">
-                    <i class="fa-solid fa-file-pdf"></i>
+        <!-- 00 // HERO: ASYMMETRICAL POSTER -->
+        <section class="hero-bauhaus" id="hero">
+            <div class="hero-poster-block">
+                <div class="hero-tagline-capsule">
+                    <i class="fa-solid fa-shapes"></i>
+                    <span>Sistem Mimarisi & Siber Güvenlik</span>
                 </div>
 
-                <div class="cv-details">
-                    <div class="cv-tag-pill">
-                        <i class="fa-solid fa-check-circle"></i> Doğrulanmış Özgeçmiş • PDF (386 KB)
-                    </div>
-                    <h2 class="cv-title">Emir Bera Soğuk — Curriculum Vitae</h2>
-                    <p class="cv-subtitle">
-                        Teknik deneyimlerimi, projelerimi ve okul sürecimi özetleyen güncel CV dosyam.
-                    </p>
+                <h1 class="hero-title-giant">
+                    Emir Bera <br>
+                    <span class="accent-blue">Soğuk</span>
+                </h1>
+
+                <div class="hero-subrole">
+                    <span>Sistem Programlama</span>
+                    <span class="bullet">■</span>
+                    <span>Siber Güvenlik</span>
+                    <span class="bullet">▲</span>
+                    <span>Algoritma Mimarisi</span>
                 </div>
 
-                <div class="cv-action-buttons">
-                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="cv-download-btn" id="cvDirectDownload" title="CV Dosyasını Doğrudan İndir">
+                <p class="hero-manifesto">
+                    C, C++ ve Linux çekirdek katmanında düşük seviyeli sistem araçları, performans odaklı algoritmalar ve güvenlik yazılımları geliştiriyorum. Gereksiz katmanları ayıklayıp doğrudan donanım ve işletim sistemi mantığıyla çalışan sade ve sağlam çözümler üretiyorum.
+                </p>
+
+                <!-- Düzensiz Asimetrik Buton Grubu -->
+                <div class="irregular-button-cluster">
+                    <button class="btn-bh-primary" onclick="copyEmailToClipboard()" title="E-postayı Kopyala">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>emirberasoguk@proton.me</span>
+                    </button>
+
+                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-blue" title="Doğrudan CV İndir">
                         <i class="fa-solid fa-cloud-arrow-down"></i>
                         <span>CV'yi İndir</span>
                     </a>
-                    <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-preview-link" title="Yeni Sekmede Önizle">
+
+                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asymmetrical Bauhaus Aside Composition -->
+            <div class="hero-aside-composition">
+                <div class="aside-geo-card">
+                    <div class="aside-geo-title">Mühendislik Metrikleri</div>
+                    <p style="font-size: 0.95rem; opacity: 0.9;">
+                        Kocaeli Üniversitesi Bilgisayar Mühendisliği & Red Team Güvenlik Araştırmaları.
+                    </p>
+
+                    <div class="aside-stats-grid">
+                        <div class="stat-box-bh">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Açık Kaynak Proje</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">C/C++</div>
+                            <div class="stat-label">Düşük Seviye Odak</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">Linux</div>
+                            <div class="stat-label">sysfs & Kernel API</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Yerel Mimari</div>
+                        </div>
+                    </div>
+
+                    <div class="geo-stamp">Bauhaus 2026</div>
+                </div>
+
+                <div class="aside-quote-box">
+                    <div class="aside-quote-title">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Tasarım İlkesi</span>
+                    </div>
+                    <p class="aside-quote-text">
+                        "Form işlevi takip eder. Kodda da arayüzde de süsten uzak, doğrudan amaca hizmet eden geometrik kesinlik."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 // CV DOWNLOAD SECTION -->
+        <section id="cv" style="scroll-margin-top: 100px;">
+            <div class="cv-bauhaus-banner">
+                <div class="cv-color-block" aria-hidden="true">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div class="cv-text-block">
+                    <div class="cv-tag">Doğrulanmış Belge • PDF (386 KB)</div>
+                    <h2 class="cv-main-head">Emir Bera Soğuk — Curriculum Vitae</h2>
+                    <p class="cv-subline">
+                        Teknik deneyimlerimi, projelerimi, üniversite sürecimi ve siber güvenlik sertifikasyonlarımı içeren güncel özgeçmiş dosyam.
+                    </p>
+                </div>
+
+                <div class="cv-cta-actions">
+                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-primary" style="transform: none;" title="CV Dosyasını İndir">
+                        <i class="fa-solid fa-download"></i>
+                        <span>CV'yi İndir (PDF)</span>
+                    </a>
+                    <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="Yeni Sekmede Aç">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         <span>Önizle / Aç</span>
                     </a>
@@ -1496,472 +1372,505 @@
             </div>
         </section>
 
-        <!-- RECENT PROJECTS SHOWCASE -->
+        <!-- 02 // PROJELER (PROJECTS) -->
         <section id="projects" style="scroll-margin-top: 100px;">
-            <div class="section-header-block">
-                <div class="section-badge-pill">
-                    <i class="fa-solid fa-code-fork"></i> Portfolyo
-                </div>
-                <h2 class="section-main-title">Öne Çıkan Projelerim</h2>
-                <p class="section-subtext">
-                    Linux, C/C++, güvenlik ve masaüstü araçları üzerine geliştirdiğim açık kaynaklı çalışmalar.
-                </p>
-            </div>
-
-            <!-- Project Filter Pills -->
-            <div class="filter-pills-bar" role="tablist">
-                <button class="filter-pill active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
-                <button class="filter-pill" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
-                <button class="filter-pill" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
-                <button class="filter-pill" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
-                <button class="filter-pill" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
-            </div>
-
-            <!-- 10 TACTILE GLASS PROJECT CARDS -->
-            <div class="projects-grid" id="projectsGrid">
-
-                <!-- 1. Pi-Cracker -->
-                <article class="project-glass-card" data-category="c security" data-name="pi-cracker">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">01</span>
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-key" style="color: #f72585;"></i>
-                            </div>
-                            <span class="project-badge-pill">C / Bash • Güvenlik</span>
-                        </div>
-                        <h3 class="project-title">Pi-Cracker</h3>
-                        <p class="project-desc">
-                            Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
+                        <h2 class="bh-section-title">Öne Çıkan Projelerim</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Linux, C/C++, sistem araçları ve güvenlik üzerine geliştirdiğim açık kaynaklı çalışmalar.
                         </p>
                     </div>
+                </div>
+                <div class="bh-section-badge">10 Proje Listelendi</div>
+            </div>
+
+            <!-- Interactive Bauhaus Filter Buttons -->
+            <div class="projects-filter-bar" role="tablist">
+                <button class="bh-filter-btn active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
+                <button class="bh-filter-btn" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
+                <button class="bh-filter-btn" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
+                <button class="bh-filter-btn" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
+                <button class="bh-filter-btn" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
+            </div>
+
+            <!-- 10 Bauhaus Geometric Project Cards -->
+            <div class="projects-bauhaus-grid" id="projectsGrid">
+
+                <!-- 1. Pi-Cracker -->
+                <article class="bh-card theme-yellow" data-category="c security" data-name="pi-cracker">
                     <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">C</span>
-                            <span class="tech-tag">Bash</span>
-                            <span class="tech-tag">Pentest</span>
-                            <span class="tech-tag">OSINT</span>
-                            <span class="tech-tag">Cryptography</span>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C / Bash • Güvenlik</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-key"></i></div>
                         </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">Pi-Cracker</h3>
+                            <p class="bh-card-desc">
+                                Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Bash</span>
+                                <span class="bh-tag">Pentest</span>
+                                <span class="bh-tag">OSINT</span>
+                                <span class="bh-tag">Kriptografi</span>
+                            </div>
                         </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 2. ghelper-linux -->
-                <article class="project-glass-card" data-category="c tools" data-name="ghelper-linux">
+                <article class="bh-card theme-blue" data-category="c tools" data-name="ghelper-linux">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-fan" style="color: #00f2fe;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C / Linux sysfs</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-fan"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">ghelper-linux</h3>
+                            <p class="bh-card-desc">
+                                Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Linux Kernel</span>
+                                <span class="bh-tag">sysfs</span>
+                                <span class="bh-tag">Hardware Control</span>
                             </div>
-                            <span class="project-badge-pill">C / Linux sysfs</span>
                         </div>
-                        <h3 class="project-title">ghelper-linux</h3>
-                        <p class="project-desc">
-                            Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">C</span>
-                            <span class="tech-tag">Linux Kernel</span>
-                            <span class="tech-tag">sysfs</span>
-                            <span class="tech-tag">Hardware Control</span>
-                            <span class="tech-tag">ASUS TUF</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 3. me-tor (MiniNotepad) -->
-                <article class="project-glass-card" data-category="tools" data-name="me-tor">
+                <article class="bh-card" data-category="tools" data-name="me-tor">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-pen-to-square" style="color: #fbbf24;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C# / .NET 10</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">me-tor (MiniNotepad)</h3>
+                            <p class="bh-card-desc">
+                                .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C#</span>
+                                <span class="bh-tag">.NET 10</span>
+                                <span class="bh-tag">CLI</span>
+                                <span class="bh-tag">LIFO Stack</span>
+                                <span class="bh-tag">VIM Tarzı</span>
                             </div>
-                            <span class="project-badge-pill">C# / .NET 10</span>
                         </div>
-                        <h3 class="project-title">me-tor (MiniNotepad)</h3>
-                        <p class="project-desc">
-                            .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">.NET 10</span>
-                            <span class="tech-tag">CLI</span>
-                            <span class="tech-tag">LIFO Stack</span>
-                            <span class="tech-tag">Text Editor</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 4. InstaVault -->
-                <article class="project-glass-card" data-category="security tools" data-name="instavault">
+                <article class="bh-card theme-yellow" data-category="security tools" data-name="instavault">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-vault" style="color: #a855f7;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Python / Gizlilik</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-vault"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">InstaVault</h3>
+                            <p class="bh-card-desc">
+                                Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Python</span>
+                                <span class="bh-tag">Privacy</span>
+                                <span class="bh-tag">Security</span>
+                                <span class="bh-tag">Offline Vault</span>
                             </div>
-                            <span class="project-badge-pill">Python / Gizlilik</span>
                         </div>
-                        <h3 class="project-title">InstaVault</h3>
-                        <p class="project-desc">
-                            Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Privacy</span>
-                            <span class="tech-tag">Security</span>
-                            <span class="tech-tag">Offline Vault</span>
-                            <span class="tech-tag">Analytics</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 5. veritabani-calisma-simulasyonu -->
-                <article class="project-glass-card" data-category="tools" data-name="vtys-sim">
+                <article class="bh-card" data-category="tools" data-name="vtys-sim">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-database" style="color: #38bdf8;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Python / SQL</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-database"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">VTYS Simülatörü</h3>
+                            <p class="bh-card-desc">
+                                İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Python</span>
+                                <span class="bh-tag">SQLite</span>
+                                <span class="bh-tag">Normalizasyon</span>
+                                <span class="bh-tag">Disk IO</span>
                             </div>
-                            <span class="project-badge-pill">Python / SQL</span>
                         </div>
-                        <h3 class="project-title">VTYS Simülatörü</h3>
-                        <p class="project-desc">
-                            İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">SQLite</span>
-                            <span class="tech-tag">Normalizasyon</span>
-                            <span class="tech-tag">Disk IO Cost</span>
-                            <span class="tech-tag">CLI</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 6. C-ryptFile -->
-                <article class="project-glass-card" data-category="c security" data-name="cryptfile">
+                <article class="bh-card theme-blue" data-category="c security" data-name="cryptfile">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-file-shield" style="color: #00f2fe;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C • Kripto & Sıkıştırma</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">C-ryptFile</h3>
+                            <p class="bh-card-desc">
+                                Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Huffman Ağacı</span>
+                                <span class="bh-tag">Bit Manipülasyonu</span>
+                                <span class="bh-tag">Kriptografi</span>
                             </div>
-                            <span class="project-badge-pill">C • Kripto & Sıkıştırma</span>
                         </div>
-                        <h3 class="project-title">C-ryptFile</h3>
-                        <p class="project-desc">
-                            Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">C</span>
-                            <span class="tech-tag">Huffman Tree</span>
-                            <span class="tech-tag">Bitwise Compression</span>
-                            <span class="tech-tag">Cryptography</span>
-                            <span class="tech-tag">CLI</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 7. LidarRansac-C -->
-                <article class="project-glass-card" data-category="c" data-name="lidarransac">
+                <article class="bh-card" data-category="c" data-name="lidarransac">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-satellite-dish" style="color: #10b981;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C • Geometri Algoritmaları</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">LidarRansac-C</h3>
+                            <p class="bh-card-desc">
+                                2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">RANSAC</span>
+                                <span class="bh-tag">LIDAR</span>
+                                <span class="bh-tag">Nokta Bulutu</span>
                             </div>
-                            <span class="project-badge-pill">C • Geometri Algoritmaları</span>
                         </div>
-                        <h3 class="project-title">LidarRansac-C</h3>
-                        <p class="project-desc">
-                            2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">C</span>
-                            <span class="tech-tag">RANSAC</span>
-                            <span class="tech-tag">LIDAR</span>
-                            <span class="tech-tag">Point Cloud</span>
-                            <span class="tech-tag">Numerical Analysis</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 8. TheLastGarage -->
-                <article class="project-glass-card" data-category="java" data-name="thelastgarage">
+                <article class="bh-card theme-yellow" data-category="java" data-name="thelastgarage">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-chess-rook" style="color: #f97316;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Java / LibGDX</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-chess-rook"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">TheLastGarage</h3>
+                            <p class="bh-card-desc">
+                                LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Java</span>
+                                <span class="bh-tag">LibGDX</span>
+                                <span class="bh-tag">OOP Mimarisi</span>
+                                <span class="bh-tag">Oyun Motoru</span>
                             </div>
-                            <span class="project-badge-pill">Java / LibGDX</span>
                         </div>
-                        <h3 class="project-title">TheLastGarage</h3>
-                        <p class="project-desc">
-                            LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">LibGDX</span>
-                            <span class="tech-tag">OOP Architecture</span>
-                            <span class="tech-tag">Game Engine</span>
-                            <span class="tech-tag">Cross-Platform</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 9. Citation Graph Visualizer -->
-                <article class="project-glass-card" data-category="java" data-name="citationgraph">
+                <article class="bh-card" data-category="java" data-name="citationgraph">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-circle-nodes" style="color: #ec4899;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Java / JavaFX</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">Citation Graph Visualizer</h3>
+                            <p class="bh-card-desc">
+                                Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Java</span>
+                                <span class="bh-tag">JavaFX</span>
+                                <span class="bh-tag">Graf Teorisi</span>
+                                <span class="bh-tag">Görselleştirme</span>
                             </div>
-                            <span class="project-badge-pill">Java / JavaFX</span>
                         </div>
-                        <h3 class="project-title">Citation Graph Visualizer</h3>
-                        <p class="project-desc">
-                            Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">JavaFX</span>
-                            <span class="tech-tag">Graph Theory</span>
-                            <span class="tech-tag">Data Visualization</span>
-                            <span class="tech-tag">OOP</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
                 <!-- 10. dotfiles -->
-                <article class="project-glass-card" data-category="tools" data-name="dotfiles">
+                <article class="bh-card theme-blue" data-category="tools" data-name="dotfiles">
                     <div>
-                        <div class="project-top-row">
-                            <div class="card-icon-capsule">
-                                <i class="fa-solid fa-sliders" style="color: #60a5fa;"></i>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Linux • Hyprland</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-sliders"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">dotfiles</h3>
+                            <p class="bh-card-desc">
+                                Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Linux</span>
+                                <span class="bh-tag">Hyprland</span>
+                                <span class="bh-tag">Neovim (Lua)</span>
+                                <span class="bh-tag">Kitty</span>
+                                <span class="bh-tag">Bash/Zsh</span>
                             </div>
-                            <span class="project-badge-pill">Linux • Wayland / Hyprland</span>
                         </div>
-                        <h3 class="project-title">dotfiles</h3>
-                        <p class="project-desc">
-                            Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
-                        </p>
                     </div>
-                    <div>
-                        <div class="tech-pill-list">
-                            <span class="tech-tag">Linux</span>
-                            <span class="tech-tag">Hyprland</span>
-                            <span class="tech-tag">Neovim (Lua)</span>
-                            <span class="tech-tag">Kitty</span>
-                            <span class="tech-tag">Bash/Zsh</span>
-                        </div>
-                        <div class="project-card-footer">
-                            <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" rel="noopener noreferrer" class="project-inspect-btn">
-                                <span>GitHub'da İncele</span>
-                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                            </a>
-                        </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
                     </div>
                 </article>
 
             </div>
         </section>
 
-        <!-- SKILLS & EXPERTISE -->
-        <section class="skills-section" id="skills" style="scroll-margin-top: 100px;">
-            <div class="section-header-block">
-                <div class="section-badge-pill">
-                    <i class="fa-solid fa-microchip"></i> Yetkinlikler
+        <!-- 03 // SKILLS & EXPERTISE: 3 GRAPHIC PILLARS -->
+        <section id="skills" style="scroll-margin-top: 100px;">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">02</span>
+                    <div>
+                        <h2 class="bh-section-title">Teknoloji & Yetkinlikler</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Aktif olarak kod geliştirdiğim programlama dilleri, kütüphaneler ve sistem araçları.
+                        </p>
+                    </div>
                 </div>
-                <h2 class="section-main-title">Teknoloji & Mimari Altyapı</h2>
-                <p class="section-subtext">
-                    Aktif olarak kod yazdığım diller, araçlar ve üzerine kafa yorduğum alanlar.
-                </p>
+                <div class="bh-section-badge">Mühendislik Altyapısı</div>
             </div>
 
-            <div class="skills-card-grid">
-                <!-- Group 1: Sistem & Diller -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-pill">
-                            <i class="fa-solid fa-terminal" style="color: #00f2fe;"></i>
-                        </div>
-                        <h3 class="skill-group-title">Sistem & Programlama</h3>
+            <div class="skills-bauhaus-grid">
+                <!-- Pillar 1: Sistem & Programlama -->
+                <div class="skill-pillar">
+                    <div class="pillar-header blue">
+                        <span class="bh-card-badge">01 // KATMAN</span>
+                        <h3 class="pillar-title">Sistem & Programlama</h3>
                     </div>
-                    <div class="skill-items-container">
-                        <span class="skill-bubble"><i class="fa-solid fa-code text-cyan"></i> C / C++</span>
-                        <span class="skill-bubble"><i class="fa-brands fa-python text-blue"></i> Python</span>
-                        <span class="skill-bubble"><i class="fa-brands fa-java text-orange"></i> Java</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-hashtag text-purple"></i> C# (.NET)</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-terminal text-green"></i> Bash / Zsh</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-database text-yellow"></i> SQL / SQLite</span>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>C / C++</span>
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Python</span>
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Java (OOP & Engine)</span>
+                            <i class="fa-brands fa-java"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>C# (.NET 10)</span>
+                            <i class="fa-solid fa-hashtag"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Bash & POSIX Shell</span>
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>SQL & SQLite</span>
+                            <i class="fa-solid fa-database"></i>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Group 2: Güvenlik & Mimari -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-pill">
-                            <i class="fa-solid fa-shield-halved" style="color: #9d4edd;"></i>
-                        </div>
-                        <h3 class="skill-group-title">Güvenlik & Algoritmalar</h3>
+                <!-- Pillar 2: Güvenlik & Algoritma -->
+                <div class="skill-pillar">
+                    <div class="pillar-header yellow">
+                        <span class="bh-card-badge">02 // KATMAN</span>
+                        <h3 class="pillar-title">Güvenlik & Algoritmalar</h3>
                     </div>
-                    <div class="skill-items-container">
-                        <span class="skill-bubble"><i class="fa-solid fa-shield-cat"></i> Siber Güvenlik</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-fingerprint"></i> OSINT Analizi</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-lock"></i> Kriptografi & Huffman</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-diagram-project"></i> Graf Teorisi</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-chart-line"></i> RANSAC Algoritması</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-cubes"></i> OOP Tasarım Kalıpları</span>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>Siber Güvenlik & Pentest</span>
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>OSINT & Keşif</span>
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Kriptografi & Huffman Ağacı</span>
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Graf Algoritmaları (BFS/Dijkstra)</span>
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>RANSAC & Sayısal Yöntemler</span>
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Tersine Mühendislik Temelleri</span>
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Group 3: Ortam & Geliştirici Araçları -->
-                <div class="skill-group-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-pill">
-                            <i class="fa-brands fa-linux" style="color: #10b981;"></i>
-                        </div>
-                        <h3 class="skill-group-title">Ortam & Geliştirici Araçları</h3>
+                <!-- Pillar 3: Ortam & Geliştirici Araçları -->
+                <div class="skill-pillar">
+                    <div class="pillar-header white">
+                        <span class="bh-card-badge">03 // KATMAN</span>
+                        <h3 class="pillar-title">Ortam & Araçlar</h3>
                     </div>
-                    <div class="skill-items-container">
-                        <span class="skill-bubble"><i class="fa-brands fa-linux"></i> GNU/Linux (TUF/Arch)</span>
-                        <span class="skill-bubble"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-keyboard"></i> Neovim / Vim</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-microchip"></i> Linux sysfs / Kernel API</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-bug"></i> GDB / Valgrind</span>
-                        <span class="skill-bubble"><i class="fa-solid fa-network-wired"></i> Wireshark & Sniffing</span>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>GNU/Linux (Arch & TUF)</span>
+                            <i class="fa-brands fa-linux"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Git & GitHub CLI</span>
+                            <i class="fa-brands fa-git-alt"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Neovim & Vim (Lua)</span>
+                            <i class="fa-solid fa-keyboard"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Linux sysfs & Hardware API</span>
+                            <i class="fa-solid fa-fan"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>GDB & Valgrind Analizi</span>
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Wireshark Ağ Analizi</span>
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT & PHILOSOPHY -->
-        <section class="about-section" id="about" style="scroll-margin-top: 100px;">
-            <div class="section-header-block">
-                <div class="section-badge-pill">
-                    <i class="fa-solid fa-user-astronaut"></i> Vizyon
+        <!-- 04 // ABOUT: ASYMMETRICAL STORY PANELS -->
+        <section id="about" style="scroll-margin-top: 100px;">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">03</span>
+                    <div>
+                        <h2 class="bh-section-title">Mühendislik Yaklaşımım</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Yazılım ve sistem mimarisine bakış açım.
+                        </p>
+                    </div>
                 </div>
-                <h2 class="section-main-title">Mühendislik Yaklaşımım</h2>
-                <p class="section-subtext">
-                    Yazılım geliştirirken dikkat ettiğim ilkeler ve ilgi duyduğum konular.
-                </p>
+                <div class="bh-section-badge">Vizyon</div>
             </div>
 
-            <div class="about-grid-duo">
-                <div class="about-story-card">
-                    <span class="story-badge"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
-                    <h3 class="story-title">Düşük Seviye ve Sade Kod</h3>
-                    <p class="story-p">
-                        Bir şey yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum.
+            <div class="about-bauhaus-duo">
+                <div class="about-panel panel-left">
+                    <span class="about-panel-tag"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
+                    <h3 class="about-panel-title">Düşük Seviye ve Sade Kod</h3>
+                    <p class="about-panel-p">
+                        Bir yazılım yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum. Fazla katmanlar yerine sade ve yalın mantık kurmayı tercih ediyorum.
                     </p>
                 </div>
 
-                <div class="about-story-card">
-                    <span class="story-badge"><i class="fa-solid fa-compass"></i> İlgi & Odak Noktam</span>
-                    <h3 class="story-title">Güvenlik ve Çekirdek İlgisi</h3>
-                    <p class="story-p">
-                        Linux çekirdek arayüzleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir sistem inşa ederken olası güvenlik açıklarını en baştan düşünerek tasarlamaya çalışıyorum.
+                <div class="about-panel panel-right">
+                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> Odak Noktam</span>
+                    <h3 class="about-panel-title">Güvenlik ve Çekirdek İlgisi</h3>
+                    <p class="about-panel-p">
+                        Linux çekirdek arayüzleri, donanım kontrol düğümleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir mimari kurarken olası saldırı vektörlerini ve yetki sınırlarını en baştan düşünerek tasarlıyorum.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT HUB -->
+        <!-- 05 // CONTACT: HERO BAUHAUS POSTER -->
         <section id="contact" style="scroll-margin-top: 100px;">
-            <div class="contact-hub-card">
-                <div class="section-badge-pill">
-                    <i class="fa-solid fa-satellite"></i> Bağlantı
-                </div>
-                <h2 class="contact-hub-title">Doğrudan İletişime Geçin</h2>
-                <p class="contact-hub-desc">
-                    Proje fikirleri, açık kaynak katkıları, staj veya iş olanakları için bana yazabilirsiniz.
+            <div class="contact-bauhaus-poster">
+                <div class="contact-geo-circle" aria-hidden="true"></div>
+
+                <div class="cv-tag" style="background: var(--bh-black); margin-bottom: 14px;">04 // BAĞLANTI & İLETİŞİM</div>
+                <h2 class="contact-title-huge">
+                    Birlikte Yeni Projeler <br>
+                    İnşa Edelim.
+                </h2>
+                <p class="contact-lead">
+                    Sistem programlama, siber güvenlik, açık kaynak katkıları veya staj/iş olanakları için doğrudan iletişime geçebilirsiniz.
                 </p>
 
-                <div class="contact-buttons-cluster">
-                    <button class="interactive-email-pill" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala">
+                <div class="contact-actions-row">
+                    <button class="btn-contact-email" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala">
                         <i class="fa-solid fa-envelope"></i>
                         <span>emirberasoguk@proton.me</span>
-                        <span class="copy-tag-pill" id="copyLabel">Kopyala</span>
+                        <span style="font-size: 0.75rem; background: var(--bh-yellow); padding: 2px 6px; border: 1.5px solid var(--bh-black); color: var(--bh-black);" id="copyBadge">KOPYALA</span>
                     </button>
 
-                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="touch-pill pill-linkedin" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="LinkedIn">
                         <i class="fa-brands fa-linkedin-in"></i>
                         <span>LinkedIn</span>
                     </a>
 
-                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="touch-pill pill-github" title="GitHub">
+                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="GitHub">
                         <i class="fa-brands fa-github"></i>
                         <span>GitHub</span>
                     </a>
 
-                    <a href="tel:+905423774330" class="touch-pill" style="border-color: rgba(251, 191, 36, 0.4); color: #fbbf24;" title="Telefon ile Ulaş">
+                    <a href="tel:+905423774330" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="Telefon">
                         <i class="fa-solid fa-phone"></i>
                         <span>+90 542 377 43 30</span>
                     </a>
@@ -1969,89 +1878,48 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
-        <footer class="glass-footer">
-            <div class="footer-pill-badge">
-                <i class="fa-solid fa-shield-heart" style="color: #f72585;"></i>
-                <span>Emir Bera Soğuk &bull; iOS 27 Liquid Glass Arayüzü</span>
-            </div>
-            <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
-        </footer>
-
     </main>
 
-    <!-- Destroy This Website Badge -->
-    <a href="https://destroy.spritefusion.com/?from=badge&url=emirberasoguk.github.io" target="_blank" rel="noopener noreferrer" class="destroy-badge-float" title="Bu siteyi parçala!">
-        <img src="https://destroy.spritefusion.com/badge-light.svg" alt="Destroy this website" width="180" height="40" loading="lazy">
-    </a>
+    <!-- Bauhaus Footer -->
+    <footer class="bauhaus-footer">
+        <div class="footer-inner">
+            <div>
+                <strong>EMİR BERA SOĞUK</strong> &bull; BAUHAUS TASARIM SİSTEMİ
+            </div>
+            <div>
+                &copy; 2026 TÜM HAKLARI SAKLIDIR.
+            </div>
+            <div>
+                <a href="#hero" style="border-bottom: 2px solid var(--bh-black);">BAŞA DÖN ↑</a>
+            </div>
+        </div>
+    </footer>
 
-    <!-- TACTILE TOAST NOTIFICATION -->
-    <div class="glass-toast" id="glassToast" role="alert" aria-live="polite">
-        <i class="fa-solid fa-circle-check"></i>
+    <!-- Tactile Bauhaus Toast Notification -->
+    <div class="bh-toast" id="bhToast" role="alert" aria-live="polite">
+        <i class="fa-solid fa-circle-check" style="color: var(--bh-yellow);"></i>
         <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
     </div>
 
-    <!-- ==========================================================================
-         INTERACTIVE SCRIPTS (SMOOTH MOTION, 3D GLASS TILT & HAPTIC FEEDBACK)
-         ========================================================================== */ -->
+    <!-- Interactive Scripts -->
     <script>
-        // 1. Interactive Refraction Sheen on Glass Cards
-        document.addEventListener('DOMContentLoaded', () => {
-            const glassCards = document.querySelectorAll('.project-glass-card, .cv-hero-banner, .skill-group-card');
-
-            glassCards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-
-            // Parallax subtle interaction for background orbs with cursor
-            let mouseTargetX = 0;
-            let mouseTargetY = 0;
-            let currentX = 0;
-            let currentY = 0;
-            const orbs = document.querySelectorAll('.liquid-orb');
-
-            window.addEventListener('mousemove', (e) => {
-                mouseTargetX = (e.clientX / window.innerWidth - 0.5) * 40;
-                mouseTargetY = (e.clientY / window.innerHeight - 0.5) * 40;
-            });
-
-            function renderOrbSpring() {
-                currentX += (mouseTargetX - currentX) * 0.05;
-                currentY += (mouseTargetY - currentY) * 0.05;
-
-                orbs.forEach((orb, idx) => {
-                    const factor = (idx + 1) * 0.35;
-                    orb.style.transform = `translate(${currentX * factor}px, ${currentY * factor}px)`;
-                });
-                requestAnimationFrame(renderOrbSpring);
-            }
-            renderOrbSpring();
-        });
-
-        // 2. Project Filtering with Smooth Spring Visibility
+        // 1. Dynamic Project Filtering
         function filterProjects(category, btnElement) {
-            // Update active state on filter pills
-            const filterBtns = document.querySelectorAll('.filter-pill');
+            const filterBtns = document.querySelectorAll('.bh-filter-btn');
             filterBtns.forEach(btn => btn.classList.remove('active'));
             btnElement.classList.add('active');
 
-            const cards = document.querySelectorAll('.project-glass-card');
+            const cards = document.querySelectorAll('.bh-card');
             cards.forEach(card => {
-                const cardCategories = card.getAttribute('data-category') || '';
-                if (category === 'all' || cardCategories.includes(category)) {
+                const cardCat = card.getAttribute('data-category') || '';
+                if (category === 'all' || cardCat.includes(category)) {
                     card.style.display = 'flex';
                     card.style.opacity = '0';
-                    card.style.transform = 'scale(0.95) translateY(10px)';
+                    card.style.transform = 'translateY(12px)';
                     setTimeout(() => {
-                        card.style.transition = 'opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
                         card.style.opacity = '1';
-                        card.style.transform = 'scale(1) translateY(0)';
+                        card.style.transform = '';
                     }, 20);
                 } else {
                     card.style.display = 'none';
@@ -2059,46 +1927,44 @@
             });
         }
 
-        // 3. Tactile Copy to Clipboard with Toast Notification
+        // 2. Tactile Clipboard Copy
         function copyEmailToClipboard() {
             const email = 'emirberasoguk@proton.me';
             navigator.clipboard.writeText(email).then(() => {
-                showToast('E-posta panoya kopyalandı: ' + email);
-                const copyLabels = document.querySelectorAll('#copyLabel');
-                copyLabels.forEach(label => {
-                    const originalText = label.textContent;
-                    label.textContent = 'Kopyalandı!';
-                    label.style.background = 'rgba(16, 185, 129, 0.3)';
+                showToast('E-posta kopyalandı: ' + email);
+                const badge = document.getElementById('copyBadge');
+                if (badge) {
+                    badge.textContent = 'KOPYALANDI!';
+                    badge.style.background = '#00ff66';
                     setTimeout(() => {
-                        label.textContent = originalText;
-                        label.style.background = '';
-                    }, 2000);
-                });
+                        badge.textContent = 'KOPYALA';
+                        badge.style.background = 'var(--bh-yellow)';
+                    }, 2200);
+                }
             }).catch(() => {
-                // Fallback mailto
                 window.location.href = 'mailto:' + email;
             });
         }
 
-        function showToast(message) {
-            const toast = document.getElementById('glassToast');
+        function showToast(msg) {
+            const toast = document.getElementById('bhToast');
             const toastMsg = document.getElementById('toastMessage');
             if (!toast || !toastMsg) return;
 
-            toastMsg.textContent = message;
+            toastMsg.textContent = msg;
             toast.classList.add('show');
 
             clearTimeout(window.__toastTimeout);
             window.__toastTimeout = setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3200);
+            }, 3000);
         }
 
-        // 4. Subtle Tactile Audio-less Click Vibration (if Web Vibration API supported)
-        document.querySelectorAll('.touch-pill, .cv-download-btn, .filter-pill, .retro-switch-btn').forEach(el => {
+        // 3. Tactile Vibration Feedback
+        document.querySelectorAll('button, a').forEach(el => {
             el.addEventListener('click', () => {
                 if (navigator.vibrate) {
-                    navigator.vibrate(12);
+                    navigator.vibrate(15);
                 }
             });
         });

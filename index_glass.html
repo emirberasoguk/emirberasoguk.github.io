@@ -29,7 +29,7 @@
             --glass-bg-active: rgba(255, 255, 255, 0.17);
             --glass-border: rgba(255, 255, 255, 0.18);
             --glass-border-highlight: rgba(255, 255, 255, 0.45);
-            --glass-blur: blur(28px) saturate(190%) contrast(105%);
+            --glass-blur: blur(18px) saturate(160%);
 
             /* Inset Specular Refraction Shadows */
             --glass-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5), 
@@ -118,35 +118,34 @@
         .liquid-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(85px);
+            filter: blur(60px);
             opacity: 0.55;
-            will-change: transform;
             animation: orbFloat 22s ease-in-out infinite alternate;
         }
 
         .orb-1 {
-            width: 650px;
-            height: 650px;
-            top: -150px;
-            left: -100px;
+            width: 420px;
+            height: 420px;
+            top: -100px;
+            left: -60px;
             background: radial-gradient(circle, #7928ca 0%, #4facfe 70%, transparent 100%);
             animation-duration: 24s;
         }
 
         .orb-2 {
-            width: 580px;
-            height: 580px;
+            width: 380px;
+            height: 380px;
             top: 30%;
-            right: -120px;
+            right: -80px;
             background: radial-gradient(circle, #f72585 0%, #7209b7 65%, transparent 100%);
             animation-duration: 28s;
             animation-delay: -5s;
         }
 
         .orb-3 {
-            width: 700px;
-            height: 700px;
-            bottom: -200px;
+            width: 450px;
+            height: 450px;
+            bottom: -140px;
             left: 20%;
             background: radial-gradient(circle, #00f2fe 0%, #4361ee 70%, transparent 100%);
             animation-duration: 20s;
@@ -154,10 +153,10 @@
         }
 
         .orb-4 {
-            width: 450px;
-            height: 450px;
+            width: 300px;
+            height: 300px;
             top: 70%;
-            left: -150px;
+            left: -100px;
             background: radial-gradient(circle, #10b981 0%, #00b4d8 70%, transparent 100%);
             animation-duration: 26s;
             animation-delay: -3s;
@@ -310,7 +309,7 @@
             color: #5af78e;
             background: rgba(16, 185, 129, 0.12);
             border: 1px solid rgba(16, 185, 129, 0.35);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             font-family: var(--font-mono);
             font-size: 0.85rem;
             font-weight: 600;
@@ -1229,31 +1228,160 @@
                 justify-content: space-between;
                 padding: 8px 14px;
             }
+            .about-grid-duo {
+                grid-template-columns: 1fr;
+            }
+            .skills-card-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
             .page-content {
-                padding: 16px 16px 60px;
+                padding: 16px 12px 60px;
             }
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 18px;
             }
             .hero-title {
-                font-size: 2.6rem;
+                font-size: 2.2rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+                padding: 0 8px;
             }
             .tactile-actions-group {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 10px;
             }
             .touch-pill {
                 justify-content: center;
                 width: 100%;
+                padding: 14px 20px;
+                font-size: 0.95rem;
             }
             .retro-switch-btn span.label-full {
                 display: none;
             }
             .retro-switch-btn::after {
                 content: 'Retro';
+            }
+            .filter-pills-bar {
+                gap: 8px;
+            }
+            .filter-pill {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            .project-glass-card {
+                padding: 22px 18px;
+                border-radius: 24px;
+            }
+            .section-main-title {
+                font-size: 1.8rem;
+            }
+            .section-subtext {
+                font-size: 0.95rem;
+                padding: 0 8px;
+            }
+            .contact-hub-card {
+                padding: 28px 16px;
+            }
+            .contact-hub-title {
+                font-size: 1.6rem;
+            }
+            .contact-hub-desc {
+                font-size: 0.95rem;
+            }
+            .about-story-card {
+                padding: 24px 18px;
+            }
+            .skill-group-card {
+                padding: 22px 18px;
+            }
+            .cv-hero-banner {
+                padding: 22px 16px;
+                border-radius: 24px;
+            }
+            .cv-title {
+                font-size: 1.2rem;
+            }
+            .cv-icon-orb {
+                width: 56px;
+                height: 56px;
+                font-size: 1.6rem;
+            }
+            .nav-wrapper {
+                top: 10px;
+                margin-bottom: 32px;
+            }
+            .island-nav {
+                padding: 6px 10px;
+            }
+            .brand-badge span:last-child {
+                font-size: 0.9rem;
+            }
+            .liquid-orb {
+                filter: blur(40px);
+                opacity: 0.4;
+            }
+            .orb-1, .orb-2 { width: 250px; height: 250px; }
+            .orb-3 { width: 300px; height: 300px; }
+            .orb-4 { display: none; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            .hero-role-typing {
+                font-size: 1rem;
+            }
+            .brand-badge span:last-child {
+                display: none;
+            }
+        }
+
+        /* Reduce animations for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .liquid-orb {
+                animation: none;
+            }
+            * {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+            }
+        }
+
+        /* ==========================================================================
+           DESTROY BADGE FLOATING BAR
+           ========================================================================== */
+        .destroy-badge-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            opacity: 0.85;
+            transition: opacity 0.3s ease, transform 0.3s var(--spring-bounce);
+        }
+        .destroy-badge-float:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        .destroy-badge-float img {
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
+        @media (max-width: 600px) {
+            .destroy-badge-float {
+                bottom: 12px;
+                right: 12px;
+            }
+            .destroy-badge-float img {
+                width: 140px;
+                height: auto;
             }
         }
     </style>
@@ -1291,11 +1419,17 @@
                     <li><a href="#contact" class="nav-link">İletişim</a></li>
                 </ul>
 
-                <!-- Switch to Terminal Mode Button -->
-                <a href="index_terminal.html" class="retro-switch-btn" title="TTY Terminal Arayüzüne Geç">
-                    <i class="fa-solid fa-terminal"></i>
-                    <span class="label-full">TTY Terminal (Retro)</span>
-                </a>
+                <!-- Switch to Bauhaus or Retro -->
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <a href="index.html" class="retro-switch-btn" style="border-color: rgba(255, 208, 0, 0.45); color: #ffd000;" title="Bauhaus Tasarımına Geç">
+                        <i class="fa-solid fa-shapes"></i>
+                        <span class="label-full">Bauhaus</span>
+                    </a>
+                    <a href="index_retro.html" class="retro-switch-btn" title="TTY Terminal Arayüzüne Geç">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span class="label-full">Retro</span>
+                    </a>
+                </div>
             </nav>
         </header>
 
@@ -1303,7 +1437,7 @@
         <section class="hero-section" id="hero">
             <div class="ios-badge-pill">
                 <i class="fa-solid fa-wand-magic-sparkles"></i>
-                <span>iOS 27 Liquid Glass Arayüzü • Sistem & Siber Güvenlik</span>
+                <span>Sistem Programlama ve Güvenlik Odaklı Portfolyo</span>
             </div>
 
             <h1 class="hero-title">
@@ -1316,7 +1450,7 @@
             </div>
 
             <p class="hero-description">
-                C, C++ ve Linux çekirdeğinde düşük seviyeli sistem mühendisliği, modern nesne yönelimli mimariler ve siber güvenlik çözümleri geliştiriyorum. Yüksek performanslı, optimize ve zarif kodlar tasarlamaya odaklıyım.
+                C, C++ ve Linux tarafında düşük seviyeli sistem araçları, algoritmalar ve güvenlik yazılımları geliştiriyorum. İşin donanıma ve işletim sistemine yakın kısmıyla ilgilenmeyi seviyorum.
             </p>
 
             <!-- Tactile Contact & Profile Pills -->
@@ -1351,7 +1485,7 @@
                     </div>
                     <h2 class="cv-title">Emir Bera Soğuk — Curriculum Vitae</h2>
                     <p class="cv-subtitle">
-                        Sistem programlama, algoritma yetkinlikleri, akademik çalışmalar ve proje portföyümün tamamını içeren resmi özgeçmiş dosyamı tek tıkla cihazınıza indirebilirsiniz.
+                        Teknik deneyimlerimi, projelerimi ve okul sürecimi özetleyen güncel CV dosyam.
                     </p>
                 </div>
 
@@ -1376,7 +1510,7 @@
                 </div>
                 <h2 class="section-main-title">Öne Çıkan Projelerim</h2>
                 <p class="section-subtext">
-                    Sistem seviyesinden algoritmik modellemelere, kriptografiden terminal araçlarına kadar geliştirdiğim açık kaynaklı projeler.
+                    Linux, C/C++, güvenlik ve masaüstü araçları üzerine geliştirdiğim açık kaynaklı çalışmalar.
                 </p>
             </div>
 
@@ -1403,7 +1537,7 @@
                         </div>
                         <h3 class="project-title">Pi-Cracker</h3>
                         <p class="project-desc">
-                            Pi sayısının basamaklarını ve matematiksel örüntülerini kullanarak şifre analizi ve kırma denemesi yapan, OSINT hibrit saldırı vektörlerini destekleyen yüksek performanslı sızma testi aracı.
+                            Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
                         </p>
                     </div>
                     <div>
@@ -1434,7 +1568,7 @@
                         </div>
                         <h3 class="project-title">ghelper-linux</h3>
                         <p class="project-desc">
-                            Linux işletim sisteminde çalışan ASUS TUF & ROG cihazlar için donanım yönetimi, fan eğrileri, GPU performans modları ve batarya şarj limitlerini CLI ve GUI üzerinden yöneten C tabanlı sistem yardımcısı.
+                            Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
                         </p>
                     </div>
                     <div>
@@ -1465,7 +1599,7 @@
                         </div>
                         <h3 class="project-title">me-tor (MiniNotepad)</h3>
                         <p class="project-desc">
-                            .NET 10 ile geliştirilen, çok seviyeli geri alma/yineleme (undo/redo) operasyonları için özel LIFO yığıtı mimarisine ve dinamik bellek yönetimine sahip VIM benzeri interaktif terminal metin editörü.
+                            .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
                         </p>
                     </div>
                     <div>
@@ -1496,7 +1630,7 @@
                         </div>
                         <h3 class="project-title">InstaVault</h3>
                         <p class="project-desc">
-                            Meta veri arşivlerini yerelde toplayan, ayrıştıran ve kullanıcıya içerik tüketim analitiği, takipçi hareketleri ve gizlilik içgörüleri sunan çevrimdışı çalışan kişisel veri kasası.
+                            Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
                         </p>
                     </div>
                     <div>
@@ -1527,7 +1661,7 @@
                         </div>
                         <h3 class="project-title">VTYS Simülatörü</h3>
                         <p class="project-desc">
-                            Veritabanı Yönetim Sistemleri (VTYS) için geliştirilmiş interaktif SQL sorgu denemeleri, BCNF / 3NF ayrıştırması ve dış bellek sıralama maliyeti hesaplama CLI simülatörü.
+                            İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
                         </p>
                     </div>
                     <div>
@@ -1558,7 +1692,7 @@
                         </div>
                         <h3 class="project-title">C-ryptFile</h3>
                         <p class="project-desc">
-                            Huffman kodlaması ve bit seviyesinde ağaç manipülasyonu algoritmasını kullanarak dosyaları güvenli bir şekilde şifrelemek ve aynı anda kayıpsız sıkıştırmak için tasarlanmış C terminal uygulaması.
+                            Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
                         </p>
                     </div>
                     <div>
@@ -1589,7 +1723,7 @@
                         </div>
                         <h3 class="project-title">LidarRansac-C</h3>
                         <p class="project-desc">
-                            LIDAR nokta bulutu verilerinden 2D doğru tespiti ve gürültü eleme gerçekleştirmek üzere C diliyle sıfırdan yazılmış kararlı, yüksek hassasiyetli ve performanslı RANSAC algoritması.
+                            2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
                         </p>
                     </div>
                     <div>
@@ -1620,7 +1754,7 @@
                         </div>
                         <h3 class="project-title">TheLastGarage</h3>
                         <p class="project-desc">
-                            Windows, Linux, macOS ve Android platformlarında çalışan, zombi kıyameti sonrası temalı nesne yönelimli stratejik kule savunma (Tower Defense) oyunu.
+                            LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
                         </p>
                     </div>
                     <div>
@@ -1651,7 +1785,7 @@
                         </div>
                         <h3 class="project-title">Citation Graph Visualizer</h3>
                         <p class="project-desc">
-                            Akademik makalelerin ve yazarların atıf ağlarını graf teorisi yaklaşımları (BFS, Dijkstra, merkeziyet analizi) ile modelleyen ve JavaFX arayüzü ile interaktif görselleştiren masaüstü yazılımı.
+                            Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
                         </p>
                     </div>
                     <div>
@@ -1682,7 +1816,7 @@
                         </div>
                         <h3 class="project-title">dotfiles</h3>
                         <p class="project-desc">
-                            GNU/Linux geliştirici iş akışı için Hyprland, Waybar, Kitty, Neovim (Lua), zsh ve sistem otomasyon scriptlerinden oluşan yüksek verimlilik odaklı kişisel yapılandırma deposu.
+                            Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
                         </p>
                     </div>
                     <div>
@@ -1713,7 +1847,7 @@
                 </div>
                 <h2 class="section-main-title">Teknoloji & Mimari Altyapı</h2>
                 <p class="section-subtext">
-                    Düşük seviyeli sistem mimarilerinden güvenli ağ protokollerine kadar uzmanlaştığım çalışma alanları.
+                    Aktif olarak kod yazdığım diller, araçlar ve üzerine kafa yorduğum alanlar.
                 </p>
             </div>
 
@@ -1782,24 +1916,24 @@
                 </div>
                 <h2 class="section-main-title">Mühendislik Yaklaşımım</h2>
                 <p class="section-subtext">
-                    Kodun sadece çalışması değil; optimize, zarif ve güvenli olması esastır.
+                    Yazılım geliştirirken dikkat ettiğim ilkeler ve ilgi duyduğum konular.
                 </p>
             </div>
 
             <div class="about-grid-duo">
                 <div class="about-story-card">
                     <span class="story-badge"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
-                    <h3 class="story-title">Basit, Optimize ve Kararlı Sistemler</h3>
+                    <h3 class="story-title">Düşük Seviye ve Sade Kod</h3>
                     <p class="story-p">
-                        Yazılım geliştirmeyi salt kod yazmak olarak değil, donanım ve işletim sistemi mimarisiyle uyumlu çalışan en düşük seviyede optimize yapılar kurmak olarak görüyorum. C ve C++ dillerinde bellek ve döngü maliyetine gösterdiğim titizliği, üst seviyeli nesne yönelimli mimariler tasarlarken de koruyorum.
+                        Bir şey yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum.
                     </p>
                 </div>
 
                 <div class="about-story-card">
                     <span class="story-badge"><i class="fa-solid fa-compass"></i> İlgi & Odak Noktam</span>
-                    <h3 class="story-title">Sistem Güvenliği ve Protokoller</h3>
+                    <h3 class="story-title">Güvenlik ve Çekirdek İlgisi</h3>
                     <p class="story-p">
-                        İşletim sistemi çekirdeği (kernel interfaces), ağ protokolleri, tersine mühendislik ve siber güvenlik araştırmaları ana tutkumdur. Geliştirdiğim projelerde savunma mekanizmalarını baştan kurgulayarak saldırı yüzeylerini minimuma indirmeyi hedeflerim.
+                        Linux çekirdek arayüzleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir sistem inşa ederken olası güvenlik açıklarını en baştan düşünerek tasarlamaya çalışıyorum.
                     </p>
                 </div>
             </div>
@@ -1813,7 +1947,7 @@
                 </div>
                 <h2 class="contact-hub-title">Doğrudan İletişime Geçin</h2>
                 <p class="contact-hub-desc">
-                    Sistem projeleri, siber güvenlik araştırmaları, açık kaynak iş birlikleri veya kariyer fırsatları için dilediğiniz zaman ulaşabilirsiniz.
+                    Proje fikirleri, açık kaynak katkıları, staj veya iş olanakları için bana yazabilirsiniz.
                 </p>
 
                 <div class="contact-buttons-cluster">
@@ -1845,12 +1979,17 @@
         <footer class="glass-footer">
             <div class="footer-pill-badge">
                 <i class="fa-solid fa-shield-heart" style="color: #f72585;"></i>
-                <span>Designed with iOS 27 Liquid Glass Aesthetics &bull; 2026</span>
+                <span>Emir Bera Soğuk &bull; iOS 27 Liquid Glass Arayüzü</span>
             </div>
             <p>&copy; 2026 Emir Bera Soğuk. Tüm Hakları Saklıdır.</p>
         </footer>
 
     </main>
+
+    <!-- Destroy This Website Badge -->
+    <a href="https://destroy.spritefusion.com/?from=badge&url=emirberasoguk.github.io" target="_blank" rel="noopener noreferrer" class="destroy-badge-float" title="Bu siteyi parçala!">
+        <img src="https://destroy.spritefusion.com/badge-light.svg" alt="Destroy this website" width="180" height="40" loading="lazy">
+    </a>
 
     <!-- TACTILE TOAST NOTIFICATION -->
     <div class="glass-toast" id="glassToast" role="alert" aria-live="polite">

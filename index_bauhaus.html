@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emir Bera Soğuk — Bauhaus Portfolyo</title>
+    <meta name="description" content="Emir Bera Soğuk — Sistem Programlama, Düşük Seviye Mimariler ve Siber Güvenlik. Bauhaus tasarım sistemi, asimetrik kompozisyonlar ve geometrik formlar.">
+
+    <!-- Google Fonts: Space Grotesk, Syne, Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;600;700;800;900&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           BAUHAUS DESIGN SYSTEM TOKENS
+           Master Palette: Ultramarine Blue, Cadmium Yellow, Stark White & Pitch Black
+           ========================================================================== */
+        :root {
+            /* Bauhaus Primary Colors */
+            --bh-blue: #0d47a1;          /* Deep Cobalt / Ultramarine Blue */
+            --bh-blue-light: #1976d2;    /* Electric Accent Blue */
+            --bh-yellow: #ffd000;        /* Pure Cadmium Yellow */
+            --bh-yellow-soft: #ffe066;   /* Pale Yellow for hover */
+            --bh-white: #ffffff;         /* Stark Canvas White */
+            --bh-offwhite: #f7f7f3;      /* Warm Paper / Architectural Linen */
+            --bh-cream: #f0f0ea;         /* Bauhaus Studio Gray-Cream */
+            --bh-black: #111111;         /* Deep Pitch Black (Borders & Ink) */
+            --bh-red: #d90429;           /* Traditional Bauhaus Red Accent */
+
+            /* Architectural Grid & Border Constants */
+            --border-thick: 3px solid var(--bh-black);
+            --border-heavy: 4px solid var(--bh-black);
+            --border-light: 2px solid var(--bh-black);
+
+            /* Bauhaus Tactile Hard Shadows */
+            --shadow-hard-sm: 3px 3px 0 var(--bh-black);
+            --shadow-hard: 5px 5px 0 var(--bh-black);
+            --shadow-hard-lg: 8px 8px 0 var(--bh-black);
+            --shadow-hard-blue: 5px 5px 0 var(--bh-blue);
+            --shadow-hard-yellow: 5px 5px 0 var(--bh-yellow);
+
+            /* Typography */
+            --font-display: 'Syne', 'Space Grotesk', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Transitions */
+            --transition-tactile: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s ease;
+        }
+
+        /* Reset & Foundation */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bh-offwhite);
+            color: var(--bh-black);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            /* Bauhaus subtle dot grid wallpaper */
+            background-image: 
+                radial-gradient(circle at 1px 1px, rgba(17, 17, 17, 0.12) 1.5px, transparent 0);
+            background-size: 32px 32px;
+        }
+
+        ::selection {
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ==========================================================================
+           GEOMETRIC FLOATING BACKGROUND FORMS (IRREGULAR PLACEMENTS)
+           ========================================================================== */
+        .bg-shapes-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .shape-circle-blue {
+            position: absolute;
+            top: 60px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: var(--bh-blue);
+            opacity: 0.95;
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-lg);
+            animation: floatShapeSlow 18s ease-in-out infinite alternate;
+        }
+
+        .shape-square-yellow {
+            position: absolute;
+            top: 580px;
+            left: -50px;
+            width: 180px;
+            height: 180px;
+            background: var(--bh-yellow);
+            border: var(--border-thick);
+            transform: rotate(14deg);
+            box-shadow: var(--shadow-hard-lg);
+            animation: rotateShapeSlow 22s linear infinite;
+        }
+
+        .shape-triangle-red {
+            position: absolute;
+            top: 1450px;
+            right: -40px;
+            width: 0;
+            height: 0;
+            border-left: 110px solid transparent;
+            border-right: 110px solid transparent;
+            border-bottom: 190px solid var(--bh-red);
+            transform: rotate(-18deg);
+            opacity: 0.85;
+            filter: drop-shadow(6px 6px 0 var(--bh-black));
+        }
+
+        .shape-pill-blue {
+            position: absolute;
+            top: 2400px;
+            left: 20px;
+            width: 220px;
+            height: 80px;
+            background: var(--bh-blue);
+            border-radius: 9999px;
+            border: var(--border-thick);
+            transform: rotate(-10deg);
+            box-shadow: var(--shadow-hard);
+            opacity: 0.9;
+        }
+
+        .shape-stripes-block {
+            position: absolute;
+            top: 3200px;
+            right: 40px;
+            width: 140px;
+            height: 140px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--bh-black),
+                var(--bh-black) 10px,
+                var(--bh-yellow) 10px,
+                var(--bh-yellow) 20px
+            );
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transform: rotate(6deg);
+        }
+
+        @keyframes floatShapeSlow {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(40px) rotate(8deg); }
+        }
+
+        @keyframes rotateShapeSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* ==========================================================================
+           TOP ARCHITECTURAL BAR & STYLE SELECTOR
+           ========================================================================== */
+        .top-bauhaus-strip {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bh-white);
+            border-bottom: var(--border-heavy);
+            box-shadow: 0 4px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .strip-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .brand-bauhaus {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-composition {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .brand-shape-circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--bh-blue);
+            border: 2px solid var(--bh-black);
+        }
+
+        .brand-shape-triangle {
+            width: 0;
+            height: 0;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-bottom: 16px solid var(--bh-yellow);
+        }
+
+        .brand-shape-square {
+            width: 15px;
+            height: 15px;
+            background: var(--bh-red);
+            border: 2px solid var(--bh-black);
+        }
+
+        .nav-links-bauhaus {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-item-btn {
+            font-family: var(--font-heading);
+            font-size: 0.88rem;
+            font-weight: 700;
+            padding: 8px 14px;
+            background: var(--bh-white);
+            border: var(--border-light);
+            box-shadow: 2px 2px 0 var(--bh-black);
+            transition: var(--transition-tactile);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .nav-item-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-yellow);
+        }
+
+        /* Style switcher pill */
+        .style-switcher-menu {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bh-cream);
+            padding: 4px 6px;
+            border: var(--border-light);
+            border-radius: 4px;
+        }
+
+        .style-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0 4px;
+            text-transform: uppercase;
+        }
+
+        .style-choice-btn {
+            font-family: var(--font-heading);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 10px;
+            border: 2px solid var(--bh-black);
+            background: var(--bh-white);
+            transition: var(--transition-tactile);
+        }
+
+        .style-choice-btn.active {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            box-shadow: 2px 2px 0 var(--bh-black);
+        }
+
+        .style-choice-btn:hover:not(.active) {
+            background: var(--bh-yellow);
+            transform: translate(-1px, -1px);
+        }
+
+        /* ==========================================================================
+           MAIN CONTENT WRAPPER
+           ========================================================================== */
+        .main-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 40px 24px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ==========================================================================
+           HERO SECTION: ASYMMETRICAL BAUHAUS POSTER COMPOSITION
+           ========================================================================== */
+        .hero-bauhaus {
+            display: grid;
+            grid-template-columns: 1.35fr 0.85fr;
+            gap: 32px;
+            align-items: stretch;
+            margin-bottom: 70px;
+        }
+
+        .hero-poster-block {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Irregular graphic tape corner */
+        .hero-poster-block::before {
+            content: "EST. 2026 // BAUHAUS 01";
+            position: absolute;
+            top: 24px;
+            right: -60px;
+            background: var(--bh-yellow);
+            border: var(--border-light);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 6px 64px;
+            transform: rotate(45deg);
+            box-shadow: 2px 2px 0 var(--bh-black);
+            letter-spacing: 0.1em;
+        }
+
+        .hero-tagline-capsule {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            padding: 6px 16px;
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+        }
+
+        .hero-title-giant {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-title-giant .accent-blue {
+            color: var(--bh-blue);
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-title-giant .accent-blue::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 100%;
+            height: 12px;
+            background: var(--bh-yellow);
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+
+        .hero-subrole {
+            font-family: var(--font-mono);
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: var(--bh-cream);
+            border-left: 6px solid var(--bh-blue);
+            padding: 10px 16px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-subrole span.bullet {
+            color: var(--bh-red);
+            font-size: 1.2rem;
+        }
+
+        .hero-manifesto {
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: #2b2b2b;
+            margin-bottom: 36px;
+            max-width: 620px;
+        }
+
+        /* Düzensiz Asimetrik Buton Grubu */
+        .irregular-button-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn-bh-primary {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 14px 28px;
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transform: rotate(-1.5deg);
+        }
+
+        .btn-bh-primary:hover {
+            transform: rotate(0deg) translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-yellow-soft);
+        }
+
+        .btn-bh-blue {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 14px 24px;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            transform: rotate(1.2deg);
+        }
+
+        .btn-bh-blue:hover {
+            transform: rotate(0deg) translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-blue-light);
+        }
+
+        .btn-bh-white {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 14px 22px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+        }
+
+        .btn-bh-white:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-yellow);
+        }
+
+        /* Hero Asymmetrical Aside Composition */
+        .hero-aside-composition {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .aside-geo-card {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 32px;
+            position: relative;
+            transform: rotate(1deg);
+        }
+
+        .aside-geo-card .geo-stamp {
+            position: absolute;
+            bottom: -15px;
+            right: 20px;
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 0.85rem;
+            padding: 6px 14px;
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            transform: rotate(-3deg);
+            text-transform: uppercase;
+        }
+
+        .aside-geo-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .aside-stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .stat-box-bh {
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            padding: 12px;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--bh-blue);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .aside-quote-box {
+            background: var(--bh-yellow);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 28px;
+            transform: rotate(-1.5deg);
+        }
+
+        .aside-quote-title {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .aside-quote-text {
+            font-size: 0.95rem;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           SECTION HEADER COMPONENT (BAUHAUS POSTER STYLE)
+           ========================================================================== */
+        .bh-section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 36px;
+            padding-bottom: 16px;
+            border-bottom: 4px solid var(--bh-black);
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .bh-section-title-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .bh-section-num {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--bh-blue);
+            -webkit-text-stroke: 1.5px var(--bh-black);
+            text-shadow: 2px 2px 0 var(--bh-yellow);
+        }
+
+        .bh-section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .bh-section-badge {
+            background: var(--bh-white);
+            border: var(--border-light);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 14px;
+            box-shadow: var(--shadow-hard-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ==========================================================================
+           CV BANNER: BAUHAUS BLUE & YELLOW CONSTRUCT
+           ========================================================================== */
+        .cv-bauhaus-banner {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            margin-bottom: 80px;
+            display: grid;
+            grid-template-columns: 140px 1fr auto;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cv-color-block {
+            background: var(--bh-yellow);
+            height: 100%;
+            border-right: var(--border-heavy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--bh-black);
+        }
+
+        .cv-text-block {
+            padding: 32px 36px;
+        }
+
+        .cv-tag {
+            display: inline-block;
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cv-main-head {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .cv-subline {
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .cv-cta-actions {
+            padding: 32px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* ==========================================================================
+           PROJECTS SECTION: DYNAMIC BAUHAUS FILTER & ASYMMETRIC GRID
+           ========================================================================== */
+        .projects-filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 36px;
+        }
+
+        .bh-filter-btn {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            background: var(--bh-white);
+            border: var(--border-thick);
+            box-shadow: var(--shadow-hard-sm);
+            cursor: pointer;
+            transition: var(--transition-tactile);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .bh-filter-btn.active {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+            box-shadow: var(--shadow-hard);
+            transform: translate(-2px, -2px);
+        }
+
+        .bh-filter-btn:hover:not(.active) {
+            background: var(--bh-yellow);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-hard);
+        }
+
+        /* Asymmetric Projects Grid: Some cards take full width or irregular offsets */
+        .projects-bauhaus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 28px;
+            margin-bottom: 90px;
+        }
+
+        .bh-card {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: var(--transition-tactile);
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Irregular subtle tilt on alternating cards */
+        .bh-card:nth-child(even) {
+            transform: rotate(0.6deg);
+        }
+        .bh-card:nth-child(odd) {
+            transform: rotate(-0.5deg);
+        }
+
+        .bh-card:hover {
+            transform: rotate(0deg) translate(-4px, -4px) !important;
+            box-shadow: var(--shadow-hard-lg);
+        }
+
+        .bh-card-header {
+            padding: 20px 24px;
+            border-bottom: var(--border-thick);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bh-cream);
+        }
+
+        .bh-card.theme-blue .bh-card-header {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+        }
+
+        .bh-card.theme-yellow .bh-card-header {
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+        }
+
+        .bh-card-badge {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: 2px solid var(--bh-black);
+            text-transform: uppercase;
+        }
+
+        .bh-card-icon {
+            font-size: 1.35rem;
+        }
+
+        .bh-card-body {
+            padding: 26px 24px 20px;
+            flex: 1;
+        }
+
+        .bh-card-title {
+            font-family: var(--font-display);
+            font-size: 1.45rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+
+        .bh-card-desc {
+            font-size: 0.94rem;
+            line-height: 1.55;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .bh-tag-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        .bh-tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            background: var(--bh-cream);
+            border: 1.5px solid var(--bh-black);
+            color: var(--bh-black);
+        }
+
+        .bh-card-footer {
+            padding: 16px 24px;
+            border-top: var(--border-thick);
+            background: var(--bh-white);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bh-inspect-btn {
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 8px 16px;
+            background: var(--bh-yellow);
+            border: var(--border-light);
+            box-shadow: var(--shadow-hard-sm);
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-tactile);
+        }
+
+        .bh-inspect-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-blue);
+            color: var(--bh-white);
+        }
+
+        /* ==========================================================================
+           SKILLS SECTION: 3 BAUHAUS GRAPHIC POSTER PILLARS
+           ========================================================================== */
+        .skills-bauhaus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-bottom: 90px;
+        }
+
+        .skill-pillar {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            position: relative;
+            padding-bottom: 24px;
+        }
+
+        .pillar-header {
+            padding: 24px;
+            border-bottom: var(--border-thick);
+            position: relative;
+        }
+
+        .pillar-header.blue {
+            background: var(--bh-blue);
+            color: var(--bh-white);
+        }
+
+        .pillar-header.yellow {
+            background: var(--bh-yellow);
+            color: var(--bh-black);
+        }
+
+        .pillar-header.white {
+            background: var(--bh-white);
+            color: var(--bh-black);
+        }
+
+        .pillar-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            margin-top: 8px;
+        }
+
+        .pillar-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .skill-item-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            background: var(--bh-offwhite);
+            border: var(--border-light);
+            box-shadow: 2px 2px 0 var(--bh-black);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 0.92rem;
+            transition: var(--transition-tactile);
+        }
+
+        .skill-item-block:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 4px 4px 0 var(--bh-black);
+            background: var(--bh-yellow);
+        }
+
+        /* ==========================================================================
+           ABOUT / PHILOSOPHY: TWO OFFSET BAUHAUS PANELS
+           ========================================================================== */
+        .about-bauhaus-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 90px;
+        }
+
+        .about-panel {
+            background: var(--bh-white);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 40px;
+            position: relative;
+        }
+
+        .about-panel.panel-left {
+            transform: rotate(-0.8deg);
+        }
+
+        .about-panel.panel-right {
+            transform: rotate(0.8deg);
+            background: var(--bh-cream);
+        }
+
+        .about-panel-tag {
+            display: inline-block;
+            background: var(--bh-black);
+            color: var(--bh-white);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .about-panel-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .about-panel-p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2b2b2b;
+        }
+
+        /* ==========================================================================
+           CONTACT SECTION: HUGE BAUHAUS POSTER WITH TACTILE ACTIONS
+           ========================================================================== */
+        .contact-bauhaus-poster {
+            background: var(--bh-yellow);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard-lg);
+            padding: 56px 48px;
+            position: relative;
+            margin-bottom: 80px;
+            overflow: hidden;
+        }
+
+        .contact-geo-circle {
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--bh-blue);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
+            pointer-events: none;
+        }
+
+        .contact-title-huge {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            line-height: 1.08;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-lead {
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-bottom: 36px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-actions-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-contact-email {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 16px 28px;
+            background: var(--bh-white);
+            color: var(--bh-black);
+            border: var(--border-heavy);
+            box-shadow: var(--shadow-hard);
+            transition: var(--transition-tactile);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+
+        .btn-contact-email:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hard-lg);
+            background: var(--bh-blue);
+            color: var(--bh-white);
+        }
+
+        /* ==========================================================================
+           FOOTER (ARCHITECTURAL INSCRIPTION)
+           ========================================================================== */
+        .bauhaus-footer {
+            border-top: var(--border-heavy);
+            background: var(--bh-white);
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* TOAST NOTIFICATION */
+        .bh-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--bh-black);
+            color: var(--bh-white);
+            border: 3px solid var(--bh-yellow);
+            padding: 16px 24px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-hard);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 99999;
+            transform: translateY(120%);
+            opacity: 0;
+            transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .bh-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ==========================================================================
+           RESPONSIVE REFINEMENTS
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero-bauhaus {
+                grid-template-columns: 1fr;
+            }
+            .skills-bauhaus-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv-bauhaus-banner {
+                grid-template-columns: 1fr;
+            }
+            .cv-color-block {
+                height: 90px;
+                border-right: none;
+                border-bottom: var(--border-heavy);
+            }
+            .about-bauhaus-duo {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-poster-block {
+                padding: 28px 20px;
+            }
+            .hero-poster-block::before {
+                display: none;
+            }
+            .projects-bauhaus-grid {
+                grid-template-columns: 1fr;
+            }
+            .bh-card:nth-child(even), .bh-card:nth-child(odd) {
+                transform: none !important;
+            }
+            .contact-bauhaus-poster {
+                padding: 32px 20px;
+            }
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dynamic Architectural Floating Shapes in Background -->
+    <div class="bg-shapes-container" aria-hidden="true">
+        <div class="shape-circle-blue"></div>
+        <div class="shape-square-yellow"></div>
+        <div class="shape-triangle-red"></div>
+        <div class="shape-pill-blue"></div>
+        <div class="shape-stripes-block"></div>
+    </div>
+
+    <!-- Sticky Bauhaus Navigation & Style Switcher -->
+    <header class="top-bauhaus-strip">
+        <div class="strip-inner">
+            <a href="#" class="brand-bauhaus" title="Emir Bera Soğuk">
+                <div class="brand-composition" aria-hidden="true">
+                    <div class="brand-shape-circle"></div>
+                    <div class="brand-shape-triangle"></div>
+                    <div class="brand-shape-square"></div>
+                </div>
+                <span>EMİR BERA SOĞUK</span>
+            </a>
+
+            <nav aria-label="Ana Gezinti">
+                <ul class="nav-links-bauhaus">
+                    <li><a href="#projects" class="nav-item-btn">Projeler</a></li>
+                    <li><a href="#cv" class="nav-item-btn">CV (Özgeçmiş)</a></li>
+                    <li><a href="#skills" class="nav-item-btn">Yetkinlikler</a></li>
+                    <li><a href="#about" class="nav-item-btn">Vizyon</a></li>
+                    <li><a href="#contact" class="nav-item-btn">İletişim</a></li>
+                </ul>
+            </nav>
+
+            <!-- Theme / Style Switcher Hub: All styles preserved -->
+            <div class="style-switcher-menu" title="Farklı Tasarım Varyantlarını Dene">
+                <span class="style-label"><i class="fa-solid fa-shapes"></i> Stil:</span>
+                <a href="index.html" class="style-choice-btn active" title="Bauhaus Tasarımı">Bauhaus</a>
+                <a href="index_glass.html" class="style-choice-btn" title="iOS 27 Liquid Glass">Liquid Glass</a>
+                <a href="index_retro.html" class="style-choice-btn" title="TTY Retro Terminal">Retro</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+
+        <!-- 00 // HERO: ASYMMETRICAL POSTER -->
+        <section class="hero-bauhaus" id="hero">
+            <div class="hero-poster-block">
+                <div class="hero-tagline-capsule">
+                    <i class="fa-solid fa-shapes"></i>
+                    <span>Sistem Mimarisi & Siber Güvenlik</span>
+                </div>
+
+                <h1 class="hero-title-giant">
+                    Emir Bera <br>
+                    <span class="accent-blue">Soğuk</span>
+                </h1>
+
+                <div class="hero-subrole">
+                    <span>Sistem Programlama</span>
+                    <span class="bullet">■</span>
+                    <span>Siber Güvenlik</span>
+                    <span class="bullet">▲</span>
+                    <span>Algoritma Mimarisi</span>
+                </div>
+
+                <p class="hero-manifesto">
+                    C, C++ ve Linux çekirdek katmanında düşük seviyeli sistem araçları, performans odaklı algoritmalar ve güvenlik yazılımları geliştiriyorum. Gereksiz katmanları ayıklayıp doğrudan donanım ve işletim sistemi mantığıyla çalışan sade ve sağlam çözümler üretiyorum.
+                </p>
+
+                <!-- Düzensiz Asimetrik Buton Grubu -->
+                <div class="irregular-button-cluster">
+                    <button class="btn-bh-primary" onclick="copyEmailToClipboard()" title="E-postayı Kopyala">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>emirberasoguk@proton.me</span>
+                    </button>
+
+                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-blue" title="Doğrudan CV İndir">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        <span>CV'yi İndir</span>
+                    </a>
+
+                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Asymmetrical Bauhaus Aside Composition -->
+            <div class="hero-aside-composition">
+                <div class="aside-geo-card">
+                    <div class="aside-geo-title">Mühendislik Metrikleri</div>
+                    <p style="font-size: 0.95rem; opacity: 0.9;">
+                        Kocaeli Üniversitesi Bilgisayar Mühendisliği & Red Team Güvenlik Araştırmaları.
+                    </p>
+
+                    <div class="aside-stats-grid">
+                        <div class="stat-box-bh">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Açık Kaynak Proje</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">C/C++</div>
+                            <div class="stat-label">Düşük Seviye Odak</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">Linux</div>
+                            <div class="stat-label">sysfs & Kernel API</div>
+                        </div>
+                        <div class="stat-box-bh">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Yerel Mimari</div>
+                        </div>
+                    </div>
+
+                    <div class="geo-stamp">Bauhaus 2026</div>
+                </div>
+
+                <div class="aside-quote-box">
+                    <div class="aside-quote-title">
+                        <i class="fa-solid fa-cube"></i>
+                        <span>Tasarım İlkesi</span>
+                    </div>
+                    <p class="aside-quote-text">
+                        "Form işlevi takip eder. Kodda da arayüzde de süsten uzak, doğrudan amaca hizmet eden geometrik kesinlik."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 01 // CV DOWNLOAD SECTION -->
+        <section id="cv" style="scroll-margin-top: 100px;">
+            <div class="cv-bauhaus-banner">
+                <div class="cv-color-block" aria-hidden="true">
+                    <i class="fa-solid fa-file-pdf"></i>
+                </div>
+
+                <div class="cv-text-block">
+                    <div class="cv-tag">Doğrulanmış Belge • PDF (386 KB)</div>
+                    <h2 class="cv-main-head">Emir Bera Soğuk — Curriculum Vitae</h2>
+                    <p class="cv-subline">
+                        Teknik deneyimlerimi, projelerimi, üniversite sürecimi ve siber güvenlik sertifikasyonlarımı içeren güncel özgeçmiş dosyam.
+                    </p>
+                </div>
+
+                <div class="cv-cta-actions">
+                    <a href="Emir_Bera_Soguk_CV.pdf" download="Emir_Bera_Soguk_CV.pdf" class="btn-bh-primary" style="transform: none;" title="CV Dosyasını İndir">
+                        <i class="fa-solid fa-download"></i>
+                        <span>CV'yi İndir (PDF)</span>
+                    </a>
+                    <a href="Emir_Bera_Soguk_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn-bh-white" title="Yeni Sekmede Aç">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>Önizle / Aç</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 // PROJELER (PROJECTS) -->
+        <section id="projects" style="scroll-margin-top: 100px;">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">01</span>
+                    <div>
+                        <h2 class="bh-section-title">Öne Çıkan Projelerim</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Linux, C/C++, sistem araçları ve güvenlik üzerine geliştirdiğim açık kaynaklı çalışmalar.
+                        </p>
+                    </div>
+                </div>
+                <div class="bh-section-badge">10 Proje Listelendi</div>
+            </div>
+
+            <!-- Interactive Bauhaus Filter Buttons -->
+            <div class="projects-filter-bar" role="tablist">
+                <button class="bh-filter-btn active" data-filter="all" onclick="filterProjects('all', this)">Tümü (10)</button>
+                <button class="bh-filter-btn" data-filter="c" onclick="filterProjects('c', this)">C / C++ & Sistem</button>
+                <button class="bh-filter-btn" data-filter="security" onclick="filterProjects('security', this)">Siber Güvenlik</button>
+                <button class="bh-filter-btn" data-filter="java" onclick="filterProjects('java', this)">Java / OOP</button>
+                <button class="bh-filter-btn" data-filter="tools" onclick="filterProjects('tools', this)">CLI & Araçlar</button>
+            </div>
+
+            <!-- 10 Bauhaus Geometric Project Cards -->
+            <div class="projects-bauhaus-grid" id="projectsGrid">
+
+                <!-- 1. Pi-Cracker -->
+                <article class="bh-card theme-yellow" data-category="c security" data-name="pi-cracker">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C / Bash • Güvenlik</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-key"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">Pi-Cracker</h3>
+                            <p class="bh-card-desc">
+                                Pi sayısının basamak örüntülerini ve OSINT verilerini birleştirerek hedef odaklı parola denemeleri yapan C ve Bash tabanlı pentest aracı.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Bash</span>
+                                <span class="bh-tag">Pentest</span>
+                                <span class="bh-tag">OSINT</span>
+                                <span class="bh-tag">Kriptografi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/Pi-Cracker" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 2. ghelper-linux -->
+                <article class="bh-card theme-blue" data-category="c tools" data-name="ghelper-linux">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C / Linux sysfs</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-fan"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">ghelper-linux</h3>
+                            <p class="bh-card-desc">
+                                Linux kurulu ASUS TUF ve ROG dizüstü bilgisayarlarda fan hızlarını, GPU modlarını ve batarya şarj limitini sysfs üzerinden kontrol eden C tabanlı araç.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Linux Kernel</span>
+                                <span class="bh-tag">sysfs</span>
+                                <span class="bh-tag">Hardware Control</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/ghelper-linux" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 3. me-tor (MiniNotepad) -->
+                <article class="bh-card" data-category="tools" data-name="me-tor">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C# / .NET 10</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">me-tor (MiniNotepad)</h3>
+                            <p class="bh-card-desc">
+                                .NET 10 ile yazdığım, LIFO yığıtı mantığıyla çalışan çok adımlı geri alma/yineleme desteği bulunan VIM esintili terminal metin editörü.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C#</span>
+                                <span class="bh-tag">.NET 10</span>
+                                <span class="bh-tag">CLI</span>
+                                <span class="bh-tag">LIFO Stack</span>
+                                <span class="bh-tag">VIM Tarzı</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/Leylakhalilova/Prolab-2" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 4. InstaVault -->
+                <article class="bh-card theme-yellow" data-category="security tools" data-name="instavault">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Python / Gizlilik</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-vault"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">InstaVault</h3>
+                            <p class="bh-card-desc">
+                                Instagram veri dökümlerini tamamen çevrimdışı ortamda ayrıştırıp etkileşim istatistikleri ve takipçi hareketleri sunan Python tabanlı yerel analiz aracı.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Python</span>
+                                <span class="bh-tag">Privacy</span>
+                                <span class="bh-tag">Security</span>
+                                <span class="bh-tag">Offline Vault</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/InstaVault" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 5. veritabani-calisma-simulasyonu -->
+                <article class="bh-card" data-category="tools" data-name="vtys-sim">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Python / SQL</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-database"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">VTYS Simülatörü</h3>
+                            <p class="bh-card-desc">
+                                İnteraktif SQL denemeleri, 3NF/BCNF normalizasyon hesapları ve disk I/O sıralama maliyeti analizleri sunan terminal tabanlı veritabanı simülatörü.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Python</span>
+                                <span class="bh-tag">SQLite</span>
+                                <span class="bh-tag">Normalizasyon</span>
+                                <span class="bh-tag">Disk IO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/veritabani-calisma-simulasyonu" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 6. C-ryptFile -->
+                <article class="bh-card theme-blue" data-category="c security" data-name="cryptfile">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C • Kripto & Sıkıştırma</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">C-ryptFile</h3>
+                            <p class="bh-card-desc">
+                                Huffman ağacı ve bit seviyesinde manipülasyonla dosyaları aynı anda hem sıkıştıran hem de şifreleyen C tabanlı konsol uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">Huffman Ağacı</span>
+                                <span class="bh-tag">Bit Manipülasyonu</span>
+                                <span class="bh-tag">Kriptografi</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/C-ryptFile" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 7. LidarRansac-C -->
+                <article class="bh-card" data-category="c" data-name="lidarransac">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">C • Geometri Algoritmaları</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">LidarRansac-C</h3>
+                            <p class="bh-card-desc">
+                                2D LIDAR nokta bulutu verilerinden gürültüyü temizleyip doğruları tespit etmek için C ile sıfırdan yazdığım RANSAC algoritması uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">C</span>
+                                <span class="bh-tag">RANSAC</span>
+                                <span class="bh-tag">LIDAR</span>
+                                <span class="bh-tag">Nokta Bulutu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/LidarRansac-C" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 8. TheLastGarage -->
+                <article class="bh-card theme-yellow" data-category="java" data-name="thelastgarage">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Java / LibGDX</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-chess-rook"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">TheLastGarage</h3>
+                            <p class="bh-card-desc">
+                                LibGDX ve Java ile nesne yönelimli mimaride geliştirdiğim, masaüstü ve Android uyumlu zombi temalı kule savunma oyunu.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Java</span>
+                                <span class="bh-tag">LibGDX</span>
+                                <span class="bh-tag">OOP Mimarisi</span>
+                                <span class="bh-tag">Oyun Motoru</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/TheLastGarage" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 9. Citation Graph Visualizer -->
+                <article class="bh-card" data-category="java" data-name="citationgraph">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Java / JavaFX</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-circle-nodes"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">Citation Graph Visualizer</h3>
+                            <p class="bh-card-desc">
+                                Makale ve yazar ilişkilerini graf algoritmalarıyla (BFS, Dijkstra) işleyip JavaFX arayüzünde görselleştiren masaüstü uygulaması.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Java</span>
+                                <span class="bh-tag">JavaFX</span>
+                                <span class="bh-tag">Graf Teorisi</span>
+                                <span class="bh-tag">Görselleştirme</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/HopeLAB-dev/Prolab-3" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- 10. dotfiles -->
+                <article class="bh-card theme-blue" data-category="tools" data-name="dotfiles">
+                    <div>
+                        <div class="bh-card-header">
+                            <span class="bh-card-badge">Linux • Hyprland</span>
+                            <div class="bh-card-icon"><i class="fa-solid fa-sliders"></i></div>
+                        </div>
+                        <div class="bh-card-body">
+                            <h3 class="bh-card-title">dotfiles</h3>
+                            <p class="bh-card-desc">
+                                Kendi Linux iş akışım için kullandığım Hyprland, Neovim (Lua), Kitty terminal ve kabuk betikleri yapılandırmalarım.
+                            </p>
+                            <div class="bh-tag-cluster">
+                                <span class="bh-tag">Linux</span>
+                                <span class="bh-tag">Hyprland</span>
+                                <span class="bh-tag">Neovim (Lua)</span>
+                                <span class="bh-tag">Kitty</span>
+                                <span class="bh-tag">Bash/Zsh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bh-card-footer">
+                        <a href="https://github.com/emirberasoguk/dotfiles" target="_blank" rel="noopener noreferrer" class="bh-inspect-btn">
+                            <span>GitHub'da İncele</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- 03 // SKILLS & EXPERTISE: 3 GRAPHIC PILLARS -->
+        <section id="skills" style="scroll-margin-top: 100px;">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">02</span>
+                    <div>
+                        <h2 class="bh-section-title">Teknoloji & Yetkinlikler</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Aktif olarak kod geliştirdiğim programlama dilleri, kütüphaneler ve sistem araçları.
+                        </p>
+                    </div>
+                </div>
+                <div class="bh-section-badge">Mühendislik Altyapısı</div>
+            </div>
+
+            <div class="skills-bauhaus-grid">
+                <!-- Pillar 1: Sistem & Programlama -->
+                <div class="skill-pillar">
+                    <div class="pillar-header blue">
+                        <span class="bh-card-badge">01 // KATMAN</span>
+                        <h3 class="pillar-title">Sistem & Programlama</h3>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>C / C++</span>
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Python</span>
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Java (OOP & Engine)</span>
+                            <i class="fa-brands fa-java"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>C# (.NET 10)</span>
+                            <i class="fa-solid fa-hashtag"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Bash & POSIX Shell</span>
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>SQL & SQLite</span>
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Güvenlik & Algoritma -->
+                <div class="skill-pillar">
+                    <div class="pillar-header yellow">
+                        <span class="bh-card-badge">02 // KATMAN</span>
+                        <h3 class="pillar-title">Güvenlik & Algoritmalar</h3>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>Siber Güvenlik & Pentest</span>
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>OSINT & Keşif</span>
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Kriptografi & Huffman Ağacı</span>
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Graf Algoritmaları (BFS/Dijkstra)</span>
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>RANSAC & Sayısal Yöntemler</span>
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Tersine Mühendislik Temelleri</span>
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Ortam & Geliştirici Araçları -->
+                <div class="skill-pillar">
+                    <div class="pillar-header white">
+                        <span class="bh-card-badge">03 // KATMAN</span>
+                        <h3 class="pillar-title">Ortam & Araçlar</h3>
+                    </div>
+                    <div class="pillar-body">
+                        <div class="skill-item-block">
+                            <span>GNU/Linux (Arch & TUF)</span>
+                            <i class="fa-brands fa-linux"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Git & GitHub CLI</span>
+                            <i class="fa-brands fa-git-alt"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Neovim & Vim (Lua)</span>
+                            <i class="fa-solid fa-keyboard"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Linux sysfs & Hardware API</span>
+                            <i class="fa-solid fa-fan"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>GDB & Valgrind Analizi</span>
+                            <i class="fa-solid fa-bug"></i>
+                        </div>
+                        <div class="skill-item-block">
+                            <span>Wireshark Ağ Analizi</span>
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 // ABOUT: ASYMMETRICAL STORY PANELS -->
+        <section id="about" style="scroll-margin-top: 100px;">
+            <div class="bh-section-header">
+                <div class="bh-section-title-wrap">
+                    <span class="bh-section-num">03</span>
+                    <div>
+                        <h2 class="bh-section-title">Mühendislik Yaklaşımım</h2>
+                        <p style="font-size: 1rem; color: #444; margin-top: 4px;">
+                            Yazılım ve sistem mimarisine bakış açım.
+                        </p>
+                    </div>
+                </div>
+                <div class="bh-section-badge">Vizyon</div>
+            </div>
+
+            <div class="about-bauhaus-duo">
+                <div class="about-panel panel-left">
+                    <span class="about-panel-tag"><i class="fa-solid fa-brain"></i> Temel Felsefem</span>
+                    <h3 class="about-panel-title">Düşük Seviye ve Sade Kod</h3>
+                    <p class="about-panel-p">
+                        Bir yazılım yazarken donanımın ve işletim sisteminin arkada ne yaptığını bilmeyi önemsiyorum. C ve C++ ile uğraşırken edindiğim bellek ve performans alışkanlıklarını üst seviye dillerde proje geliştirirken de elden bırakmıyorum. Fazla katmanlar yerine sade ve yalın mantık kurmayı tercih ediyorum.
+                    </p>
+                </div>
+
+                <div class="about-panel panel-right">
+                    <span class="about-panel-tag"><i class="fa-solid fa-shield-halved"></i> Odak Noktam</span>
+                    <h3 class="about-panel-title">Güvenlik ve Çekirdek İlgisi</h3>
+                    <p class="about-panel-p">
+                        Linux çekirdek arayüzleri, donanım kontrol düğümleri, ağ paketleri ve tersine mühendislik uzun süredir odaklandığım konular. Bir mimari kurarken olası saldırı vektörlerini ve yetki sınırlarını en baştan düşünerek tasarlıyorum.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 // CONTACT: HERO BAUHAUS POSTER -->
+        <section id="contact" style="scroll-margin-top: 100px;">
+            <div class="contact-bauhaus-poster">
+                <div class="contact-geo-circle" aria-hidden="true"></div>
+
+                <div class="cv-tag" style="background: var(--bh-black); margin-bottom: 14px;">04 // BAĞLANTI & İLETİŞİM</div>
+                <h2 class="contact-title-huge">
+                    Birlikte Yeni Projeler <br>
+                    İnşa Edelim.
+                </h2>
+                <p class="contact-lead">
+                    Sistem programlama, siber güvenlik, açık kaynak katkıları veya staj/iş olanakları için doğrudan iletişime geçebilirsiniz.
+                </p>
+
+                <div class="contact-actions-row">
+                    <button class="btn-contact-email" onclick="copyEmailToClipboard()" title="E-Postayı Kopyala">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>emirberasoguk@proton.me</span>
+                        <span style="font-size: 0.75rem; background: var(--bh-yellow); padding: 2px 6px; border: 1.5px solid var(--bh-black); color: var(--bh-black);" id="copyBadge">KOPYALA</span>
+                    </button>
+
+                    <a href="https://www.linkedin.com/in/emir-bera-soguk/" target="_blank" rel="noopener noreferrer" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <a href="https://github.com/emirberasoguk" target="_blank" rel="noopener noreferrer" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="tel:+905423774330" class="btn-bh-white" style="font-size: 1rem; padding: 16px 24px;" title="Telefon">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+90 542 377 43 30</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bauhaus Footer -->
+    <footer class="bauhaus-footer">
+        <div class="footer-inner">
+            <div>
+                <strong>EMİR BERA SOĞUK</strong> &bull; BAUHAUS TASARIM SİSTEMİ
+            </div>
+            <div>
+                &copy; 2026 TÜM HAKLARI SAKLIDIR.
+            </div>
+            <div>
+                <a href="#hero" style="border-bottom: 2px solid var(--bh-black);">BAŞA DÖN ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Tactile Bauhaus Toast Notification -->
+    <div class="bh-toast" id="bhToast" role="alert" aria-live="polite">
+        <i class="fa-solid fa-circle-check" style="color: var(--bh-yellow);"></i>
+        <span id="toastMessage">E-posta adresi panoya kopyalandı!</span>
+    </div>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Dynamic Project Filtering
+        function filterProjects(category, btnElement) {
+            const filterBtns = document.querySelectorAll('.bh-filter-btn');
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const cards = document.querySelectorAll('.bh-card');
+            cards.forEach(card => {
+                const cardCat = card.getAttribute('data-category') || '';
+                if (category === 'all' || cardCat.includes(category)) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(12px)';
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = '';
+                    }, 20);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 2. Tactile Clipboard Copy
+        function copyEmailToClipboard() {
+            const email = 'emirberasoguk@proton.me';
+            navigator.clipboard.writeText(email).then(() => {
+                showToast('E-posta kopyalandı: ' + email);
+                const badge = document.getElementById('copyBadge');
+                if (badge) {
+                    badge.textContent = 'KOPYALANDI!';
+                    badge.style.background = '#00ff66';
+                    setTimeout(() => {
+                        badge.textContent = 'KOPYALA';
+                        badge.style.background = 'var(--bh-yellow)';
+                    }, 2200);
+                }
+            }).catch(() => {
+                window.location.href = 'mailto:' + email;
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('bhToast');
+            const toastMsg = document.getElementById('toastMessage');
+            if (!toast || !toastMsg) return;
+
+            toastMsg.textContent = msg;
+            toast.classList.add('show');
+
+            clearTimeout(window.__toastTimeout);
+            window.__toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // 3. Tactile Vibration Feedback
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('click', () => {
+                if (navigator.vibrate) {
+                    navigator.vibrate(15);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
